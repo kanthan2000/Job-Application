@@ -1,10 +1,12 @@
-import Login  from "./login/login";
+import Navbar  from "./admin/navbar";
+import LeftNav from "./admin/LeftNav";
 function App() {
   return (
     <>
-    <div>
-      <Login />
-    </div>
+      <div>
+        <Navbar />
+        <LeftNav />
+      </div>
     </>
   );
 }

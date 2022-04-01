@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 import '@mui/material'
+import './index.css'
 
 
 ReactDOM.render(

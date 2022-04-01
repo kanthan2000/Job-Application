@@ -50,7 +50,7 @@ const Login = ()=>{
               Sign in
             </Typography>
             
-            <TextField id="outlined-basic" label="Email" variant="outlined" sx={{margin:'12px' ,padding:'8px',width:'100%',boxSizing:'5px'}} />
+            <TextField id="outlined-basic"  label="Email" variant="outlined" sx={{margin:'12px' ,padding:'8px',width:'100%',boxSizing:'5px'}} />
             <TextField id="outlined-basic" label="Password" variant="outlined" sx={{margin:'12px',padding:'8px',width:'100%',boxSizing:'5px'}} />
             <Button variant="contained" sx={{width: '100%', padding:'8px',boxSizing:'5px'}}>Login</Button>
             <Grid item xs sx={{ mt: 5 }}>

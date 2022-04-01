@@ -51,7 +51,7 @@ const Navbar = (props) =>{
                 Careers
                 </Typography>
                 <Typography variant="h6" component="div" sx={{ marginLeft: "1.5rem",cursor:'pointer'}}>
-                Contact Us
+                Contact 
                 </Typography>
                 <Button color="inherit" sx={{marginLeft: "50rem"}}>
                     <img src={profile} width="50" />

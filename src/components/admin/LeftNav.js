@@ -2,7 +2,8 @@ import * as React from 'react';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { Grid } from '@mui/material';
-import Dashboard from './Dashboard';
+import StickyHeadTable from '../Form/dashtable/Usertable';
+
 const LeftNav = ()=>{
 
     
@@ -17,11 +18,11 @@ const LeftNav = ()=>{
             </ListItemButton>
         <ListItemButton>
             
-            <ListItemText primary="Orders" />
+            <ListItemText primary="Table" />
         </ListItemButton>
         <ListItemButton>
             
-            <ListItemText primary="Customers" />
+            <ListItemText primary="Forms" />
         </ListItemButton>
         <ListItemButton>
             
@@ -29,12 +30,12 @@ const LeftNav = ()=>{
         </ListItemButton>
         <ListItemButton>
             
-            <ListItemText primary="Integrations" />
+            <ListItemText primary="logout" />
         </ListItemButton>
             </Grid>
             <Grid item xs={10} >
-           <Dashboard />
-           </Grid>
+                <StickyHeadTable />
+            </Grid>
            </Grid>
            
             

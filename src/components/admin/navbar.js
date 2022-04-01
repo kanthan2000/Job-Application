@@ -2,6 +2,7 @@ import { AppBar, Button, Container, IconButton, Toolbar, Typography, } from "@mu
 import logo from '../image/logo.png';
 import profile from '../image/avatar.png'
 import { Box } from "@mui/system";
+import {Link} from 'react-router-dom'
 import {MenuBook} from '@material-ui/icons'
 
 
@@ -39,7 +40,7 @@ const Navbar = (props) =>{
                 <img src={logo} style={imgStyle}/>
                 </IconButton>
                 <Typography variant="h6" component="div" sx={{ marginLeft: "1.5rem",cursor:'pointer'}}>
-                Home
+                <Link to="/home">Home</Link>
                 </Typography>
                 <Typography variant="h6" component="div" sx={{ marginLeft: "1.5rem",cursor:'pointer'}}>
                 About

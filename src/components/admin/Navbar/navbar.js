@@ -1,11 +1,16 @@
 import { AppBar, Button, Container, IconButton, Toolbar, Typography, } from "@mui/material";
-import logo from '../image/logo.png';
-import profile from '../image/avatar.png'
+import logo from '../../image/logo.png';
+import profile from '../../image/avatar.png'
 import { Box } from "@mui/system";
-import {Link} from 'react-router-dom'
-import {MenuBook} from '@material-ui/icons'
+import './Navbar.css'
 
 
+import * as React from 'react';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
+import { Grid } from '@mui/material';
+import { Link } from 'react-router-dom';
+import Dashboard from "../Dashboard";
 
 
 
@@ -19,7 +24,6 @@ const Navbar = (props) =>{
 
     let navStyle = {
         top: "0",
-      
         width: "100%",
         left: "0",
         flexGrow: "1"
@@ -61,6 +65,43 @@ const Navbar = (props) =>{
             </AppBar>
         </Box>
        
+        <div >
+            <Grid container spacing={1} >
+                <Grid item xs={2} sx={{backgroundColor:"white",boxShadow:"-1px 20px 11px 0px",height:"100vh"}}>
+                <Link to="/home">
+                    <ListItemButton>
+                            <ListItemText primary="Dashboard" />
+                    </ListItemButton>
+                </Link>
+                <Link to="/table">
+                    <ListItemButton>
+                            <ListItemText primary="Table" />
+                    </ListItemButton>
+                </Link>
+                <Link to="/forms">
+                    <ListItemButton>
+                        <ListItemText primary="Forms" />
+                    </ListItemButton>
+                </Link>  
+        <ListItemButton>
+            <ListItemText primary="Reports" />
+        </ListItemButton>
+        <ListItemButton>
+            
+            <ListItemText primary="logout" />
+        </ListItemButton>
+            </Grid>
+            <Grid item xs={10} >
+               <Dashboard /> 
+            </Grid>
+           </Grid>
+           
+            
+      
+        </div>
+
+
+
         </>
 
         

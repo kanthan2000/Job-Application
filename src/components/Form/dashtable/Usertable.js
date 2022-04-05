@@ -14,6 +14,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
+// import '../dashtable/Usertable.css'
 
 const columns = [
   { id: 'name', label: 'Name', minWidth: 170 },
@@ -71,7 +72,8 @@ export default function StickyHeadTable() {
 
   return (
 <>
-    <Box sx={{ width: '75%', flexGrow: 3}}>
+   
+    <Box sx={{ width: '90%', flexGrow: 3,margin:'1rem'}}>
     <AppBar position="static">
       <Toolbar>
         <IconButton
@@ -87,7 +89,7 @@ export default function StickyHeadTable() {
       </Toolbar>
     </AppBar>
   </Box>
-<Paper sx={{borderColor: 'primary.main' , width: '75%', overflow: 'hidden' }}>
+<Paper sx={{borderColor: 'primary.main' , width: '90%', overflow: 'hidden' }}>
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>

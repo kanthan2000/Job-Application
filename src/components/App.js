@@ -16,13 +16,13 @@ function App() {
      <div>
      
       <Routes>
-      <Route path="/" element={<Navbar />} />
-      <Route path="/home" element={<Home />} />
+      <Route path="/" element={<Login />} />
+      <Route path="/admin" element={<Navbar />} />
       <Route path="/About" element={<About />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/table" element={<BasicTabstable />} />
       <Route path="/signin" element={<SignInSide />} />
-      <Route path="/login" element={<Login />} />
+      
       
     </Routes>
     </div> 

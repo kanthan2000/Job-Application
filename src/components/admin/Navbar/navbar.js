@@ -3,8 +3,6 @@ import logo from '../../image/logo.png';
 import profile from '../../image/avatar.png'
 import { Box } from "@mui/system";
 import './Navbar.css'
-
-
 import * as React from 'react';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
@@ -13,8 +11,7 @@ import { Link } from 'react-router-dom';
 import Dashboard from "../Dashboard";
 
 
-
-const Navbar = (props) =>{
+const  Navbar = (props) =>{
 
     let name = props.name
     let imgStyle =  {
@@ -44,10 +41,10 @@ const Navbar = (props) =>{
                 <img src={logo} style={imgStyle}/>
                 </IconButton>
                 <Typography variant="h6" component="div" sx={{ marginLeft: "1.5rem",cursor:'pointer'}}>
-                <Link to="/home">Home</Link>
+                    <Link to="/home">Home</Link>
                 </Typography>
                 <Typography variant="h6" component="div" sx={{ marginLeft: "1.5rem",cursor:'pointer'}}>
-                About
+                    About
                 </Typography>
                 <Typography variant="h6" component="div" sx={{marginLeft: "1.5rem",cursor:'pointer'}}>
                 Service

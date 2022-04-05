@@ -5,21 +5,26 @@ import Contact  from './admin/Nav_item/Contact'
 import {Routes, Route } from 'react-router-dom'
 import Login from "./login/login"
 import SignInSide from "./Form/pages/Signin"
+import Signup from './Form/tabs/Personal'
 import BasicTabstable from "./Form/candidate/BasicTabstable"
+import Dashboard from "./admin/Dashboard";
 
 function App() {
 
 	return (
 		<>
 		<div>
-			<Routes>
-				<Route path="/" element={<Login />} />
-				<Route path="/admin" element={<Navbar />} />
-				<Route path="/About" element={<About />} />
-				<Route path="/contact" element={<Contact />} />
-				<Route path="/table" element={<BasicTabstable />} />
-				<Route path="/signin" element={<SignInSide />} />
-			</Routes>
+			<Navbar >
+				<Routes>
+					<Route path="/login" element={<Login />} />
+					<Route path='/home'  element={<Dashboard />} />
+					<Route path="/About" element={<About />} />
+					<Route path="/contact" element={<Contact />} />
+					<Route path="/table" element={<BasicTabstable />} />
+					<Route path="/signin" element={<SignInSide />} />
+					<Route path='/sign-up' element={<Signup />}/>
+				</Routes>
+			</Navbar>
 		</div>       
 		</>
 );

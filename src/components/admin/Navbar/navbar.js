@@ -8,7 +8,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { Grid } from '@mui/material';
 import { Link } from 'react-router-dom';
-import Dashboard from "../Dashboard";
+import Dashboard from "../Dashboard/Dashboard";
 
 
 const  Navbar = (props) =>{

@@ -8,6 +8,7 @@ import SignInSide from "./Form/pages/Signin"
 import Signup from './Form/tabs/Personal'
 import BasicTabstable from "./Form/candidate/BasicTabstable"
 import Dashboard from "./admin/Dashboard";
+import Navtab from './Form/tabs/Navtab';
 
 function App() {
 
@@ -22,7 +23,7 @@ function App() {
 					<Route path="/contact" element={<Contact />} />
 					<Route path="/table" element={<BasicTabstable />} />
 					<Route path="/signin" element={<SignInSide />} />
-					<Route path='/sign-up' element={<Signup />}/>
+					<Route path='/navtab' element={<Navtab />}/>
 				</Routes>
 			</Navbar>
 		</div>       

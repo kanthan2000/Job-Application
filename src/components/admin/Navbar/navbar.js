@@ -9,6 +9,7 @@ import ListItemText from '@mui/material/ListItemText';
 import { Grid } from '@mui/material';
 import { Link } from 'react-router-dom';
 import Dashboard from "../Dashboard";
+import Navtab from '../../Form/tabs/Navtab';
 
 
 const  Navbar = (props) =>{
@@ -75,9 +76,9 @@ const  Navbar = (props) =>{
                             <ListItemText primary="Table" />
                     </ListItemButton>
                 </Link>
-                <Link to="/sign-up">
+                <Link to="/navtab">
                     <ListItemButton>
-                        <ListItemText primary="Forms" />
+                        <ListItemText primary="form" />
                     </ListItemButton>
                 </Link>  
         <ListItemButton>

@@ -11,11 +11,13 @@ import Professional from './professional/Professional'
 import axios from 'axios';
 import Position from './position/Position';
 import Resume from './resume/Resume';
+import Skill from '../tabs/skill/Skill';
 const theme = createTheme();
 
 export default function SignUp() {
 
 	const [components, setComponents] = React.useState([1])
+	const [skill, setSkill] = React.useState([1])
 
 	const handleSubmit = (event) => {
 	event.preventDefault();
@@ -50,8 +52,8 @@ export default function SignUp() {
 		setComponents([...components, 1])
 	}
 
-	const renderPositionForm = () => {
-	return <Position />
+	const renderSkillForm = () => {
+		setSkill([...skill, 1])
 	}
 	const renderResumeForm = () => {
 	return <Resume />
@@ -222,25 +224,18 @@ export default function SignUp() {
 				</Box>
 			</Box>
 			<Box sx={{
-				marginTop: 5,
-				display: 'flex',
-				flexDirection: 'column',
-				alignItems: 'center',
-				mt: 3 ,
-				}} >
-				<Typography component="h1" variant="h5">
-					Skills
-				</Typography>
-				<Grid item xs={12}>
-					<TextField
-						required
+					marginTop: 5,
+					display: 'flex',
+					flexDirection: 'column',
+					alignItems: 'center',
+					}} >
+					{skill.map(value => <Skill />)}
+					<Button
+						onClick={renderSkillForm}
 						fullWidth
-						name="skills"
-						label="Skills"
-						type="text"
-						id="skills"
-					/>
-				</Grid>
+						variant="contained"
+						sx={{ mt: 3, mb: 2 }}
+						>Click to Add</Button>
 			</Box>
 			<Box sx={{
 				marginTop: 5,

@@ -7,7 +7,7 @@ import Login from "./login/login"
 import SignInSide from "./Form/pages/Signin"
 import Signup from './Form/tabs/Personal'
 import BasicTabstable from "./Form/candidate/BasicTabstable"
-import Dashboard from "./admin/Dashboard";
+import Dashboard from "./admin/Dashboard/Dashboard";
 import Navtab from './Form/tabs/Navtab';
 
 function App() {

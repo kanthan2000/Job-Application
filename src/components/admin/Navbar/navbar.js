@@ -8,8 +8,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { Grid } from '@mui/material';
 import { Link } from 'react-router-dom';
-import Dashboard from "../Dashboard";
-import Navtab from '../../Form/tabs/Navtab';
+import Dashboard from '../Dashboard/Dashboard';
 
 
 const  Navbar = (props) =>{
@@ -61,8 +60,7 @@ const  Navbar = (props) =>{
                 </Button>
                 </Toolbar>
             </AppBar>
-        </Box>
-       
+        </Box> 
         <div >
             <Grid container spacing={1} >
                 <Grid item xs={2} sx={{backgroundColor:"white",boxShadow:"-1px 20px 11px 0px",height:"100vh"}}>

@@ -1,13 +1,10 @@
-.card{
-    display: inline-block;
-    padding: 1rem;
-    box-shadow: 3px 4px 13px 0px;
-    border-radius: 10px;
-    background-color:#0075bf;
+.Card{
+    background:linear-gradient(25deg,#1976d2,rgba(41, 43, 33, 0.329));
     width: 300px;
-    height: 250px;
-    margin: 10px;
+    height: 200px;
+    display: inline-block;
+    margin: 1rem;
+    border-radius: 10px;
+   box-shadow: 3px 3px 8px 1px;
+
 }
-img {
-    border-radius: 5px 5px 0 0;
-  }

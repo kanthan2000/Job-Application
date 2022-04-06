@@ -75,7 +75,7 @@ const  Navbar = (props) =>{
                             <ListItemText primary="Table" />
                     </ListItemButton>
                 </Link>
-                <Link to="/forms">
+                <Link to="/sign-up">
                     <ListItemButton>
                         <ListItemText primary="Forms" />
                     </ListItemButton>
@@ -89,19 +89,11 @@ const  Navbar = (props) =>{
         </ListItemButton>
             </Grid>
             <Grid item xs={10} >
-               <Dashboard /> 
+                {props.children}
             </Grid>
-           </Grid>
-           
-            
-      
-        </div>
-
-
-
-        </>
-
-        
+        </Grid>
+    </div>
+    </>
     )
 }
 export default Navbar;

@@ -23,24 +23,38 @@ export default function SignUp() {
 	event.preventDefault();
 	const form = new FormData(event.currentTarget);
 
+	let
+	 company = []
+
+
 	let formData = {
 		firstName: form.get("firstName"),
 		lastName: form.get("lastName"),
 		email: form.get("email"),
 		phone: form.get("phoneNumber"),
 		company: [{
-		role: form.get("role"),
-		name: form.get("currentCompany"),
-		from: form.get("fromDate"),
-		to: form.get("endDate"),
+		role: form.getAll("role"),
+		name: form.getAll("currentCompany"),
+		from: form.getAll("fromDate"),
+		to: form.getAll("endDate"),
 		}],
-		qualification :[{
-		collegeName :form.get("collegeName"),
-		degree :form.get("degree"),
-		}]
+		qualification: [{
+			collegeName :form.getAll("collegeName"),
+			degree :form.getAll("degree"),
+		}],
+		job: [{
+			job: form.get("job")
+		}],
+		skill: form.getAll("skill")
 	}
 
-	axios.post("", formData).then(({data}) => {
+	console.log({formData})
+
+	axios({
+		method: 'post',
+		url: "http://192.168.0.146:8080/candidate", 
+		data: formData
+	}).then(({data}) => {
 		console.log(data)
 	}).catch(err => {
 		console.log(err)
@@ -55,9 +69,6 @@ export default function SignUp() {
 	const renderSkillForm = () => {
 		setSkill([...skill, 1])
 	}
-	const renderResumeForm = () => {
-	return <Resume />
-	}
 
 
 
@@ -71,7 +82,7 @@ export default function SignUp() {
 				flexDirection: 'column',
 				alignItems: 'center',
 				}}>
-				<Typography component="h1" variant="h5">
+				<Typography sx={{color: "black"}} component="h1" variant="h5">
 					Personal Information
 				</Typography>
 				<Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
@@ -84,7 +95,7 @@ export default function SignUp() {
 							fullWidth
 							id="firstName"
 							label="First Name"
-							autoFocus
+							Focused
 						/>
 					</Grid>
 					<Grid item xs={12} sm={6}>
@@ -138,7 +149,7 @@ export default function SignUp() {
 				alignItems: 'center',
 					mt: 3 ,
 				}} >
-					<Typography component="h1" variant="h5">
+					<Typography sx={{color: "black"}} component="h1" variant="h5">
 						Address Information
 					</Typography>
 					<Grid container spacing={2}>
@@ -196,7 +207,7 @@ export default function SignUp() {
 						alignItems: 'center',
 						mt: 3 ,
 						}} >
-							<Typography component="h1" variant="h5">
+							<Typography sx={{color: "black"}} component="h1" variant="h5">
 							Education Details
 							</Typography>
 					<Grid container spacing={2}>
@@ -223,20 +234,13 @@ export default function SignUp() {
 					</Grid>
 				</Box>
 			</Box>
-			<Box sx={{
-					marginTop: 5,
-					display: 'flex',
-					flexDirection: 'column',
-					alignItems: 'center',
-					}} >
 					{skill.map(value => <Skill />)}
 					<Button
 						onClick={renderSkillForm}
 						fullWidth
 						variant="contained"
-						sx={{ mt: 3, mb: 2 }}
+						sx={{ mt: 3, mb: 4 }}
 						>Click to Add</Button>
-			</Box>
 			<Box sx={{
 				marginTop: 5,
 				display: 'flex',
@@ -244,7 +248,7 @@ export default function SignUp() {
 				alignItems: 'center',
 				mt: 3 ,
 				}} >
-				<Typography component="h1" variant="h5">
+				<Typography sx={{color: "black"}} component="h1" variant="h5">
 					Position
 				</Typography>
 				<Position />
@@ -256,7 +260,7 @@ export default function SignUp() {
 				alignItems: 'center',
 				mt: 3 ,
 				}} >
-				<Typography component="h1" variant="h5">
+				<Typography sx={{color: "black"}} component="h1" variant="h5">
 					Resume 
 				</Typography>
 				<Resume />

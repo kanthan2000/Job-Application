@@ -23,6 +23,8 @@ export default function SignUp() {
 	event.preventDefault();
 	const form = new FormData(event.currentTarget);
 
+	console.log(form.get("firstName"))
+
 	let formData = {
 		firstName: form.get("firstName"),
 		lastName: form.get("lastName"),
@@ -39,8 +41,9 @@ export default function SignUp() {
 		degree :form.get("degree"),
 		}]
 	}
+	console.log(formData)
 
-	axios.post("", formData).then(({data}) => {
+	axios.post("http://192.168.1.100:8080/candidate", formData).then(({data}) => {
 		console.log(data)
 	}).catch(err => {
 		console.log(err)

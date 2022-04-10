@@ -13,13 +13,28 @@ import axios from 'axios'
 const Login = (props) => {
 
 	const [load, setLoad] = useState(false)
+	const [username ,setusername] = useState("")
+	const [password , setpassword] = useState("")
+
+    const onChangeUser =(event) =>{
+		setusername(event.target.value) 
+		console.log("username",event.target.value)
+	}
+	const onChangepassword =(event) =>{
+		setpassword(event.target.value) 
+		console.log("password",event.target.value)
+	}
+
 
 	const onChangeUsername =(event) =>{
+		
+		// let data1 {
+		// 	"username" : username,
+		// 	"password" : password
+		// }
+		// console.log(data1)
 		setLoad(true)
-		let url = "192.168.1.5"
-		setTimeout(() => {
-			setLoad(false)
-		}, 700)
+		let url = "http://192.168.1.100/"
 		axios.get(url).then(({data}) => {
 			setLoad(false)
 			console.log(data)
@@ -62,8 +77,8 @@ const Login = (props) => {
 			0  Sign in
 			</Typography>
 			
-			<TextField id="outlined-basic"  label="Username" variant="outlined" sx={{margin:'12px' ,padding:'8px',width:'100%',boxSizing:'5px'}} />
-			<TextField id="outlined-basic" label="Password" variant="outlined" sx={{margin:'12px',padding:'8px',width:'100%',boxSizing:'5px'}} />
+			<TextField id="outlined-basic" onChange={onChangeUser}  label="Username" variant="outlined" sx={{margin:'12px' ,padding:'8px',width:'100%',boxSizing:'5px'}} />
+			<TextField id="outlined-basic" onChange={onChangepassword} label="Password" variant="outlined" sx={{margin:'12px',padding:'8px',width:'100%',boxSizing:'5px'}} />
 			<Button onClick={onChangeUsername} variant="contained" sx={{width: '100%', padding:'8px',boxSizing:'5px'}}>Login</Button>
 			<Grid item xs sx={{ mt: 5 }}>
 				<Link href="#" variant="body2">

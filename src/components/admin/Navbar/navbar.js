@@ -64,34 +64,34 @@ const  Navbar = (props) =>{
         <div >
             <Grid container spacing={1} >
                 <Grid item xs={2} sx={{backgroundColor:"white",boxShadow:"-1px 20px 11px 0px",height:"100vh"}}>
-                <Link to="/home">
+                    <Link to="/home">
+                        <ListItemButton>
+                                <ListItemText primary="Dashboard" />
+                        </ListItemButton>
+                    </Link>
+                    <Link to="/table">
+                        <ListItemButton>
+                                <ListItemText primary="Table" />
+                        </ListItemButton>
+                    </Link>
+                    <Link to="/navtab">
+                        <ListItemButton>
+                            <ListItemText primary="form" />
+                        </ListItemButton>
+                    </Link>  
                     <ListItemButton>
-                            <ListItemText primary="Dashboard" />
+                        <ListItemText primary="Reports" />
                     </ListItemButton>
-                </Link>
-                <Link to="/table">
                     <ListItemButton>
-                            <ListItemText primary="Table" />
+                        
+                        <ListItemText primary="logout" />
                     </ListItemButton>
-                </Link>
-                <Link to="/navtab">
-                    <ListItemButton>
-                        <ListItemText primary="form" />
-                    </ListItemButton>
-                </Link>  
-        <ListItemButton>
-            <ListItemText primary="Reports" />
-        </ListItemButton>
-        <ListItemButton>
-            
-            <ListItemText primary="logout" />
-        </ListItemButton>
+                </Grid>
+                <Grid item xs={10} >
+                    {props.children}
+                </Grid>
             </Grid>
-            <Grid item xs={10} >
-                {props.children}
-            </Grid>
-        </Grid>
-    </div>
+        </div>
     </>
     )
 }

@@ -1,46 +1,31 @@
 import Card from '../Card/card.js'
 import './Dashboard.css'
+import axios from 'axios'
+import { useEffect, useState } from 'react'
+
 
 const Dashboard =(props) =>{
-      let url = "../../../data/data.json"
-      fetch(url)
-      .then((data) => {
-         console.log(data)
+
+   const [cards, setCards] = useState([])
+
+   useEffect(() => {
+      axios.get("http://192.168.1.103:8080/dashBoard").then(({data}) => {
+         setCards(data)
+      }).catch(err => {
+         console.log(err)
       })
-      .catch((err)=>{
-         return err;
-      })
+   }, [])
+
       return(
          <> 
-         <Card>      
+         {cards.map((card, idx) => (<Card key={idx}>      
             <div className='inner-card1'>
-               <h1>Progress</h1>
-               
+               <h1>{card.title}</h1>7
+               <h1>{card.count}</h1>
             </div>
-         </Card>
-         <Card>      
-            <div className='inner-card2'>
-               <h1>Hired</h1>
-            </div>
-         </Card>
-         <Card>      
-            <div className='inner-card3'>
-               <h1>Rejected</h1>
-            </div>
-         </Card>
-         <Card>      
-            <div className='inner-card4'>
-               <h1>Waiting List</h1>
-            </div>
-         </Card>
-         <Card>      
-         <div className='inner-card5'>
-            <h1>Total candidate</h1>
-         </div>
-         </Card> 
+         </Card>))}
          
-            
          </>
-     )
- }
- export default Dashboard;
+   )
+}
+export default Dashboard;

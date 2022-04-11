@@ -20,47 +20,97 @@ export default function SignUp() {
 	const [skill, setSkill] = React.useState([1])
 
 	const handleSubmit = (event) => {
+	let dummy = {
+		"firstName": "Thor",
+		"lastName": "Odin",
+		"email": "thor@mail.com",
+		"phone": "6786689",
+		"company": [
+			{
+				"roll": "strongest",
+				"name": "Marvel",
+				"from": "2022-04-06",
+				"to": "2022-04-06"
+			},
+			{
+				"roll": "ds",
+				"name": "DC",
+				"from": "2022-04-06",
+				"to": "2022-04-05"
+			}
+		],
+		"qualification": [
+			{
+				"collegeName": "Asgaurd",
+				"degree": "BSC"
+			}
+		],
+		"job": "Killing",
+		"skill": [
+			"tretre",
+			"gfhtr"
+		],
+		"address": {
+			"doorNo": "3/12",
+			"steet": "dsds",
+			"pincode": "78978",
+			"place": "uugjkj"
+		}
+	}
 	event.preventDefault();
 	const form = new FormData(event.currentTarget);
 
-	let
-	 company = []
+	let formData = getFormData(form)
 
-
-	let formData = {
-		firstName: form.get("firstName"),
-		lastName: form.get("lastName"),
-		email: form.get("email"),
-		phone: form.get("phoneNumber"),
-		company: [{
-		role: form.getAll("role"),
-		name: form.getAll("currentCompany"),
-		from: form.getAll("fromDate"),
-		to: form.getAll("endDate"),
-		}],
-		qualification: [{
-			collegeName :form.getAll("collegeName"),
-			degree :form.getAll("degree"),
-		}],
-		job: [{
-			job: form.get("job")
-		}],
-		skill: form.getAll("skill")
-	}
-
-	console.log({formData})
-
-	axios({
-		method: 'post',
-		url: "http://192.168.0.146:8080/candidate", 
-		data: formData
-	}).then(({data}) => {
-		console.log(data)
-	}).catch(err => {
-		console.log(err)
-	})
-
+	axios.post("http://192.168.1.102:8080/candidate", formData)
+		.then(({data}) => {
+			console.log(data)
+		}).catch(err => {
+			console.log(err)
+		})
 	};
+
+	const getFormData = (form) => {
+		let companyData = []
+		let qualificationData = []
+
+		let roles = form.getAll("role")
+		let names = form.getAll("currentCompany")
+		let from = form.getAll("fromDate")
+		let to = form.getAll("endDate")
+
+		let collegeNames = form.getAll("collegeName")
+		let degrees = form.getAll("degree")
+
+		roles.map((_, idx) => {
+			let data = {
+				role: roles[idx],
+				name: names[idx],
+				from: from[idx],
+				to: to[idx]
+			}
+			companyData.push(data)
+		})
+
+		collegeNames.map((_, idx) => {
+			let data = {
+				collegeName: collegeNames[idx],
+				degree: degrees[idx] 
+			}
+			qualificationData.push(data)
+		})
+
+		return {
+			firstName: form.get("firstName"),
+			lastName: form.get("lastName"),
+			email: form.get("email"),
+			phone: form.get("phoneNumber"),
+			company: companyData,
+			qualification: qualificationData,
+			job: form.get("job"),
+			skill: form.getAll("skill") 
+		}
+	}
 
 	const renderProfessionalForm = () => {
 		setComponents([...components, 1])

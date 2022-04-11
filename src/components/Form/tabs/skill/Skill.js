@@ -1,12 +1,20 @@
 import React from 'react'
+import Box from '@mui/material/Box';
 import { Grid, TextField, Typography } from '@mui/material'
 
 const Skill = () => {
   return (
     <div>
-        <Typography component="h1" variant="h5">
+      <Box sx={{
+					marginTop: 5,
+					display: 'flex',
+					flexDirection: 'column',
+					alignItems: 'center',
+					}} >
+        <Typography  sx={{color: "black"}} component="h1" variant="h5">
             Skill
         </Typography>
+        
         <Grid container spacing={2}>
             <Grid item xs={12} >
             <TextField
@@ -19,6 +27,7 @@ const Skill = () => {
             />
             </Grid>
         </Grid>
+        </Box>
     </div>
   )
 }

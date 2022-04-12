@@ -12,6 +12,8 @@ import axios from 'axios';
 import Position from './position/Position';
 import Resume from './resume/Resume';
 import Skill from '../tabs/skill/Skill';
+import InputLabel from '@mui/material/InputLabel';
+import Gender from './gender/Gender';
 const theme = createTheme();
 
 export default function SignUp() {
@@ -103,8 +105,15 @@ export default function SignUp() {
 		return {
 			firstName: form.get("firstName"),
 			lastName: form.get("lastName"),
+			dob: form.get("dob"),
 			email: form.get("email"),
 			phone: form.get("phoneNumber"),
+			address: {
+					doorNo: form.get("doorNo"),
+					street: form.get("street"),
+					place: form.get("place"),
+					pincode: form.get("pincode")
+			  		},
 			company: companyData,
 			qualification: qualificationData,
 			job: form.get("job"),
@@ -119,7 +128,6 @@ export default function SignUp() {
 	const renderSkillForm = () => {
 		setSkill([...skill, 1])
 	}
-
 
 
 	return (
@@ -158,6 +166,21 @@ export default function SignUp() {
 							autoComplete="family-name"
 						/>
 					</Grid>
+					{/* <Gender /> */}
+					<Grid item xs={12} sm={6}>
+                		<InputLabel   >
+                   		 Date Of Birth
+               		 </InputLabel>
+           			</Grid>
+           			 <Grid item xs={12} >
+               		 <TextField
+						required
+						fullWidth
+						name="dob"
+						type="date"
+						id="dob"
+               		 />
+           			 </Grid>
 					<Grid item xs={12}>
 						<TextField
 							required
@@ -175,7 +198,7 @@ export default function SignUp() {
 							fullWidth
 							name="phoneNumber"
 							label="Phone Number"
-							type="text"
+							type="number"
 							id="phonenumber"
 							autoComplete="phone"
 						/>
@@ -207,10 +230,10 @@ export default function SignUp() {
 							<TextField
 								required
 								fullWidth
-								name="Doorno"
+								name="DoorNo"
 								label="Door No"
-								type="text"
-								id="doorno"
+								type="number"
+								id="doorNo"
 								autoComplete="doorno"
 							/>
 						</Grid>
@@ -233,6 +256,16 @@ export default function SignUp() {
 								type="text"
 								id="place"
 								autoComplete="place"
+							/>
+						</Grid>
+						<Grid item xs={12} >
+							<TextField
+								fullWidth
+								name="pincode"
+								label="Pincode"
+								type="number"
+								id="pincode"
+								autoComplete="pincode"
 							/>
 						</Grid>
 					</Grid>

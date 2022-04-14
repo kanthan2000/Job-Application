@@ -13,16 +13,16 @@ import axios from 'axios'
 const Login = (props) => {
 
 	const [load, setLoad] = useState(false)
-	const [username ,setusername] = useState("")
-	const [password , setpassword] = useState("")
+	const [username ,setusername] = useState("kanthan")
+	const [password , setpassword] = useState("knjv")
 
     const onChangeUser =(event) =>{
-		setusername(event.target.value) 
-		console.log("username",event.target.value)
+		console.log(username)
+		
 	}
 	const onChangepassword =(event) =>{
-		setpassword(event.target.value) 
-		console.log("password",event.target.value)
+		
+		console.log(password)
 	}
 
 
@@ -47,14 +47,14 @@ const Login = (props) => {
         <>
         <Grid container spacing={2}>
 			<Grid item xs={6} md={7} sx={{
-				backgroundImage: 'url(https://source.unsplash.com/random)',
+				backgroundImage: 'url(https://images.unsplash.com/photo-1648137839668-f5b4c8a11c15?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY0OTkzMzQ1NA&ixlib=rb-1.2.1&q=80&w=1080)',
 				backgroundRepeat: 'no-repeat',
 				backgroundSize: 'cover',
 				backgroundPosition: 'center',
 				height:"100vh"
             }}
 			/>
-			<Grid item xs={6} md={4}>
+			<Grid item xs={6} md={4} >
 				<Box sx={{
 				my: 8,
                 mx: 2,
@@ -73,13 +73,13 @@ const Login = (props) => {
 					}}> 
 					<LockOutlinedIcon />
 			</Avatar>
-			<Typography component="h1" variant="h5">
-			0  Sign in
+			<Typography component="h1" variant="h5" sx={{color:"black"}}>
+		    Sign in
 			</Typography>
 			
-			<TextField id="outlined-basic" onChange={onChangeUser}  label="Username" variant="outlined" sx={{margin:'12px' ,padding:'8px',width:'100%',boxSizing:'5px'}} />
-			<TextField id="outlined-basic" onChange={onChangepassword} label="Password" variant="outlined" sx={{margin:'12px',padding:'8px',width:'100%',boxSizing:'5px'}} />
-			<Button onClick={onChangeUsername} variant="contained" sx={{width: '100%', padding:'8px',boxSizing:'5px'}}>Login</Button>
+			<TextField id="outlined-basic"   label="Username" variant="outlined" sx={{margin:'12px' ,padding:'8px',width:'100%',boxSizing:'5px'}} />
+			<TextField id="outlined-basic"    label="Password" variant="outlined" sx={{margin:'12px',padding:'8px',width:'100%',boxSizing:'5px'}} />
+			<Button   variant="contained" sx={{width: '100%', padding:'8px',boxSizing:'5px'}}>Login</Button>
 			<Grid item xs sx={{ mt: 5 }}>
 				<Link href="#" variant="body2">
 				Forgot password?

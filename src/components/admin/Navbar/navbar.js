@@ -70,9 +70,9 @@ const  Navbar = (props) =>{
                 </Toolbar>
             </AppBar>
         </Box> 
-        <div >
+        <div>
             <Grid container spacing={1} >
-                <Grid item xs={2} sx={{backgroundColor:"white",boxShadow:"-1px 20px 11px 0px",height:"100vh"}}>
+                <Grid item xs={2} sx={{backgroundColor:"#0f70d5f7",boxShadow:"-1px 20px 11px 0px",height:"100vh"}}>
                     <Link to="/home">
                         <ListItemButton>
                         <DashboardTwoTone /><ListItemText primary="Dashboard" />

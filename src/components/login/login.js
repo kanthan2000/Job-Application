@@ -13,35 +13,43 @@ import axios from 'axios'
 const Login = (props) => {
 
 	const [load, setLoad] = useState(false)
-	const [username ,setusername] = useState("kanthan")
-	const [password , setpassword] = useState("knjv")
+	const [username ,setusername] = useState("")
+	const [password , setpassword] = useState("")
 
-    const onChangeUser =(event) =>{
-		console.log(username)
-		
-	}
-	const onChangepassword =(event) =>{
-		
-		console.log(password)
-	}
-
-
-	const onChangeUsername =(event) =>{
-		
-		// let data1 {
-		// 	"username" : username,
-		// 	"password" : password
-		// }
-		// console.log(data1)
-		setLoad(true)
-		let url = "http://192.168.1.100/"
-		axios.get(url).then(({data}) => {
-			setLoad(false)
+		const onChangeUser =(event) =>{
+			console.log(event.target.value)
+			setusername(event.target.value)
+			
+		}
+		const onChangepassword =(event) =>{
+			console.log(event.target.value)
+			setpassword(event.target.value)
+		}
+		const onChangeUsername =(event) =>{	
+			let data = {
+				"username" : username,
+				"password" : password
+			}
 			console.log(data)
-		})
-		.catch((err) => {
-			console.log(err)
-		})
+			setLoad(true)
+			let url = "http://192.168.1.100/"
+			axios.get(url).then((data,msg) => {
+				setLoad(false)
+				console.log(data)
+				if(msg === "admin"){
+					window.location.reload("/home")
+				if(msg === "employee"){
+					window.location.reload("/employee")
+				}	
+			}
+			else{
+				alert("invalid")
+			}	
+			})
+			.catch((err) => {
+				setLoad(false)
+				console.log(err)
+			})
 	}
     return(
         <>
@@ -73,13 +81,35 @@ const Login = (props) => {
 					}}> 
 					<LockOutlinedIcon />
 			</Avatar>
-			<Typography component="h1" variant="h5" sx={{color:"black"}}>
-		    Sign in
-			</Typography>
+				<Typography component="h1" variant="h5" sx={{color:"black"}}>
+				Sign in
+				</Typography>
 			
-			<TextField id="outlined-basic"   label="Username" variant="outlined" sx={{margin:'12px' ,padding:'8px',width:'100%',boxSizing:'5px'}} />
-			<TextField id="outlined-basic"    label="Password" variant="outlined" sx={{margin:'12px',padding:'8px',width:'100%',boxSizing:'5px'}} />
-			<Button   variant="contained" sx={{width: '100%', padding:'8px',boxSizing:'5px'}}>Login</Button>
+			<TextField 
+				id="outlined-basic"
+				onChange={onChangeUser}  
+				label="Username"
+				variant="outlined" 
+				sx={{margin:'12px' ,
+				padding:'8px',
+				width:'100%',
+				boxSizing:'5px'}} />
+				<TextField 
+				id="outlined-basic" 
+				onChange={onChangepassword}  
+				label="Password" variant="outlined"
+				sx={{margin:'12px',
+				padding:'8px',
+				width:'100%',
+				boxSizing:'5px'}} />
+				<Button
+				onClick={onChangeUsername}   
+				variant="contained"
+				sx={{width: '100%',
+				padding:'8px',
+				boxSizing:'5px'}}>
+					Login
+					</Button>
 			<Grid item xs sx={{ mt: 5 }}>
 				<Link href="#" variant="body2">
 				Forgot password?

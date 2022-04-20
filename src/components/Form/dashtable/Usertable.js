@@ -82,9 +82,9 @@ import Navbar from '../../admin/Navbar/navbar';
 		const [page, setPage] = React.useState(1);
 		const [pages, setPages] = React.useState(0)
 		
-
+		
 		React.useEffect(() => {
-			axios.get("http://192.168.103.31:8080/candidateCount").then(({data}) => {
+			axios.get("http://localhost:8080/candidateCount").then(({data}) => {
 				let count = data.count
 				let pages = Math.ceil(count / rowsPerPage)
 				setPages(pages)
@@ -94,10 +94,39 @@ import Navbar from '../../admin/Navbar/navbar';
 			})
 		}, [])
 
+		React.useEffect(() => {
+			let url = `http://localhost:8080/candidate?size=7&page=1`
+			axios.get(url).then(({data}) => {
+				console.log("data", data)
+				setCandidates(data)
+			}).catch(err => {
+				console.log(err)
+			})
+		}, [])
+
+		const getUser = async (userId) => {
+			return await axios.get(`http://localhost:8080/candidate?id=${userId}`)
+		}
+
+		const handleDetailClick = (userId) => {
+			getUser(userId).then(user => {
+				console.log(user)
+			}).catch(err => {
+				console.log(err)
+			})
+		}
+
+		const handleUpdate = (userId) => {
+			getUser(userId).then(user => {
+			}).catch(err => {
+				console.log(err)
+			})
+		}
+
 	const handleChangePage = (currentPage) => {
 		setPage(currentPage);
 		let paramPage = currentPage - 1
-		let url = `http://192.168.1.103:8080/candidate?size=${rowsPerPage}&page=${paramPage}`
+		let url = `http://localhost:8080/candidate?size=${rowsPerPage}&page=${paramPage}`
 		axios.get(url).then(({data}) => {
 			console.log("data", data)
 			setCandidates(data)
@@ -117,7 +146,7 @@ import Navbar from '../../admin/Navbar/navbar';
 			edge="start"
 			color="inherit"
 			aria-label="menu"
-			sx={{ mr: 2 }}
+			sx={{ mr: 2 ,width:'200px'}}
 		>
 			Employee List
 		</IconButton>
@@ -136,8 +165,7 @@ import Navbar from '../../admin/Navbar/navbar';
 				<TableCell
 					key={column.id}
 					align={column.align}
-					style={{ minWidth: column.minWidth }}
-				>
+					style={{ minWidth: column.minWidth }}>
 					{column.label}
 				</TableCell>
 				))}
@@ -145,11 +173,18 @@ import Navbar from '../../admin/Navbar/navbar';
 			</TableHead>
 			<TableBody>
 				{
-					data.map((candidate, idx) => {
+					candidates.map((candidate, idx) => {
 						return <TableRow hover role="checkbox" tabIndex={-1} key={idx}>
 							{
 							Object.entries(candidate).map(([key, value], idx) => {
 								if(key !== "id"){
+									if(key === "skill"){
+										let text = value.map(skill => " " + skill)
+										return (
+											<TableCell key={idx} align="center">
+												{text}
+											</TableCell>)
+									}
 									return (
 									<TableCell key={idx} align="center">
 										{value}
@@ -162,9 +197,9 @@ import Navbar from '../../admin/Navbar/navbar';
 									labelId="demo-simple-select-label"
 									id="demo-simple-select"
 									label="Age" >
-									<MenuItem>Details</MenuItem>
-									<MenuItem>Update</MenuItem>
-									<MenuItem>Remove</MenuItem>
+									<MenuItem onClick={() => handleDetailClick(candidate.id)}>Details</MenuItem>
+									<MenuItem onClick={() => handleUpdate(candidate.id)}>Update</MenuItem>
+									<MenuItem >Remove</MenuItem>
 								</Select>
 							</FormControl>
 						</TableRow>

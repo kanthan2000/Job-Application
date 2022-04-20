@@ -16,45 +16,53 @@ const Login = (props) => {
 	const [username ,setusername] = useState("")
 	const [password , setpassword] = useState("")
 
-    const onChangeUser =(event) =>{
-		setusername(event.target.value) 
-		console.log("username",event.target.value)
-	}
-	const onChangepassword =(event) =>{
-		setpassword(event.target.value) 
-		console.log("password",event.target.value)
-	}
-
-
-	const onChangeUsername =(event) =>{
-		
-		// let data1 {
-		// 	"username" : username,
-		// 	"password" : password
-		// }
-		// console.log(data1)
-		setLoad(true)
-		let url = "http://192.168.1.100/"
-		axios.get(url).then(({data}) => {
-			setLoad(false)
+		const onChangeUser =(event) =>{
+			console.log(event.target.value)
+			setusername(event.target.value)
+			
+		}
+		const onChangepassword =(event) =>{
+			console.log(event.target.value)
+			setpassword(event.target.value)
+		}
+		const onChangeUsername =(event) =>{	
+			let data = {
+				"username" : username,
+				"password" : password
+			}
 			console.log(data)
-		})
-		.catch((err) => {
-			console.log(err)
-		})
+			setLoad(true)
+			let url = "http://192.168.1.100/"
+			axios.get(url).then((data,msg) => {
+				setLoad(false)
+				console.log(data)
+				if(msg === "admin"){
+					window.location.reload("/home")
+				if(msg === "employee"){
+					window.location.reload("/employee")
+				}	
+			}
+			else{
+				alert("invalid")
+			}	
+			})
+			.catch((err) => {
+				setLoad(false)
+				console.log(err)
+			})
 	}
     return(
         <>
         <Grid container spacing={2}>
 			<Grid item xs={6} md={7} sx={{
-				backgroundImage: 'url(https://source.unsplash.com/random)',
+				backgroundImage: 'url(https://images.unsplash.com/photo-1648137839668-f5b4c8a11c15?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY0OTkzMzQ1NA&ixlib=rb-1.2.1&q=80&w=1080)',
 				backgroundRepeat: 'no-repeat',
 				backgroundSize: 'cover',
 				backgroundPosition: 'center',
 				height:"100vh"
             }}
 			/>
-			<Grid item xs={6} md={4}>
+			<Grid item xs={6} md={4} >
 				<Box sx={{
 				my: 8,
                 mx: 2,
@@ -73,13 +81,35 @@ const Login = (props) => {
 					}}> 
 					<LockOutlinedIcon />
 			</Avatar>
-			<Typography component="h1" variant="h5">
-			0  Sign in
-			</Typography>
+				<Typography component="h1" variant="h5" sx={{color:"black"}}>
+				Sign in
+				</Typography>
 			
-			<TextField id="outlined-basic" onChange={onChangeUser}  label="Username" variant="outlined" sx={{margin:'12px' ,padding:'8px',width:'100%',boxSizing:'5px'}} />
-			<TextField id="outlined-basic" onChange={onChangepassword} label="Password" variant="outlined" sx={{margin:'12px',padding:'8px',width:'100%',boxSizing:'5px'}} />
-			<Button onClick={onChangeUsername} variant="contained" sx={{width: '100%', padding:'8px',boxSizing:'5px'}}>Login</Button>
+			<TextField 
+				id="outlined-basic"
+				onChange={onChangeUser}  
+				label="Username"
+				variant="outlined" 
+				sx={{margin:'12px' ,
+				padding:'8px',
+				width:'100%',
+				boxSizing:'5px'}} />
+				<TextField 
+				id="outlined-basic" 
+				onChange={onChangepassword}  
+				label="Password" variant="outlined"
+				sx={{margin:'12px',
+				padding:'8px',
+				width:'100%',
+				boxSizing:'5px'}} />
+				<Button
+				onClick={onChangeUsername}   
+				variant="contained"
+				sx={{width: '100%',
+				padding:'8px',
+				boxSizing:'5px'}}>
+					Login
+					</Button>
 			<Grid item xs sx={{ mt: 5 }}>
 				<Link href="#" variant="body2">
 				Forgot password?

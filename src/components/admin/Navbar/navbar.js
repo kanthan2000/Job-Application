@@ -8,9 +8,15 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { Grid } from '@mui/material';
 import { Link } from 'react-router-dom';
-import Dashboard from '../Dashboard/Dashboard';
-
-
+import { DashboardTwoTone, HomeRounded } from "@material-ui/icons";
+import { TableChartTwoTone } from "@material-ui/icons";
+import { LocalDiningOutlined } from "@material-ui/icons";
+import { LockOpenTwoTone } from "@material-ui/icons";
+import { FolderOpenTwoTone } from "@material-ui/icons";
+import { Info } from "@material-ui/icons";
+import { SettingsApplicationsSharp } from "@material-ui/icons";
+import { HomeWorkSharp } from "@material-ui/icons";
+import { ContactMailSharp } from "@material-ui/icons";
 const  Navbar = (props) =>{
 
     let name = props.name
@@ -23,7 +29,8 @@ const  Navbar = (props) =>{
         top: "0",
         width: "100%",
         left: "0",
-        flexGrow: "1"
+        flexGrow: "1",
+        
     }
 
     return(
@@ -40,52 +47,59 @@ const  Navbar = (props) =>{
                 >
                 <img src={logo} style={imgStyle}/>
                 </IconButton>
+                <div style={{display:"-webkit-box"}}>
                 <Typography variant="h6" component="div" sx={{ marginLeft: "1.5rem",cursor:'pointer'}}>
-                    <Link to="/home">Home</Link>
+                <HomeRounded/><Link to="/home">Home</Link>
                 </Typography>
                 <Typography variant="h6" component="div" sx={{ marginLeft: "1.5rem",cursor:'pointer'}}>
-                    About
+                    <Info /> About
                 </Typography>
                 <Typography variant="h6" component="div" sx={{marginLeft: "1.5rem",cursor:'pointer'}}>
-                Service
+                <SettingsApplicationsSharp />Service
                 </Typography>
                 <Typography variant="h6" component="div" sx={{ marginLeft: "1.5rem",cursor:'pointer'}}>
-                Careers
+                <HomeWorkSharp />Careers
                 </Typography>
                 <Typography variant="h6" component="div" sx={{ marginLeft: "1.5rem",cursor:'pointer'}}>
-                Contact 
+                <ContactMailSharp />Contact 
                 </Typography>
+                </div>
                 <Button color="inherit" sx={{marginLeft: "50rem"}}>
                     <img src={profile} width="50" />
                 </Button>
                 </Toolbar>
             </AppBar>
         </Box> 
-        <div >
+        <div>
             <Grid container spacing={1} >
-                <Grid item xs={2} sx={{backgroundColor:"white",boxShadow:"-1px 20px 11px 0px",height:"100vh"}}>
+                <Grid item xs={2} sx={{backgroundColor:"#0f70d5f7",boxShadow:"-1px 20px 11px 0px",height:"100vh"}}>
                     <Link to="/home">
                         <ListItemButton>
-                                <ListItemText primary="Dashboard" />
+                        <DashboardTwoTone /><ListItemText primary="Dashboard" />
                         </ListItemButton>
                     </Link>
                     <Link to="/table">
                         <ListItemButton>
-                                <ListItemText primary="Table" />
+                                <TableChartTwoTone /><ListItemText primary="Table" />
                         </ListItemButton>
                     </Link>
                     <Link to="/navtab">
                         <ListItemButton>
-                            <ListItemText primary="form" />
+                        <FolderOpenTwoTone/><ListItemText primary="Form" />
                         </ListItemButton>
+                    </Link>
+                    <Link to="/navtab">
+                    <ListItemButton>
+                        <LocalDiningOutlined /><ListItemText primary="Reports" />
+                    </ListItemButton>
                     </Link>  
+                    
+                    <Link to="/login">
                     <ListItemButton>
-                        <ListItemText primary="Reports" />
+                        <LockOpenTwoTone /> <ListItemText primary="logout" />
                     </ListItemButton>
-                    <ListItemButton>
-                        
-                        <ListItemText primary="logout" />
-                    </ListItemButton>
+                    </Link>
+                    
                 </Grid>
                 <Grid item xs={10} >
                     {props.children}

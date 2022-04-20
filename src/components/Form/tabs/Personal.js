@@ -63,6 +63,8 @@ export default function SignUp() {
 	const form = new FormData(event.currentTarget);
 
 	let formData = getFormData(form)
+	
+	console.log(formData)
 
 	axios.post("http://192.168.103.31:8080/candidate", formData)
 		.then(({data}) => {
@@ -113,7 +115,7 @@ export default function SignUp() {
 					street: form.get("street"),
 					place: form.get("place"),
 					pincode: form.get("pincode")
-			  		},
+                    },
 			company: companyData,
 			qualification: qualificationData,
 			job: form.get("job"),
@@ -169,11 +171,11 @@ export default function SignUp() {
 					{/* <Gender /> */}
 					<Grid item xs={12} sm={6}>
                 		<InputLabel   >
-                   		 Date Of Birth
-               		 </InputLabel>
+                   		  Date Of Birth
+               		    </InputLabel>
            			</Grid>
-           			 <Grid item xs={12} >
-               		 <TextField
+           			<Grid item xs={12} >
+                    <TextField
 						required
 						fullWidth
 						name="dob"

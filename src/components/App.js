@@ -12,7 +12,7 @@ function App() {
 	
 	return (
 		<>
-			<Navbar >
+			
 				<Routes>
 					<Route path='/home'  element={<Dashboard />} />
 					<Route path="/About" element={<About />} />
@@ -22,7 +22,7 @@ function App() {
 					<Route path="/login" element={<Login />} />
 					<Route path="/signin" element={<SignInSide />} />
 				</Routes>
-			</Navbar>
+			
 		</>
         )
 	}

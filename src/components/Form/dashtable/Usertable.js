@@ -13,6 +13,7 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import { FormControl, InputLabel, MenuItem, Pagination, Select } from '@mui/material';
 import axios from 'axios';
+import Navbar from '../../admin/Navbar/navbar';
 // import '../dashtable/Usertable.css'
 
 	const columns = [
@@ -82,7 +83,7 @@ import axios from 'axios';
 		
 
 		React.useEffect(() => {
-			axios.get("http://192.168.1.103:8080/candidateCount").then(({data}) => {
+			axios.get("http://192.168.103.31:8080/candidateCount").then(({data}) => {
 				let count = data.count
 				let pages = Math.ceil(count / rowsPerPage)
 				setPages(pages)
@@ -106,6 +107,7 @@ import axios from 'axios';
 
 	return (
 	<>
+	<Navbar>
 	<Box sx={{ width: '90%', flexGrow: 3,margin:'1rem'}}>
 	<AppBar position="static">
 		<Toolbar>
@@ -187,6 +189,7 @@ import axios from 'axios';
 		</TableContainer>
 		<Pagination onClick={(e) => handleChangePage(e.target.innerText)} count={pages} variant="outlined" shape="rounded" />
 	</Paper>
+	</Navbar>
 	</>
 	);
 	}

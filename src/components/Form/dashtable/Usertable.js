@@ -14,6 +14,7 @@ import IconButton from '@mui/material/IconButton';
 import { FormControl, InputLabel, MenuItem, Pagination, Select } from '@mui/material';
 import axios from 'axios';
 import Navbar from '../../admin/Navbar/navbar';
+
 // import '../dashtable/Usertable.css'
 
 	const columns = [
@@ -120,7 +121,9 @@ import Navbar from '../../admin/Navbar/navbar';
 		>
 			Employee List
 		</IconButton>
+		
 		<Button sx={{ position:'relative' ,mr: 'margin-right'}} variant="contained" color="success"  > Add+ </Button>
+		
 		</Toolbar>
 	</AppBar>
 	</Box>

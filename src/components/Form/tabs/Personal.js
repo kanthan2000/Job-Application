@@ -14,51 +14,17 @@ import Resume from './resume/Resume';
 import Skill from '../tabs/skill/Skill';
 import InputLabel from '@mui/material/InputLabel';
 import Gender from './gender/Gender';
+import { useLocation, useNavigate } from 'react-router-dom';
 const theme = createTheme();
 
 export default function SignUp() {
 
 	const [components, setComponents] = React.useState([1])
 	const [skill, setSkill] = React.useState([1])
+	const location = useLocation()
+	const history = useNavigate()
 
 	const handleSubmit = (event) => {
-	let dummy = {
-		"firstName": "Thor",
-		"lastName": "Odin",
-		"email": "thor@mail.com",
-		"phone": "6786689",
-		"company": [
-			{
-				"roll": "strongest",
-				"name": "Marvel",
-				"from": "2022-04-06",
-				"to": "2022-04-06"
-			},
-			{
-				"roll": "ds",
-				"name": "DC",
-				"from": "2022-04-06",
-				"to": "2022-04-05"
-			}
-		],
-		"qualification": [
-			{
-				"collegeName": "Asgaurd",
-				"degree": "BSC"
-			}
-		],
-		"job": "Killing",
-		"skill": [
-			"tretre",
-			"gfhtr"
-		],
-		"address": {
-			"doorNo": "3/12",
-			"steet": "dsds",
-			"pincode": "78978",
-			"place": "uugjkj"
-		}
-	}
 	event.preventDefault();
 	const form = new FormData(event.currentTarget);
 
@@ -66,9 +32,10 @@ export default function SignUp() {
 	
 	console.log(formData)
 
-	axios.post("http://192.168.1.102:8080/candidate", formData)
-		.then(({data}) => {
+	axios.post("http://localhost:8080/candidate", formData)
+		.then(({data},msg) => {
 			console.log(data)
+			history("/table")
 		}).catch(err => {
 			console.log(err)
 		})
@@ -168,14 +135,14 @@ export default function SignUp() {
 							autoComplete="family-name"
 						/>
 					</Grid>
-					{/* <Gender /> */}
-					<Grid item xs={12} sm={6}>
-                		<InputLabel   >
-                   		  Date Of Birth
-               		    </InputLabel>
-           			</Grid>
-           			<Grid item xs={12} >
-                    <TextField
+						{/* <Gender /> */}
+						<Grid item xs={12} sm={6}>
+							<InputLabel   >
+							Date Of Birth
+							</InputLabel>
+						</Grid>
+						<Grid item xs={12} >
+						<TextField
 						required
 						fullWidth
 						name="dob"

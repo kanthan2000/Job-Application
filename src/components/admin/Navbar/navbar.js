@@ -1,9 +1,10 @@
 import { AppBar, Button, Container, IconButton, Toolbar, Typography, } from "@mui/material";
 import logo from '../../image/logo.png';
-import profile from '../../image/avatar.png'
+import Avatar from '../../image/avatar.png'
 import { Box } from "@mui/system";
 import './Navbar.css'
 import * as React from 'react';
+import { useState } from "react";
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { Grid } from '@mui/material';
@@ -17,8 +18,10 @@ import { Info } from "@material-ui/icons";
 import { SettingsApplicationsSharp } from "@material-ui/icons";
 import { HomeWorkSharp } from "@material-ui/icons";
 import { ContactMailSharp } from "@material-ui/icons";
+import Profile from "../../profile/Profile";
 const  Navbar = (props) =>{
-
+        const[profile , setprofile] = React.useState(false)
+    
     let name = props.name
     let imgStyle =  {
         width: "100px",
@@ -33,6 +36,13 @@ const  Navbar = (props) =>{
         
     }
 
+    const onclickprofile = (event) =>{
+        console.log("clicked")
+        setprofile(true)
+    }
+
+
+
     return(
         <>
         <Box sx={navStyle}>
@@ -43,7 +53,8 @@ const  Navbar = (props) =>{
                     edge="start"
                     color="inherit"
                     aria-label="menu"
-                    sx={{ mr: 2 }}
+                    sx={{ mr: 2,
+                        margin:'9px'}}
                 >
                 <img src={logo} style={imgStyle}/>
                 </IconButton>
@@ -64,12 +75,14 @@ const  Navbar = (props) =>{
                 <ContactMailSharp />Contact 
                 </Typography>
                 </div>
-                <Button color="inherit" sx={{marginLeft: "50rem"}}>
-                    <img src={profile} width="50" />
+                <Button onClick={onclickprofile}  color="inherit" sx={{marginLeft: "50rem"}}>
+                    <img src={Avatar} width="50" />
                 </Button>
                 </Toolbar>
             </AppBar>
         </Box> 
+       
+        
         <div>
             <Grid container spacing={1} >
                 <Grid item xs={2} sx={{backgroundColor:"#0f70d5f7",boxShadow:"-1px 20px 11px 0px",height:"100vh"}}>
@@ -102,6 +115,7 @@ const  Navbar = (props) =>{
                     
                 </Grid>
                 <Grid item xs={10} >
+                    {profile && <Profile />}
                     {props.children}
                 </Grid>
             </Grid>

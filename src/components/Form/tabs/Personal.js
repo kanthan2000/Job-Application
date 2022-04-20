@@ -64,7 +64,7 @@ export default function SignUp() {
 
 	let formData = getFormData(form)
 
-	axios.post("http://192.168.1.102:8080/candidate", formData)
+	axios.post("http://192.168.103.31:8080/candidate", formData)
 		.then(({data}) => {
 			console.log(data)
 		}).catch(err => {

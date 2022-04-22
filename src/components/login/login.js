@@ -9,13 +9,13 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 import axios from 'axios'
-
+import { useNavigate } from 'react-router-dom';
 const Login = (props) => {
 
 	const [load, setLoad] = useState(false)
 	const [username ,setusername] = useState("")
 	const [password , setpassword] = useState("")
-
+    const history = useNavigate()
 		const onChangeUser =(event) =>{
 			console.log(event.target.value)
 			setusername(event.target.value)
@@ -27,28 +27,24 @@ const Login = (props) => {
 		}
 		const onChangeUsername =(event) =>{	
 			let data = {
-				"username" : username,
+				"userName" : username,
 				"password" : password
 			}
-			console.log(data)
-			setLoad(true)
-			let url = "http://192.168.1.100/"
-			axios.get(url).then((data,msg) => {
+			// console.log(data)
+			axios.put("http://localhost:8080/login",data).then(response=>{
+				setLoad(400)
+				const { data, status } = response;
+				// console.log(data)
+				if(data.msg === "admin"){
+					history("/home")
+				}
+				if(data.msg === "employee"){
+					// history("/home")
+					alert("employee")
+				}
+			}).catch(({response}) => {
+				alert(response.data.msg)
 				setLoad(false)
-				console.log(data)
-				if(msg === "admin"){
-					window.location.reload("/home")
-				if(msg === "employee"){
-					window.location.reload("/employee")
-				}	
-			}
-			else{
-				alert("invalid")
-			}	
-			})
-			.catch((err) => {
-				setLoad(false)
-				console.log(err)
 			})
 	}
     return(

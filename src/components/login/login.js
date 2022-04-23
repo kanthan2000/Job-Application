@@ -4,7 +4,7 @@ import Spinner from '../Spinner/Spinner'
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
+import { LockOutlined } from '@mui/icons-material';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
@@ -75,7 +75,7 @@ const Login = (props) => {
 					m: 1,
 					bgcolor: 'secondary.main' 
 					}}> 
-					<LockOutlinedIcon />
+					<LockOutlined />
 			</Avatar>
 				<Typography component="h1" variant="h5" sx={{color:"black"}}>
 				Sign in

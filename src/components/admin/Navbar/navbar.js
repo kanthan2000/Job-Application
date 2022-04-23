@@ -9,16 +9,17 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { Grid } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { DashboardTwoTone, HomeRounded } from "@material-ui/icons";
-import { TableChartTwoTone } from "@material-ui/icons";
-import { LocalDiningOutlined } from "@material-ui/icons";
-import { LockOpenTwoTone } from "@material-ui/icons";
-import { FolderOpenTwoTone } from "@material-ui/icons";
-import { Info } from "@material-ui/icons";
-import { SettingsApplicationsSharp } from "@material-ui/icons";
-import { HomeWorkSharp } from "@material-ui/icons";
-import { ContactMailSharp } from "@material-ui/icons";
+import { Home } from "@mui/icons-material";
+import InfoIcon from '@mui/icons-material/Info';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import MapsHomeWorkIcon from '@mui/icons-material/MapsHomeWork';
+import PermContactCalendarIcon from '@mui/icons-material/PermContactCalendar';
 import Profile from "../../profile/Profile";
+import DashboardCustomizeIcon from '@mui/icons-material/DashboardCustomize';
+import TableChartIcon from '@mui/icons-material/TableChart';
+import AddCardIcon from '@mui/icons-material/AddCard';
+import ReportIcon from '@mui/icons-material/Report';
+import LogoutIcon from '@mui/icons-material/Logout';
 const  Navbar = (props) =>{
         const[profile , setprofile] = React.useState(false)
     
@@ -60,19 +61,19 @@ const  Navbar = (props) =>{
                 </IconButton>
                 <div style={{display:"-webkit-box"}}>
                 <Typography variant="h6" component="div" sx={{ marginLeft: "1.5rem",cursor:'pointer'}}>
-                <HomeRounded/><Link to="/home">Home</Link>
+                <Home/><Link to="/home">Home</Link>
                 </Typography>
                 <Typography variant="h6" component="div" sx={{ marginLeft: "1.5rem",cursor:'pointer'}}>
-                    <Info /> About
+                <InfoIcon/>About
                 </Typography>
                 <Typography variant="h6" component="div" sx={{marginLeft: "1.5rem",cursor:'pointer'}}>
-                <SettingsApplicationsSharp />Service
+                <ManageAccountsIcon />Service
                 </Typography>
                 <Typography variant="h6" component="div" sx={{ marginLeft: "1.5rem",cursor:'pointer'}}>
-                <HomeWorkSharp />Careers
+                <MapsHomeWorkIcon />Careers
                 </Typography>
                 <Typography variant="h6" component="div" sx={{ marginLeft: "1.5rem",cursor:'pointer'}}>
-                <ContactMailSharp />Contact 
+                <PermContactCalendarIcon />Contact 
                 </Typography>
                 </div>
                 <Button onClick={onclickprofile}  color="inherit" sx={{marginLeft: "50rem"}}>
@@ -81,35 +82,35 @@ const  Navbar = (props) =>{
                 </Toolbar>
             </AppBar>
         </Box> 
-       
+        
         
         <div>
             <Grid container spacing={1} >
                 <Grid item xs={2} sx={{backgroundColor:"#0f70d5f7",boxShadow:"-1px 20px 11px 0px",height:"100vh"}}>
                     <Link to="/home">
                         <ListItemButton>
-                        <DashboardTwoTone /><ListItemText primary="Dashboard" />
+                        <DashboardCustomizeIcon /> <ListItemText primary="Dashboard" />
                         </ListItemButton>
                     </Link>
                     <Link to="/table">
                         <ListItemButton>
-                                <TableChartTwoTone /><ListItemText primary="Table" />
+                        < TableChartIcon /> <ListItemText primary="Table" />
                         </ListItemButton>
                     </Link>
                     <Link to="/navtab">
                         <ListItemButton>
-                        <FolderOpenTwoTone/><ListItemText primary="Form" />
+                        < AddCardIcon /> <ListItemText primary="Form" />
                         </ListItemButton>
                     </Link>
                     <Link to="/navtab">
                     <ListItemButton>
-                        <LocalDiningOutlined /><ListItemText primary="Reports" />
+                        <ReportIcon /> <ListItemText primary="Reports" />
                     </ListItemButton>
                     </Link>  
                     
                     <Link to="/login">
                     <ListItemButton>
-                        <LockOpenTwoTone /> <ListItemText primary="logout" />
+                        <LogoutIcon /> <ListItemText primary="logout" />
                     </ListItemButton>
                     </Link>
                     

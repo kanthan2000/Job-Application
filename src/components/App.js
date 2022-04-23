@@ -21,6 +21,7 @@ function App() {
 					<Route path='/navtab' element={<Navtab />}/>
 					<Route path="/login" element={<Login />} />
 					<Route path="/signin" element={<SignInSide />} />
+					
 				</Routes>
 			
 		</>

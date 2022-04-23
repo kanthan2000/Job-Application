@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+/*import React, {useState} from 'react'
 import Grid from '@mui/material/Grid';
 import Spinner from '../Spinner/Spinner'
 import Box from '@mui/material/Box';
@@ -8,50 +8,16 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
-import axios from 'axios';
+import axios from 'axios'
 
+const Forget = (props) => {
 
-const Login = (props) => {
-
-	const [load, setLoad] = useState(false)
-	const [username ,setusername] = useState("")
-	const [password , setpassword] = useState("")
-
-		const onChangeUser =(event) =>{
+		const onChangeEmail =(event) =>{
 			console.log(event.target.value)
-			setusername(event.target.value)
+			
 			
 		}
-		const onChangepassword =(event) =>{
-			console.log(event.target.value)
-			setpassword(event.target.value)
-		}
-		const onChangeUsername =(event) =>{	
-			let data = {
-				"username" : username,
-				"password" : password
-			}
-			console.log(data)
-			setLoad(true)
-			let url = "http://192.168.1.100/"
-			axios.get(url).then((data,msg) => {
-				setLoad(false)
-				console.log(data)
-				if(msg === "admin"){
-					window.location.reload("/home")
-				if(msg === "employee"){
-					window.location.reload("/employee")
-				}	
-			}
-			else{
-				alert("invalid")
-			}	
-			})
-			.catch((err) => {
-				setLoad(false)
-				console.log(err)
-			})
-	}
+		
     return(
         <>
         <Grid container spacing={2}>
@@ -75,7 +41,7 @@ const Login = (props) => {
                 height:'80%',
                 width:'100%'
             }}>
-				{load && <Spinner />}
+			
 			<Avatar sx={{
 					m: 1,
 					bgcolor: 'secondary.main' 
@@ -83,43 +49,31 @@ const Login = (props) => {
 					<LockOutlinedIcon />
 			</Avatar>
 				<Typography component="h1" variant="h5" sx={{color:"black"}}>
-				Sign in
+				Forget Password
 				</Typography>
 			
 			<TextField 
 				id="outlined-basic"
-				onChange={onChangeUser}  
-				label="Username"
+				onChange={onChangeEmail}  
+				label="Enter Email"
 				variant="outlined" 
 				sx={{margin:'12px' ,
 				padding:'8px',
 				width:'100%',
 				boxSizing:'5px'}} />
-				<TextField 
-				id="outlined-basic" 
-				onChange={onChangepassword}  
-				label="Password" variant="outlined"
-				sx={{margin:'12px',
-				padding:'8px',
-				width:'100%',
-				boxSizing:'5px'}} />
 				<Button
-				onClick={onChangeUsername}   
+				 
 				variant="contained"
 				sx={{width: '100%',
 				padding:'8px',
 				boxSizing:'5px'}}>
-					Login
+					Send Link
 					</Button>
-			<Grid item xs sx={{ mt: 5 }}>
-				<Link href="#" variant="body2">
-				Forgot password?
-				</Link>
-			</Grid>
+			
 			</Box>
 			</Grid>
 	</Grid>
 	</>
     )
 }
-export default Login;
+export default Forget; */

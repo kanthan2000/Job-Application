@@ -3,6 +3,7 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
+import { Typography } from '@mui/material'
 
 export default function ComboBox() {
   return (
@@ -12,12 +13,15 @@ export default function ComboBox() {
       flexDirection: 'column',
       alignItems: 'center',
       }} >
+        <Typography sx={{color: "black"}} component="h1" variant="h5">
+					Position
+				</Typography>
     <Grid item xs={12}>
     <Autocomplete
       disablePortal
       id="combo-box-demo"
       options={job}
-      sx={{ width: 300 }}
+      sx={{ width: 450 }}
       renderInput={(params) => <TextField {...params} name="job" label="JOB" />}
     />
     </Grid>

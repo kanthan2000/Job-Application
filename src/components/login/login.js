@@ -26,13 +26,14 @@ const Login = (props) => {
 			setpassword(event.target.value)
 		}
 		const onChangeUsername =(event) =>{	
+			setLoad(true)
 			let data = {
 				"userName" : username,
 				"password" : password
 			}
 			// console.log(data)
 			axios.put("http://localhost:8080/login",data).then(response=>{
-				setLoad(400)
+				
 				const { data, status } = response;
 				// console.log(data)
 				if(data.msg === "admin"){

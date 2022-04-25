@@ -11,7 +11,8 @@ import Professional from './professional/Professional'
 import axios from 'axios';
 import Position from './position/Position';
 import Resume from './resume/Resume';
-import Skill from '../tabs/skill/Skill';
+import SkillsList from './skill/SkillsList';
+import Qualification from './qualification/Qualification';
 import InputLabel from '@mui/material/InputLabel';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Stack from '@mui/material/Stack';
@@ -22,6 +23,7 @@ const theme = createTheme();
 export default function SignUp() {
 
 	const [components, setComponents] = React.useState([1])
+	const [qualification, setQualification] = React.useState([1])
 	const [skill, setSkill] = React.useState([1])
 	const location = useLocation()
 	const history = useNavigate()
@@ -95,10 +97,13 @@ export default function SignUp() {
 	const renderProfessionalForm = () => {
 		setComponents([...components, 1])
 	}
-
-	const renderSkillForm = () => {
-		setSkill([...skill, 1])
+	const renderQualificationForm = () => {
+		setComponents([...components, 1])
 	}
+
+	// const renderSkillForm = () => {
+	// 	setSkill([...skill, 1])
+	// }
 
 
 	return (
@@ -152,10 +157,6 @@ export default function SignUp() {
 
 					</Stack>
 					</Grid>
-					 
-
-
-
 					<Grid item xs={12}>
 						<TextField
 							required
@@ -265,41 +266,16 @@ export default function SignUp() {
 						alignItems: 'center',
 						mt: 3 ,
 						}} >
-							<Typography sx={{color: "black"}} component="h1" variant="h5">
-							Education Details
-							</Typography>
-					<Grid container spacing={2}>
-						<Grid item xs={12} >
-							<TextField
-								required
-								fullWidth
-								name="collegeName"
-								label="College Name"
-								type="text"
-								id="collegeName"
-							/>
-						</Grid>
-						<Grid item xs={12}>
-							<TextField
-								required
-								fullWidth
-								name="degree"
-								label="Degree"
-								type="text"
-								id="degree"
-							/>
-						</Grid>
-					</Grid>
-				</Box>
-			</Box>
-			
-					{skill.map(value => <Skill />)}
-					<Button
-						onClick={renderSkillForm}
+						{components.map(value => <Qualification />)}
+						<Button
+						onClick={renderQualificationForm}
 						fullWidth
 						variant="contained"
-						sx={{ mt: 3, mb: 4 }}
+						sx={{ mt: 3, mb: 2 }}
 						>Click to Add</Button>
+				</Box>
+			</Box>
+			 <SkillsList />
 				<Position />
 			<Box sx={{
 				marginTop: 5,

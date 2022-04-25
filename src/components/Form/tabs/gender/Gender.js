@@ -1,23 +1,60 @@
-import * as React from 'react';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
+import React from 'react';
+import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
+import { Grid } from '@mui/material';
+import { Box } from '@mui/system';
 
-export default function RowRadioButtonsGroup() {
+const genders = [
+  {
+    value: 'M',
+    label: 'Male',
+  },
+  {
+    value: 'F',
+    label: 'Female',
+  },
+  {
+    value: 'O',
+    label: 'Other',
+  },
+];
+
+
+
+export default function OutlinedTextFields() {
+  const [gender, setGender] = React.useState("");
+
+  const handleChange = event => {
+    setGender(event.target.value);
+  };
+
   return (
-    <FormControl>
-      <FormLabel items  id="demo-row-radio-buttons-group-label">Gender</FormLabel>
-      <RadioGroup
-        row
-        aria-labelledby="demo-row-radio-buttons-group-label"
-        name="row-radio-buttons-group"
+    <Box sx={{
+      marginTop: 5,
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      }} >
+    <Grid item xs={12} sm={6}>
+      <TextField
+        id="outlined-select-gender"
+        select
+        label={gender=== "" ? "Gender": ""}
+        value={gender}
+        onChange={handleChange}
+        InputLabelProps={{shrink: false}}
+        SelectProps={{
+        }}
+        margin="normal"
+        variant="outlined"
       >
-        <FormControlLabel item xs={6} value="male" control={<Radio />} label="Male" />
-        <FormControlLabel value="female" control={<Radio />} label="female" />
-        <FormControlLabel value="other" control={<Radio />} label="Other" />
-      </RadioGroup>
-    </FormControl>
+        {genders.map(option => (
+          <MenuItem key={option.value} value={option.value}>
+            {option.label}
+          </MenuItem>
+        ))}
+      </TextField>
+    </Grid>
+  </Box>
   );
 }

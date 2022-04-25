@@ -15,6 +15,9 @@ import Skill from '../tabs/skill/Skill';
 import InputLabel from '@mui/material/InputLabel';
 import Gender from './gender/Gender';
 import { useLocation, useNavigate } from 'react-router-dom';
+import Stack from '@mui/material/Stack';
+
+
 const theme = createTheme();
 
 export default function SignUp() {
@@ -135,21 +138,26 @@ export default function SignUp() {
 							autoComplete="family-name"
 						/>
 					</Grid>
-						{/* <Gender /> */}
-						<Grid item xs={12} sm={6}>
-							<InputLabel   >
-							Date Of Birth
-							</InputLabel>
-						</Grid>
-						<Grid item xs={12} >
+					{/* <Gender />  */}
+					<Grid item xs={12} sm={6}>
+					<Stack component="form" noValidate spacing={3}>
 						<TextField
-						required
-						fullWidth
-						name="dob"
-						type="date"
-						id="dob"
-               		 />
-           			 </Grid>
+							id="dob"
+							label="Date Of Birth"
+							type="date"
+							defaultValue="dd-mm-yy"
+							sx={{ width: 450 }}
+							InputLabelProps={{
+							shrink: true,
+							}}
+						/>
+
+					</Stack>
+					</Grid>
+					 
+
+
+
 					<Grid item xs={12}>
 						<TextField
 							required
@@ -286,6 +294,7 @@ export default function SignUp() {
 					</Grid>
 				</Box>
 			</Box>
+			
 					{skill.map(value => <Skill />)}
 					<Button
 						onClick={renderSkillForm}
@@ -293,18 +302,7 @@ export default function SignUp() {
 						variant="contained"
 						sx={{ mt: 3, mb: 4 }}
 						>Click to Add</Button>
-			<Box sx={{
-				marginTop: 5,
-				display: 'flex',
-				flexDirection: 'column',
-				alignItems: 'center',
-				mt: 3 ,
-				}} >
-				<Typography sx={{color: "black"}} component="h1" variant="h5">
-					Position
-				</Typography>
 				<Position />
-			</Box>
 			<Box sx={{
 				marginTop: 5,
 				display: 'flex',

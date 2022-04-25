@@ -13,7 +13,6 @@ import Position from './position/Position';
 import Resume from './resume/Resume';
 import Skill from '../tabs/skill/Skill';
 import InputLabel from '@mui/material/InputLabel';
-import Gender from './gender/Gender';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Stack from '@mui/material/Stack';
 
@@ -138,7 +137,6 @@ export default function SignUp() {
 							autoComplete="family-name"
 						/>
 					</Grid>
-					{/* <Gender />  */}
 					<Grid item xs={12} sm={6}>
 					<Stack component="form" noValidate spacing={3}>
 						<TextField

@@ -6,7 +6,7 @@
 	import Toolbar from '@mui/material/Toolbar';
 	import Button from '@mui/material/Button';
 	import IconButton from '@mui/material/IconButton';
-	import Pagination from '@mui/material'
+	
 		
 		import {
 			DataGrid,

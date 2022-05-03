@@ -20,6 +20,8 @@ import TableChartIcon from '@mui/icons-material/TableChart';
 import AddCardIcon from '@mui/icons-material/AddCard';
 import ReportIcon from '@mui/icons-material/Report';
 import LogoutIcon from '@mui/icons-material/Logout';
+import WorkIcon from '@mui/icons-material/Work';
+import AddBoxIcon from '@mui/icons-material/AddBox';
 const  Navbar = (props) =>{
         const[profile , setprofile] = React.useState(false)
     
@@ -76,9 +78,9 @@ const  Navbar = (props) =>{
                 <PermContactCalendarIcon />Contact 
                 </Typography>
                 </div>
-                <Button onClick={onclickprofile}  color="inherit" sx={{marginLeft: "50rem"}}>
+                {/* <Button onClick={onclickprofile}  color="inherit" sx={{marginLeft: "50rem"}}>
                     <img src={Avatar} width="50" />
-                </Button>
+                </Button> */}
                 </Toolbar>
             </AppBar>
         </Box> 
@@ -94,7 +96,7 @@ const  Navbar = (props) =>{
                     </Link>
                     <Link to="/table">
                         <ListItemButton>
-                        < TableChartIcon /> <ListItemText primary="Table" />
+                        < TableChartIcon /> <ListItemText primary="Employee List" />
                         </ListItemButton>
                     </Link>
                     <Link to="/navtab">
@@ -102,10 +104,20 @@ const  Navbar = (props) =>{
                         < AddCardIcon /> <ListItemText primary="Form" />
                         </ListItemButton>
                     </Link>
-                    <Link to="/navtab">
-                    <ListItemButton>
-                        <ReportIcon /> <ListItemText primary="Reports" />
-                    </ListItemButton>
+                    <Link to="#">
+                        <ListItemButton>
+                        <WorkIcon/><ListItemText primary="Job Description" />
+                        </ListItemButton>
+                    </Link>
+                    <Link to="#">
+                        <ListItemButton>
+                        <AddBoxIcon /><ListItemText primary="Add Panel" />
+                        </ListItemButton>
+                    </Link>
+                    <Link to="#">
+                        <ListItemButton>
+                        <ReportIcon /><ListItemText primary="Reports" />
+                        </ListItemButton>
                     </Link>  
                     
                     <Link to="/login">

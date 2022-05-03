@@ -1,90 +1,212 @@
-	import * as React from 'react';
-	import Navbar from '../../admin/Navbar/navbar.js'
-	import axios from 'axios';
-	import AppBar from '@mui/material/AppBar';
-	import Box from '@mui/material/Box';
-	import Toolbar from '@mui/material/Toolbar';
-	import Button from '@mui/material/Button';
-	import IconButton from '@mui/material/IconButton';
+import * as React from 'react';
+import Navbar from '../../admin/Navbar/navbar.js'
+import axios from 'axios';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import Pagination from '@mui/material/Pagination'
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import PreviewIcon from '@mui/icons-material/Preview';
+import { useNavigate } from 'react-router-dom';
 	
-		
-		import {
-			DataGrid,
-			GridToolbarContainer,
-			GridToolbarFilterButton,
-		} from '@mui/x-data-grid';
+	import {
+		DataGrid,
+		GridToolbarContainer,
+		GridToolbarFilterButton,
+	} from '@mui/x-data-grid';
 
-		function CustomToolbar() {
+	function CustomToolbar() {
+		return (
+		<GridToolbarContainer>
+			<GridToolbarFilterButton sx={{fontSize:"120%",marginInline:'3%'}}/>
+		</GridToolbarContainer>
+		);
+	}
+	
+	export default function ToolbarGrid() {
+	
+	const[Data ,setData] = React.useState(0)
+	const [candidates, setCandidates] = React.useState([])
+	const [count, setCount] = React.useState(0)
+	const [rowsPerPage, setRowsPerPage] = React.useState(7);
+	const [page, setPage] = React.useState(1);
+	const [pages, setPages] = React.useState(0)
+	const [view , setview] = React.useState()
+	const history = useNavigate()
+		React.useEffect( ()=> {
+			axios.get("http://localhost:8080/candidate").then(response=>{
+			console.log(response)
+			// response.data.map(user => console.log(user.id))
+			setData(response.data)
+			}).catch((err)=>{
+				console.log(err)
+			})
+		},[])
+		React.useEffect(() => {
+			axios.get("http://localhost:8080/candidateCount").then(({data}) => {
+				let count = data.count
+				let pages = Math.ceil(count / rowsPerPage)
+				setPages(pages)
+				setCount(data.count)
+			}).catch(err => {
+				console.log(err)
+			})
+		}, [])
+	const handleChangePage = (currentPage) => {
+		console.log(currentPage)
+		setPage(currentPage);
+		let paramPage = currentPage - 1
+		let url = `http://localhost:8080/candidate?size=${rowsPerPage}&page=${paramPage}`
+		axios.get(url).then(({data}) => {
+			// console.log("data", data)
+			setCandidates(data)
+			
+		}).catch(err => {
+			console.log(err)
+		})
+	};
+	const getUser = async (userId) => {
+		return await axios.get(`http://localhost:8080/candidate/${userId}`)
+	}
+
+	const onhandleView = (userId)=>{
+	     getUser(userId).then(user => {
+			  console.log(user)
+		 } )
+		
+		// console.log(candidate.id)
+		// getUser(userId).then(user => {
+		// 	console.log(user)
+		// }).catch(err => {
+		// 	console.log(err)
+		// })
+	}
+	const onhandleDelete = ()=>{
+		
+	}
+	const onhandleEdit = ()=>{
+		console.log('hello')
+	}
+
+	const onhandleAdd = ()=>{
+		history("/Navtab")
+	}
+const columns = [
+	{ field: 'firstName', headerName: 'Name' },
+	{ field: 'job', headerName: 'Job' },
+	{ field: 'email', headerName: 'Email',width:200 },
+	{
+		field: "edit",
+		headerName: "Edit",
+		sortable: false,
+		width: 130,
+		renderCell: () => {
 			return (
-			<GridToolbarContainer>
-				<GridToolbarFilterButton />
-			</GridToolbarContainer>
+				<Button 
+				sx={{
+					width:'100px'
+				}}
+				onClick={() => onhandleEdit()}
+				variant="contained"
+				color="primary"
+				startIcon={<EditIcon />}>
+				Edit
+				</Button>
+			);
+			}
+		},
+	{
+    field: "delete",
+    headerName: "Delete",
+    sortable: false,
+    width: 160,
+    renderCell: (param) => {
+	return (
+        <Button
+			sx={{
+				width:'100px',
+				backgroundColor:'red'
+			}}
+			onClick={()=>{
+			let userId = param.row.id	
+			console.log(userId)
+			onhandleDelete()
+			}} 
+			variant="contained"
+			startIcon={<DeleteIcon />}
+        >
+			Delete
+        </Button>
+		);
+    }
+	},
+	{
+		field: "View",
+		headerName: "View",
+		sortable: false,
+		width: 160,
+		renderCell: (param) => {
+		return (
+			<Button
+				sx={{
+					width:'100px',
+					backgroundColor:'green'
+				}}
+				onClick={()=>{
+					let userId = param.row.id
+					onhandleView(userId)
+					console.log(userId)
+					
+				}}
+				variant="contained"
+				startIcon={<PreviewIcon />}
+			>
+				View
+			</Button>
 			);
 		}
-		
-		export default function ToolbarGrid() {
-		const[Data ,setData] = React.useState(0)
-			React.useEffect( ()=> {
-				axios.get("http://localhost:8080/candidate").then(response=>{
-			     console.log(response.data)
-				 setData(response.data)
-				}).catch((err)=>{
-					console.log(err)
-				})
-			},[])
-	// const { data } = useDemoData({
-	// 	dataSet: 'Commodity',
-	// 	rowLength: 100,
-	// 	maxColumns: 6,
-	// });
-	const columns = [
-		{ field: 'id', headerName: 'ID',width:200 },
-		{ field: 'firstName', headerName: 'Name', width: 300 },
-		{ field: 'job', headerName: 'Phone Number', width: 300 },
-		{ field: 'email', headerName: 'Email', width: 300 }
-		]
-		const rows = [
-		{ id: 1, title: 'Gourav', age: 12 },
-		{ id: 2, title: 'Geek', age: 43 },
-		{ id: 3, title: 'Pranav', age: 41 },
-		];
-	
+		}
+	]
 
-	return (
-		<>
-		<Navbar>
-		<Box sx={{ width: '100%', flexGrow: 3,marginTop:"3%"}}>
-	<AppBar position="static">
-		<Toolbar>
-		<IconButton
-			size="large"
-			edge="start"
-			color="inherit"
-			aria-label="menu"
-			sx={{ mr: 2 ,width:'200px'}}
-		>
-			Employee List
-		</IconButton>
-		
-		<Button sx={{ position:'relative' ,mr: 'margin-right'}} variant="contained" color="success"  > Add+ </Button>
-		
-		</Toolbar>
-	</AppBar>
-	</Box>
-		<div style={{ height: 500, width: '100%' }}>
-		<DataGrid
-			rows={Data}
-			columns={columns}
-			pageSize={10}
-			components={{
+return (
+	<>
+	<Navbar>
+	<Box sx={{ width: '100%', flexGrow: 3,marginTop:"3%"}}>
+<AppBar position="static">
+	<Toolbar>
+	<IconButton
+		size="large"
+		edge="start"
+		color="inherit"
+		aria-label="menu"
+		sx={{ mr: 2 ,width:'200px'}}
+	>
+		Employee List
+	</IconButton>
+	
+	<Button onClick={onhandleAdd} sx={{ position:'relative' ,mr: 'margin-right'}} variant="contained" color="success"  > Add+ </Button>
+	
+	</Toolbar>
+</AppBar>
+</Box>
+	<div style={{ height: 400, width: '100%' }}>
+	<DataGrid
+		rows={candidates}
+		columns={columns}
+		pageSize={count}
+		components={{
 			Toolbar: CustomToolbar,
-			}}
-		/>
-		</div>
-		</Navbar>
-		</>
-	);
-	}
+		}}
+	/>
+	<Pagination onClick={(e) => handleChangePage(e.target.innerText)} count={count} variant="outlined" shape="rounded"/>
+	</div>
+	</Navbar>
+	</>
+);
+}
 
 
 
@@ -195,8 +317,8 @@
 // 		const [rowsPerPage, setRowsPerPage] = React.useState(7);
 // 		const [page, setPage] = React.useState(1);
 // 		const [pages, setPages] = React.useState(0)
-		
-		
+	
+	
 // 		React.useEffect(() => {
 // 			axios.get("http://localhost:8080/candidateCount").then(({data}) => {
 // 				let count = data.count
@@ -252,24 +374,24 @@
 // 	return (
 // 	<>
 // 	<Navbar>
-	// <Box sx={{ width: '90%', flexGrow: 3,margin:'1rem'}}>
-	// <AppBar position="static">
-	// 	<Toolbar>
-	// 	<IconButton
-	// 		size="large"
-	// 		edge="start"
-	// 		color="inherit"
-	// 		aria-label="menu"
-	// 		sx={{ mr: 2 ,width:'200px'}}
-	// 	>
-	// 		Employee List
-	// 	</IconButton>
-		
-	// 	<Button sx={{ position:'relative' ,mr: 'margin-right'}} variant="contained" color="success"  > Add+ </Button>
-		
-	// 	</Toolbar>
-	// </AppBar>
-	// </Box>
+// <Box sx={{ width: '90%', flexGrow: 3,margin:'1rem'}}>
+// <AppBar position="static">
+// 	<Toolbar>
+// 	<IconButton
+// 		size="large"
+// 		edge="start"
+// 		color="inherit"
+// 		aria-label="menu"
+// 		sx={{ mr: 2 ,width:'200px'}}
+// 	>
+// 		Employee List
+// 	</IconButton>
+	
+// 	<Button sx={{ position:'relative' ,mr: 'margin-right'}} variant="contained" color="success"  > Add+ </Button>
+	
+// 	</Toolbar>
+// </AppBar>
+// </Box>
 // 	<Paper sx={{borderColor: 'primary.main' , width: '90%', overflow: 'hidden' }}>
 // 		<TableContainer sx={{ maxHeight: 440 }}>
 // 		<Table stickyHeader aria-label="sticky table">

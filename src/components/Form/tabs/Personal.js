@@ -20,7 +20,7 @@ import Stack from '@mui/material/Stack';
 
 const theme = createTheme();
 
-export default function SignUp() {
+export default function SignUp(props) {
 
 	const [components, setComponents] = React.useState([1])
 	const [qualification, setQualification] = React.useState([1])
@@ -105,7 +105,7 @@ export default function SignUp() {
 	// 	setSkill([...skill, 1])
 	// }
 
-
+	
 	return (
 	<ThemeProvider theme={theme}>
 		<Container component="main" maxWidth="xs">
@@ -130,6 +130,7 @@ export default function SignUp() {
 							id="firstName"
 							label="First Name"
 							Focused
+
 						/>
 					</Grid>
 					<Grid item xs={12} sm={6}>

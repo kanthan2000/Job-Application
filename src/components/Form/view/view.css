@@ -17,3 +17,13 @@ p{
     top: 5%;
     font-size: 120%;
 }
+.header{
+    position: absolute;
+    left: 30%;
+}
+label{
+    display: block;
+}
+.inner-header{
+    border-bottom: 2px solid black;
+}

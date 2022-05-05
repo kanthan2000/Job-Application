@@ -91,8 +91,13 @@ import Spinner from '../../Spinner/Spinner.js';
 	const onhandleDelete = ()=>{
 		
 	}
-	const onhandleEdit = ()=>{
-		console.log('hello')
+	const onhandleEdit = (userId)=>{
+		setLoad(true)
+		getUser(userId).then(user => {
+			setViewData(user.data)
+			setLoad(false)
+			history("/update")		 
+		} )
 	}
 
 	const onhandleAdd = ()=>{
@@ -107,13 +112,18 @@ const columns = [
 		headerName: "Edit",
 		sortable: false,
 		width: 130,
-		renderCell: () => {
+		renderCell: (param) => {
 			return (
 				<Button 
 				sx={{
 					width:'100px'
 				}}
-				onClick={() => onhandleEdit()}
+				onClick={()=>{
+					let userId = param.row.id
+					onhandleEdit(userId)
+					console.log(userId)
+					
+				}}
 				variant="contained"
 				color="primary"
 				startIcon={<EditIcon />}>

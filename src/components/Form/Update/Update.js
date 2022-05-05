@@ -1,8 +1,10 @@
-import React from "react"
-import SignUp from "../tabs/Personal"
+import React,{useContext,useState} from "react"
+import Personal from "../tabs/Personal"
 import Navbar from "../../admin/Navbar/navbar"
-
+import {AppContext} from '../../../context'
 const Update = () =>{
+    const { viewData,setViewData} = useContext(AppContext)
+    console.log(viewData)
     return(
         <>
         <Navbar>
@@ -12,7 +14,7 @@ const Update = () =>{
                 height:'90vh',
                 overflowY:'scroll'
             }}>
-            <SignUp />
+            <Personal />
             </div>
         </Navbar>
         </>

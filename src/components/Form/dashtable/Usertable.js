@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useContext } from 'react';
 import Navbar from '../../admin/Navbar/navbar.js'
 import axios from 'axios';
 import AppBar from '@mui/material/AppBar';
@@ -11,12 +12,14 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import PreviewIcon from '@mui/icons-material/Preview';
 import { useNavigate } from 'react-router-dom';
+import {AppContext} from '../../../context'
 	
 	import {
 		DataGrid,
 		GridToolbarContainer,
 		GridToolbarFilterButton,
 	} from '@mui/x-data-grid';
+import Spinner from '../../Spinner/Spinner.js';
 
 	function CustomToolbar() {
 		return (
@@ -27,16 +30,20 @@ import { useNavigate } from 'react-router-dom';
 	}
 	
 	export default function ToolbarGrid() {
-	
-	const[Data ,setData] = React.useState(0)
+
+	const{viewData,setViewData} = useContext(AppContext)
+	const [Data ,setData] = React.useState(0)
 	const [candidates, setCandidates] = React.useState([])
 	const [count, setCount] = React.useState(0)
 	const [rowsPerPage, setRowsPerPage] = React.useState(7);
 	const [page, setPage] = React.useState(1);
 	const [pages, setPages] = React.useState(0)
 	const [view , setview] = React.useState()
+	const [load, setLoad] = React.useState(false)
 	const history = useNavigate()
-		React.useEffect( ()=> {
+		
+	React.useEffect( ()=> {
+			handleChangePage(1)
 			axios.get("http://localhost:8080/candidate").then(response=>{
 			console.log(response)
 			// response.data.map(user => console.log(user.id))
@@ -56,14 +63,14 @@ import { useNavigate } from 'react-router-dom';
 			})
 		}, [])
 	const handleChangePage = (currentPage) => {
-		console.log(currentPage)
+		setLoad(true)
 		setPage(currentPage);
 		let paramPage = currentPage - 1
 		let url = `http://localhost:8080/candidate?size=${rowsPerPage}&page=${paramPage}`
 		axios.get(url).then(({data}) => {
 			// console.log("data", data)
 			setCandidates(data)
-			
+			setLoad(false)
 		}).catch(err => {
 			console.log(err)
 		})
@@ -73,16 +80,13 @@ import { useNavigate } from 'react-router-dom';
 	}
 
 	const onhandleView = (userId)=>{
+		setLoad(true)
 	     getUser(userId).then(user => {
-			  console.log(user)
+			 setViewData(user.data)
+			 setLoad(false)
+			 history("/view")		 
 		 } )
 		
-		// console.log(candidate.id)
-		// getUser(userId).then(user => {
-		// 	console.log(user)
-		// }).catch(err => {
-		// 	console.log(err)
-		// })
 	}
 	const onhandleDelete = ()=>{
 		
@@ -173,6 +177,7 @@ const columns = [
 
 return (
 	<>
+	{load && <Spinner />}
 	<Navbar>
 	<Box sx={{ width: '100%', flexGrow: 3,marginTop:"3%"}}>
 <AppBar position="static">

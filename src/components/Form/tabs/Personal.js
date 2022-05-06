@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Professional from './professional/Professional'
+// import Professional from './professional/';
 import axios from 'axios';
 import Position from './position/Position';
 import Resume from './resume/Resume';
@@ -16,8 +17,6 @@ import Qualification from './qualification/Qualification';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Stack from '@mui/material/Stack';
 import { Formik, Form } from 'formik';
-import Validate from '../validation/Validate';
-
 
 const theme = createTheme();
 
@@ -44,7 +43,8 @@ export default function SignUp() {
 	}
 	
 
-	const [components, setComponents] = React.useState([1])
+	const [professionalComponents, setProfessionalComponents] = React.useState([1])
+	const [qualificationComponents, setQualificationComponents] = React.useState([1])
 	const [qualification, setQualification] = React.useState([1])
 	const [skill, setSkill] = React.useState([1])
 	const location = useLocation()
@@ -117,15 +117,19 @@ export default function SignUp() {
 	}
 
 	const renderProfessionalForm = () => {
-		setComponents([...components, 1])
+		setProfessionalComponents([...professionalComponents, 1])
 	}
 	const renderQualificationForm = () => {
-		setComponents([...components, 1])
+		setQualificationComponents([...qualificationComponents, 1])
 	}
 
 	// const renderSkillForm = () => {
 	// 	setSkill([...skill, 1])
 	// }
+
+	const removeProfessionalComponent = () => {
+		
+	}
 
 
 	return (
@@ -209,13 +213,13 @@ export default function SignUp() {
 							<Grid item xs={12}>
 								<TextField
 								onChange={(e) => validate(e.target.value, numberPattern, 'Invalid Number')}
-									required
-									fullWidth
-									name="phoneNumber"
-									label="Phone Number"
-									type="number"
-									id="phonenumber"
-									autoComplete="phone"
+								required
+								fullWidth
+								name="phoneNumber"
+								label="Phone Number"
+								type="text"
+								id="phonenumber"
+								autoComplete="phone"
 								/>
 							</Grid>
 							<Grid item xs={21}>
@@ -291,7 +295,7 @@ export default function SignUp() {
 							flexDirection: 'column',
 							alignItems: 'center',
 							}} >
-							{components.map(value => <Professional />)}
+							{professionalComponents.map((value, idx) => <Professional id={idx}/>)}
 							<Button
 								onClick={renderProfessionalForm}
 								fullWidth
@@ -305,7 +309,9 @@ export default function SignUp() {
 								alignItems: 'center',
 								mt: 3 ,
 								}} >
-								{components.map(value => <Qualification />)}
+								
+
+								{qualificationComponents.map(value => <Qualification />)}
 								<Button
 								onClick={renderQualificationForm}
 								fullWidth

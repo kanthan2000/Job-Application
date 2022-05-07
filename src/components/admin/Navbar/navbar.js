@@ -104,12 +104,12 @@ const  Navbar = (props) =>{
                         < AddCardIcon /> <ListItemText primary="Form" />
                         </ListItemButton>
                     </Link>
-                    <Link to="#">
+                    <Link to="/jobDescription">
                         <ListItemButton>
                         <WorkIcon/><ListItemText primary="Job Description" />
                         </ListItemButton>
                     </Link>
-                    <Link to="#">
+                    <Link to="/addpanel">
                         <ListItemButton>
                         <AddBoxIcon /><ListItemText primary="Add Panel" />
                         </ListItemButton>

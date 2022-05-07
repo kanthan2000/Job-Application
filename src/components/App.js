@@ -11,10 +11,11 @@ import View from "./Form/view/view";
 import {AppContext }from '../context'
 import React from 'react'
 import Update from "./Form/Update/Update";
+import JobDescription from "./Form/JobDescription/JobDescription";
+import Panel from "./Form/AddPanel/AddPanel";
 
 function App() {
 	const [viewData,setViewData] = React.useState([])
-	let data = 56
 	return (
 		<>
 			 <AppContext.Provider value={{viewData,setViewData}}>
@@ -28,6 +29,8 @@ function App() {
 					<Route path="/signin" element={<SignInSide />} />
 					<Route path="/view" element={<View />} />
 					<Route path="/update" element={<Update/>} />
+					<Route path="/jobDescription" element={<JobDescription/>} />
+					<Route path="/addpanel" element={<Panel />} />
 				</Routes>
 				</AppContext.Provider>
 		</>

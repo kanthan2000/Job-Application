@@ -16,7 +16,7 @@ import Qualification from './qualification/Qualification';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Stack from '@mui/material/Stack';
 import { Formik, Form } from 'formik';
-import Validate from '../validation/Validate';
+
 
 
 const theme = createTheme();
@@ -182,7 +182,7 @@ export default function SignUp() {
 									id="dob"
 									label="Date Of Birth"
 									type="date"
-									defaultValue="dd-mm-yy"
+									
 									sx={{ width: 450 }}
 									InputLabelProps={{
 									shrink: true,
@@ -328,6 +328,7 @@ export default function SignUp() {
 						</Typography>
 						<Resume />
 					</Box>
+					
 					<Button
 						type="submit"
 						fullWidth

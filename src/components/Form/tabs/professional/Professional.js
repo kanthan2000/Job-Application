@@ -75,7 +75,7 @@ const Professional = (props) => {
                                 label="From Date"
                                 type="date"
                                 onChange={e => this.setState({ sDate: e.target.value })}
-                                defaultValue="dd-mm-yy"
+                                format="yyyy-MM-dd"
                                 sx={{ width: 225 }}
                                 InputLabelProps={{
                                 shrink: true,
@@ -91,7 +91,7 @@ const Professional = (props) => {
                                 label="End Date"
                                 type="date"
                                 onChange={e => this.setState({ endD: e.target.value })}
-                                defaultValue="dd-mm-yy"
+                                format="yyyy-MM-dd"
                                 sx={{ width: 225 }}
                                 InputLabelProps={{
                                 shrink: true,

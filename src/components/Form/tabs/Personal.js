@@ -59,7 +59,7 @@ export default function SignUp() {
 	
 	console.log(formData)
 
-	axios.post("http:", formData)
+	axios.post("http://192.168.0.179:8080/Candidate", formData)
 		.then(({data},msg) => {
 			console.log(data)
 			history("/table")
@@ -89,7 +89,7 @@ export default function SignUp() {
 			}
 			companyData.push(data)
 		})
-
+		
 		collegeNames.map((_, idx) => {
 			let data = {
 				collegeName: collegeNames[idx],
@@ -183,6 +183,7 @@ export default function SignUp() {
 									id="dob"
 									label="Date Of Birth"
 									type="date"
+									format="yyyy-MM-dd"
 									sx={{ width: 450 }}
 									InputLabelProps={{
 									shrink: true,

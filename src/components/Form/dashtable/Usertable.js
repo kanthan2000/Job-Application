@@ -199,7 +199,7 @@ return (
 		aria-label="menu"
 		sx={{ mr: 2 ,width:'200px'}}
 	>
-		Employee List
+		Profile
 	</IconButton>
 	
 	<Button onClick={onhandleAdd} sx={{ position:'relative' ,mr: 'margin-right'}} variant="contained" color="success"  > Add+ </Button>

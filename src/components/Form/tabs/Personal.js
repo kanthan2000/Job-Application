@@ -85,7 +85,8 @@ export default function SignUp() {
 				role: roles[idx],
 				name: names[idx],
 				from: from[idx],
-				to: to[idx]
+
+                to: to[idx]
 			}
 			companyData.push(data)
 		})
@@ -155,201 +156,201 @@ export default function SignUp() {
 							Personal Information
 						</Typography>
 						<Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
-						<Grid container spacing={2}>
-							<Grid item xs={12} sm={6}>
-								<TextField
-									autoComplete="given-name"
-									name="firstName"
-									required
-									fullWidth
-									id="firstName"
-									label="First Name"
-									Focused
-								/>
-							</Grid>
-							<Grid item xs={12} sm={6}>
-								<TextField
-									required
-									fullWidth
-									id="lastName"
-									label="Last Name"
-									name="lastName"
-									autoComplete="family-name"
-								/>
-							</Grid>
-							<Grid item xs={12} sm={6}>
-							<Stack component="form" noValidate spacing={3}>
-								<TextField
-									id="dob"
-									label="Date Of Birth"
-									type="date"
-									format="yyyy-MM-dd"
-									sx={{ width: 450 }}
-									InputLabelProps={{
-									shrink: true,
-									}}
-								/>
+                            <Grid container spacing={2}>
+                                <Grid item xs={12} sm={6}>
+                                    <TextField
+                                        autoComplete="given-name"
+                                        name="firstName"
+                                        required
+                                        fullWidth
+                                        id="firstName"
+                                        label="First Name"
+                                        Focused
+                                    />
+                                </Grid>
+                                <Grid item xs={12} sm={6}>
+                                    <TextField
+                                        required
+                                        fullWidth
+                                        id="lastName"
+                                        label="Last Name"
+                                        name="lastName"
+                                        autoComplete="family-name"
+                                    />
+                                </Grid>
+                                <Grid item xs={12} sm={6}>
+                                <Stack component="form" noValidate spacing={3}>
+                                    <TextField
+                                        id="dob"
+                                        label="Date Of Birth"
+                                        type="date"
+                                        format="yyyy-MM-dd"
+                                        sx={{ width: 450 }}
+                                        InputLabelProps={{
+                                        shrink: true,
+                                        }}
+                                    />
 
-							</Stack>
-							</Grid>
-							<Grid item xs={12}>
-								<TextField
-									required
-									onChange={(e) => validate(e.target.value, emailPattern, 'Invalid email address')}
-									fullWidth
-									
-									type="email"
-									id="email"
-									label="Email Address"
-									name="email"
-									autoComplete="email"
-								/>
-								{!error && <div>{msg}</div>}
-							</Grid>
+                                </Stack>
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <TextField
+                                        required
+                                        onChange={(e) => validate(e.target.value, emailPattern, 'Invalid email address')}
+                                        fullWidth
+                                        
+                                        type="email"
+                                        id="email"
+                                        label="Email Address"
+                                        name="email"
+                                        autoComplete="email"
+                                    />
+                                    {!error && <div>{msg}</div>}
+                                </Grid>
 							
-							<Grid item xs={12}>
-								<TextField
-								onChange={(e) => validate(e.target.value, numberPattern, 'Invalid Number')}
-								required
-								fullWidth
-								name="phoneNumber"
-								label="Phone Number"
-								type="number"
-								id="phonenumber"
-								autoComplete="phone"
-								/>
-							</Grid>
-							<Grid item xs={21}>
-								<TextField
-									required
-									fullWidth
-									name="LinkedIn"
-									label="LinkedIn"
-									type="text"
-									id="Linked"
-									autoComplete="Linked"
-								/>
-							</Grid>
-						</Grid>
-						<Box sx={{
-						marginTop: 5,
-						display: 'flex',
-						flexDirection: 'column',
-						alignItems: 'center',
-							mt: 3 ,
-						}} >
-							<Typography sx={{color: "black"}} component="h1" variant="h5">
-								Address Information
-							</Typography>
-							<Grid container spacing={2}>
-								<Grid item xs={12} sm={6}>
-									<TextField
-										required
-										fullWidth
-										name="DoorNo"
-										label="Door No"
-										type="number"
-										id="doorNo"
-										autoComplete="doorno"
-									/>
-								</Grid>
-								<Grid item xs={12} sm={6}>
-									<TextField
-										required
-										fullWidth
-										name="street"
-										label="Street"
-										type="text"
-										id="street"
-										autoComplete="street"
-									/>
-								</Grid>
-								<Grid item xs={12} >
-									<TextField
-										fullWidth
-										name="place"
-										label="Place"
-										type="text"
-										id="place"
-										autoComplete="place"
-									/>
-								</Grid>
-								<Grid item xs={12} >
-									<TextField
-										fullWidth
-										name="pincode"
-										label="Pincode"
-										type="number"
-										id="pincode"
-										autoComplete="pincode"
-									/>
-								</Grid>
-							</Grid>
-						</Box>
-						<Box sx={{
-							marginTop: 5,
-							display: 'flex',
-							flexDirection: 'column',
-							alignItems: 'center',
-							}} >
-							{professionalComponents.map((value, idx) => <Professional id={idx}/>)}
-							<Button
-								onClick={renderProfessionalForm}
-								fullWidth
-								variant="contained"
-								sx={{ mt: 3, mb: 2,userSelect:"none" }}
-								>Click to Add</Button>
-								<Box sx={{
-								marginTop: 5,
-								display: 'flex',
-								flexDirection: 'column',
-								alignItems: 'center',
-								mt: 3 ,
-								}} >
-								
+                                <Grid item xs={12}>
+                                    <TextField
+                                    onChange={(e) => validate(e.target.value, numberPattern, 'Invalid Number')}
+                                    required
+                                    fullWidth
+                                    name="phoneNumber"
+                                    label="Phone Number"
+                                    type="number"
+                                    id="phonenumber"
+                                    autoComplete="phone"
+                                    />
+                                </Grid>
+                                <Grid item xs={21}>
+                                    <TextField
+                                        required
+                                        fullWidth
+                                        name="LinkedIn"
+                                        label="LinkedIn"
+                                        type="text"
+                                        id="Linked"
+                                        autoComplete="Linked"
+                                    />
+                                </Grid>
+						    </Grid>
+                                <Box sx={{
+                                marginTop: 5,
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                    mt: 3 ,
+                                }} >
+                                    <Typography sx={{color: "black"}} component="h1" variant="h5">
+                                        Address Information
+                                    </Typography>
+                                        <Grid container spacing={2}>
+                                            <Grid item xs={12} sm={6}>
+                                                <TextField
+                                                    required
+                                                    fullWidth
+                                                    name="DoorNo"
+                                                    label="Door No"
+                                                    type="number"
+                                                    id="doorNo"
+                                                    autoComplete="doorno"
+                                                />
+                                            </Grid>
+                                            <Grid item xs={12} sm={6}>
+                                                <TextField
+                                                    required
+                                                    fullWidth
+                                                    name="street"
+                                                    label="Street"
+                                                    type="text"
+                                                    id="street"
+                                                    autoComplete="street"
+                                                />
+                                            </Grid>
+                                            <Grid item xs={12} >
+                                                <TextField
+                                                    fullWidth
+                                                    name="place"
+                                                    label="Place"
+                                                    type="text"
+                                                    id="place"
+                                                    autoComplete="place"
+                                                />
+                                            </Grid>
+                                            <Grid item xs={12} >
+                                                <TextField
+                                                    fullWidth
+                                                    name="pincode"
+                                                    label="Pincode"
+                                                    type="number"
+                                                    id="pincode"
+                                                    autoComplete="pincode"
+                                                />
+                                            </Grid>
+						            	</Grid>
+						        </Box>
+                                <Box sx={{
+                                    marginTop: 5,
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    }} >
+                                        {professionalComponents.map((value, idx) => <Professional id={idx}/>)}
+                                <Button
+                                    onClick={renderProfessionalForm}
+                                    fullWidth
+                                    variant="contained"
+                                    sx={{ mt: 3, mb: 2,userSelect:"none" }}
+                                    >Click to Add</Button>
+                                    <Box sx={{
+                                    marginTop: 5,
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    mt: 3 ,
+                                    }} >
+                                    
 
-								{qualificationComponents.map(value => <Qualification />)}
-								<Button
-								onClick={renderQualificationForm}
-								fullWidth
-								variant="contained"
-								sx={{ mt: 3, mb: 2 }}
-								>Click to Add</Button>
-						</Box>
-					</Box>
-					<SkillsList />
-						<Position />
-					<Box sx={{
-						marginTop: 5,
-						display: 'flex',
-						flexDirection: 'column',
-						alignItems: 'center',
-						mt: 3 ,
-						}} >
-						<Typography sx={{color: "black"}} component="h1" variant="h5">
-							Resume 
-						</Typography>
-						<Resume />
-					</Box>
-					{/* <Box sx={{
-						marginTop: 5,
-						display: 'flex',
-						flexDirection: 'column',
-						alignItems: 'center',
-						mt: 3 ,
-						}} >
-							<TextField
-							id="outlined-multiline-static"
-							label="Description"
-							multiline
-							rows={2}
-							/>
-					</Box> */}
-					<Button
-						type="submit"
-						fullWidth
-						variant="contained"
-						sx={{ mt: 3, mb: 2 }} > Save </Button>
+                                            {qualificationComponents.map(value => <Qualification />)}
+                                        <Button
+                                        onClick={renderQualificationForm}
+                                        fullWidth
+                                        variant="contained"
+                                        sx={{ mt: 3, mb: 2 }}
+                                        >Click to Add</Button>
+						             </Box>
+					            </Box>
+					                <SkillsList />
+                                    <Position />
+                                        <Box sx={{
+                                            marginTop: 5,
+                                            display: 'flex',
+                                            flexDirection: 'column',
+                                            alignItems: 'center',
+                                            mt: 3 ,
+                                            }} >
+                                            <Typography sx={{color: "black"}} component="h1" variant="h5">
+                                                Resume 
+                                            </Typography>
+                                            <Resume />
+                                        </Box>
+                                        {/* <Box sx={{
+                                            marginTop: 5,
+                                            display: 'flex',
+                                            flexDirection: 'column',
+                                            alignItems: 'center',
+                                            mt: 3 ,
+                                            }} >
+                                                <TextField
+                                                id="outlined-multiline-static"
+                                                label="Description"
+                                                multiline
+                                                rows={2}
+                                                />
+                                        </Box> */}
+                                            <Button
+                                                type="submit"
+                                                fullWidth
+                                                variant="contained"
+                                                sx={{ mt: 3, mb: 2 }} > Save </Button>
 						</Box>
 					</Box>
 					</Form>

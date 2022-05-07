@@ -18,9 +18,7 @@ export default function CheckboxesTags() {
       flexDirection: 'column',
       alignItems: 'center',
       }} >
-        <Typography sx={{color: "black"}} component="h1" variant="h5">
-							Role
-							</Typography>
+       
     <Autocomplete
       multiple
       id="checkboxes-tags-demo"

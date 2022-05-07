@@ -4,6 +4,6 @@
     position: relative;
     top: 3%;
     overflow-y: scroll;
-
+    overflow-x: hidden;
 
 }

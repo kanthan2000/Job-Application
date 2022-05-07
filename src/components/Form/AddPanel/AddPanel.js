@@ -1,5 +1,5 @@
 import Navbar from "../../admin/Navbar/navbar"
-import { Container } from "@mui/material"
+import { Autocomplete, Container } from "@mui/material"
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -7,7 +7,16 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Roll from './Roll'
+import axios from "axios";
+import { useNavigate } from 'react-router-dom';
+const role = [
+	{ label :'Admin'},
+	{ label :'HR'},
+	{ label :'Employee'},
+	{ label :'Panel'},
+];
 
+  
 const Panel = () => {
 	const [FirstName , setFirstName] = React.useState()
 	const [LastName , setLastName] = React.useState()
@@ -15,37 +24,51 @@ const Panel = () => {
 	const [Password , setPassword] = React.useState()
 	const [Email , setEmail] = React.useState()
 	const [PhoneNumber , setPhoneNumber] = React.useState()
+	const [Roll, setRoll] = React.useState([])
+	const history = useNavigate()
+	const onhandleRoll = (e) =>{
+		setRoll(e.target.value)
+	}
 
 	const onhandlefirstName = (e) =>{
-		console.log(e.target.value)
+		setFirstName(e.target.value)
+		
 	}
 	const onhandleLastName = (e) =>{
-		console.log(e.target.value)
+		setLastName(e.target.value)
 	}
 	const onhandleUsername =  (e) =>{
-		console.log(e.target.value)
+		setUserName(e.target.value)
 	}
 	const onhandlePassword =  (e) =>{
-		console.log(e.target.value)
+		setPassword(e.target.value)
 	}
 	const onhandleEmail =  (e) =>{
-		console.log(e.target.value)
+		setEmail(e.target.value)
 	}
 	const onhandlePhoneNumber =  (e) =>{
-		console.log(e.target.value)
+		setPhoneNumber(e.target.value)
 	}
 	
-	// const onChangePanel = (event) => {
-	// 	let data = {
-	// 		"firstName" :  FirstName,
-	// 		"lastName" :   LastName,
-	// 		"userName" :   UserName,
-	// 		"password" :   Password,
-	// 		"phone" :      PhoneNumber  
+	const onChangePanel = (event) => {
+		let data = {
+			"firstName" :  FirstName,
+			"lastName" :   LastName,
+			"userName" :   UserName,
+			"password" :   Password,
+			"email"    :   Email,
+			"phone" :      PhoneNumber,
+			"role" : [Roll]  
 
-	// 	}
-	// 	console.log(data)
-	// }
+		}
+		// console.log(data)
+		axios.post("http://localhost:8080/panel",data).then((data)=>{
+			console.log(data)
+			history("/home")
+		}).catch((err)=>{
+			console.log(err)
+		})
+	}
 
 
     return(
@@ -74,7 +97,7 @@ const Panel = () => {
 									fullWidth
 									id="firstName"
 									label="FirstName"
-									Focused
+									
 									onChange={onhandlefirstName}
 								/>
 							</Grid>
@@ -97,7 +120,7 @@ const Panel = () => {
 									fullWidth
 									id="username"
 									label="Username"
-									Focused
+								
 									onChange={onhandleUsername}
 								/>
 							</Grid>
@@ -109,7 +132,7 @@ const Panel = () => {
 									fullWidth
 									id="password"
 									label="Password"
-									Focused
+									
 									onChange={onhandlePassword}
 								/>
 							</Grid>
@@ -121,7 +144,7 @@ const Panel = () => {
 									fullWidth
 									id="email"
 									label="Email"
-									Focused
+								
 									onChange={onhandleEmail}
 								/>
 							</Grid>
@@ -133,16 +156,27 @@ const Panel = () => {
 									fullWidth
 									id="phonenumber"
 									label="Phone Number"
-									Focused
+								
 									onChange={onhandlePhoneNumber}
 								/>
 							</Grid>
-                           <Roll />
+							
+                           {/* <Roll/> */}
+						   
+						   <Autocomplete
+                disablePortal
+                id="combo-box-demo"
+                options={role}
+				// value={setRole}
+				onSelect={(e)=>onhandleRoll(e)}
+                sx={{ width: 425 ,margin:"5%"}}
+                renderInput={(params) => <TextField {...params} name="role" label="Role" />}
+                />
                         </Grid>
                         <Button
 						type="submit"
 						fullWidth
-						// onClick={onChangePanel}
+						onClick={onChangePanel}
 						variant="contained"
 						sx={{ mt: 3, mb: 2 }} > Save </Button>    
                       </Box>

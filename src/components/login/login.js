@@ -13,10 +13,10 @@ import { useNavigate } from 'react-router-dom';
 import { Autocomplete } from '@mui/material';
 
 const role = [
-	{ label :'Admin'},
-	{ label :'HR'},
-	{ label :'Employee'},
-	{ label :'Panel'},
+	{ label :'admin'},
+	{ label :'hr'},
+	{ label :'employee'},
+	{ label :'panel'},
 ];
 
 const Login = (props) => {
@@ -25,8 +25,10 @@ const Login = (props) => {
 	const [username ,setusername] = useState("")
 	const [password , setpassword] = useState("")
     const history = useNavigate()
-	    const onhandleRoll = (event) =>{
-			console.log(role)
+	    const onhandleRoll = (e) =>{
+			setRole(e.target.value)
+		
+			
 		}
 		const onChangeUser =(event) =>{
 			console.log(event.target.value)
@@ -41,9 +43,10 @@ const Login = (props) => {
 			setLoad(true)
 			let data = {
 				"userName" : username,
-				"password" : password
+				"password" : password,
+				"position" : Role
 			}
-			// console.log(data)
+			console.log(data)
 			axios.put("http://localhost:8080/login",data).then(response=>{
 				
 				const { data, status } = response;
@@ -114,8 +117,8 @@ const Login = (props) => {
                 disablePortal
                 id="combo-box-demo"
                 options={role}
-				value={role}
-				onSelect={onhandleRoll()}
+				// value={setRole}
+				onSelect={(e)=>onhandleRoll(e)}
                 sx={{ width: 425 }}
                 renderInput={(params) => <TextField {...params} name="role" label="role" />}
                 />

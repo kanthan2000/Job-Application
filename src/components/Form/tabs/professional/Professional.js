@@ -76,7 +76,7 @@ const Professional = (props) => {
                                 type="date"
                                 onChange={e => this.setState({ sDate: e.target.value })}
                                 format="yyyy-MM-dd"
-                                sx={{ width: 225 }}
+                                sx={{ width: 220 }}
                                 InputLabelProps={{
                                 shrink: true,
                                 }}
@@ -92,7 +92,7 @@ const Professional = (props) => {
                                 type="date"
                                 onChange={e => this.setState({ endD: e.target.value })}
                                 format="yyyy-MM-dd"
-                                sx={{ width: 225 }}
+                                sx={{ width: 220 }}
                                 InputLabelProps={{
                                 shrink: true,
                                 }}

@@ -17,24 +17,35 @@ const Panel = () => {
 	const [PhoneNumber , setPhoneNumber] = React.useState()
 
 	const onhandlefirstName = (e) =>{
-		setFirstName(e.target.value)
+		console.log(e.target.value)
 	}
 	const onhandleLastName = (e) =>{
-		setLastName(e.target.value)
+		console.log(e.target.value)
 	}
 	const onhandleUsername =  (e) =>{
-		setUserName(e.target.value)
+		console.log(e.target.value)
 	}
 	const onhandlePassword =  (e) =>{
-		setPassword(e.target.value)
+		console.log(e.target.value)
 	}
 	const onhandleEmail =  (e) =>{
-		setEmail(e.target.value)
+		console.log(e.target.value)
 	}
 	const onhandlePhoneNumber =  (e) =>{
-		setPhoneNumber(e.target.value)
+		console.log(e.target.value)
 	}
 	
+	// const onChangePanel = (event) => {
+	// 	let data = {
+	// 		"firstName" :  FirstName,
+	// 		"lastName" :   LastName,
+	// 		"userName" :   UserName,
+	// 		"password" :   Password,
+	// 		"phone" :      PhoneNumber  
+
+	// 	}
+	// 	console.log(data)
+	// }
 
 
     return(
@@ -131,6 +142,7 @@ const Panel = () => {
                         <Button
 						type="submit"
 						fullWidth
+						// onClick={onChangePanel}
 						variant="contained"
 						sx={{ mt: 3, mb: 2 }} > Save </Button>    
                       </Box>

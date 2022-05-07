@@ -186,7 +186,7 @@ export default function SignUp() {
 									id="dob"
 									label="Date Of Birth"
 									type="date"
-									defaultValue="dd-mm-yy"
+									// defaultValue="dd-mm-yy"
 									sx={{ width: 450 }}
 									InputLabelProps={{
 									shrink: true,

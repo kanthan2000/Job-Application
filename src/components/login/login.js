@@ -10,12 +10,24 @@ import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
-const Login = (props) => {
+import { Autocomplete } from '@mui/material';
 
+const role = [
+	{ label :'Admin'},
+	{ label :'HR'},
+	{ label :'Employee'},
+	{ label :'Panel'},
+];
+
+const Login = (props) => {
+    const [Role , setRole] = useState([])
 	const [load, setLoad] = useState(false)
 	const [username ,setusername] = useState("")
 	const [password , setpassword] = useState("")
     const history = useNavigate()
+	    const onhandleRoll = (event) =>{
+			console.log(role)
+		}
 		const onChangeUser =(event) =>{
 			console.log(event.target.value)
 			setusername(event.target.value)
@@ -81,7 +93,6 @@ const Login = (props) => {
 				<Typography component="h1" variant="h5" sx={{color:"black"}}>
 				Sign in
 				</Typography>
-			
 			<TextField 
 				id="outlined-basic"
 				onChange={onChangeUser}  
@@ -99,18 +110,26 @@ const Login = (props) => {
 				padding:'8px',
 				width:'100%',
 				boxSizing:'5px'}} />
+                <Autocomplete
+                disablePortal
+                id="combo-box-demo"
+                options={role}
+				value={role}
+				onSelect={onhandleRoll()}
+                sx={{ width: 425 }}
+                renderInput={(params) => <TextField {...params} name="role" label="role" />}
+                />
 				<Button
+				
 				onClick={onChangeUsername}   
 				variant="contained"
-				sx={{width: '100%',
+				sx={{width: 425,
 				padding:'8px',
-				boxSizing:'5px'}}>
+				boxSizing:'5px',
+				margin:'10px'}}>
 					Login
 					</Button>
 			<Grid item xs sx={{ mt: 5 }}>
-				<Link href="#" variant="body2">
-				Forgot password?
-				</Link>
 			</Grid>
 			</Box>
 			</Grid>
@@ -118,4 +137,5 @@ const Login = (props) => {
 	</>
     )
 }
+
 export default Login;

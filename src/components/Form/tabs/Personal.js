@@ -49,6 +49,7 @@ export default function SignUp() {
 	const [skill, setSkill] = React.useState([1])
 	const location = useLocation()
 	const history = useNavigate()
+	
 
 	const handleSubmit = (event) => {
 	event.preventDefault();
@@ -58,7 +59,7 @@ export default function SignUp() {
 	
 	console.log(formData)
 
-	axios.post("http://localhost:8080/candidate", formData)
+	axios.post("http:", formData)
 		.then(({data},msg) => {
 			console.log(data)
 			history("/table")
@@ -123,10 +124,6 @@ export default function SignUp() {
 		setQualificationComponents([...qualificationComponents, 1])
 	}
 
-	// const renderSkillForm = () => {
-	// 	setSkill([...skill, 1])
-	// }
-
 	const removeProfessionalComponent = () => {
 		
 	}
@@ -186,7 +183,6 @@ export default function SignUp() {
 									id="dob"
 									label="Date Of Birth"
 									type="date"
-									defaultValue="dd-mm-yy"
 									sx={{ width: 450 }}
 									InputLabelProps={{
 									shrink: true,
@@ -217,7 +213,7 @@ export default function SignUp() {
 								fullWidth
 								name="phoneNumber"
 								label="Phone Number"
-								type="text"
+								type="number"
 								id="phonenumber"
 								autoComplete="phone"
 								/>
@@ -334,6 +330,20 @@ export default function SignUp() {
 						</Typography>
 						<Resume />
 					</Box>
+					{/* <Box sx={{
+						marginTop: 5,
+						display: 'flex',
+						flexDirection: 'column',
+						alignItems: 'center',
+						mt: 3 ,
+						}} >
+							<TextField
+							id="outlined-multiline-static"
+							label="Description"
+							multiline
+							rows={2}
+							/>
+					</Box> */}
 					<Button
 						type="submit"
 						fullWidth

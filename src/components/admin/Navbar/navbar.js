@@ -35,8 +35,7 @@ const  Navbar = (props) =>{
         top: "0",
         width: "100%",
         left: "0",
-        flexGrow: "1",
-        
+        flexGrow: "1"
     }
 
     const onclickprofile = (event) =>{
@@ -54,30 +53,26 @@ const  Navbar = (props) =>{
                 <IconButton
                     size="large"
                     edge="start"
-                    color="inherit"
-                    aria-label="menu"
-                    sx={{ mr: 2,
-                        margin:'9px'}}
-                >
-                <img src={logo} style={imgStyle}/>
+                    sx={{ mr: 2, margin:'9px'}} >
+                    <img src={logo} style={imgStyle}/>
                 </IconButton>
-                <div style={{display:"-webkit-box"}}>
-                <Typography variant="h6" component="div" sx={{ marginLeft: "1.5rem",cursor:'pointer'}}>
-                <Home/><Link to="/home">Home</Link>
-                </Typography>
-                <Typography variant="h6" component="div" sx={{ marginLeft: "1.5rem",cursor:'pointer'}}>
-                <InfoIcon/>About
-                </Typography>
-                <Typography variant="h6" component="div" sx={{marginLeft: "1.5rem",cursor:'pointer'}}>
-                <ManageAccountsIcon />Service
-                </Typography>
-                <Typography variant="h6" component="div" sx={{ marginLeft: "1.5rem",cursor:'pointer'}}>
-                <MapsHomeWorkIcon />Careers
-                </Typography>
-                <Typography variant="h6" component="div" sx={{ marginLeft: "1.5rem",cursor:'pointer'}}>
-                <PermContactCalendarIcon />Contact 
-                </Typography>
-                </div>
+                <>
+                    <p style={{ marginLeft: "1.5rem", cursor:'pointer'}}>
+                        <Home/> <Link to="/home">Home</Link>
+                    </p>
+                    <p style={{ marginLeft: "1.5rem", cursor:'pointer'}}>
+                        <InfoIcon/> About
+                    </p>
+                    <p style={{marginLeft: "1.5rem", cursor:'pointer'}}>
+                        <ManageAccountsIcon /> Service
+                    </p>
+                    <p style={{ marginLeft: "1.5rem", cursor:'pointer'}}>
+                        <MapsHomeWorkIcon /> Careers
+                    </p>
+                    <p style={{ marginLeft: "1.5rem", cursor:'pointer'}}>
+                        <PermContactCalendarIcon /> Contact 
+                    </p>
+                </>
                 {/* <Button onClick={onclickprofile}  color="inherit" sx={{marginLeft: "50rem"}}>
                     <img src={Avatar} width="50" />
                 </Button> */}
@@ -86,17 +81,17 @@ const  Navbar = (props) =>{
         </Box> 
         
         
-        <div>
+        <>
             <Grid container spacing={1} >
-                <Grid item xs={2} sx={{backgroundColor:"#0f70d5f7",boxShadow:"-1px 20px 11px 0px",height:"100vh"}}>
+                <Grid item xs={2} sx={{backgroundColor:"#0f70d5f7", boxShadow:"-1px 20px 11px 0px", height:"100vh"}}>
                     <Link to="/home">
                         <ListItemButton>
-                        <DashboardCustomizeIcon /> <ListItemText primary="Dashboard" />
+                            <DashboardCustomizeIcon /> <ListItemText primary="Dashboard" />
                         </ListItemButton>
                     </Link>
                     <Link to="/table">
                         <ListItemButton>
-                        < TableChartIcon /> <ListItemText primary="Employee List" />
+                            < TableChartIcon /> <ListItemText primary="Employee List" />
                         </ListItemButton>
                     </Link>
                     {/* <Link to="/navtab">
@@ -106,24 +101,24 @@ const  Navbar = (props) =>{
                     </Link> */}
                     <Link to="/jobDescription">
                         <ListItemButton>
-                        <WorkIcon/><ListItemText primary="Job Description" />
+                            <WorkIcon/> <ListItemText primary="Job Description" />
                         </ListItemButton>
                     </Link>
                     <Link to="/addpanel">
                         <ListItemButton>
-                        <AddBoxIcon /><ListItemText primary="Add Panel" />
+                            <AddBoxIcon /> <ListItemText primary="Add Panel" />
                         </ListItemButton>
                     </Link>
                     <Link to="#">
                         <ListItemButton>
-                        <ReportIcon /><ListItemText primary="Reports" />
+                            <ReportIcon /> <ListItemText primary="Reports" />
                         </ListItemButton>
                     </Link>  
                     
                     <Link to="/login">
-                    <ListItemButton>
-                        <LogoutIcon /> <ListItemText primary="logout" />
-                    </ListItemButton>
+                        <ListItemButton>
+                            <LogoutIcon /> <ListItemText primary="logout" />
+                        </ListItemButton>
                     </Link>
                     
                 </Grid>
@@ -132,7 +127,7 @@ const  Navbar = (props) =>{
                     {props.children}
                 </Grid>
             </Grid>
-        </div>
+        </>
     </>
     )
 }

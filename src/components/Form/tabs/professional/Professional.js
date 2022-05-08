@@ -37,9 +37,9 @@ const Professional = (props) => {
                     display: "flex",
                     alignItems: "center"
                 }}>
-                    <Typography sx={{color: "black"}} component="h1" variant="h5">
+                    <p style={{color: "black"}}>
                         Professional Details 
-                    </Typography>
+                    </p>
                     <Button onClick={onRemoveHandler}>
                         <CancelOutlinedIcon sx={{
                             position: "relative",
@@ -49,60 +49,57 @@ const Professional = (props) => {
                 </div>
             <Grid container spacing={2}>
             <Grid item xs={12}>
-                <Autocomplete
-                disablePortal
-                id="combo-box-demo"
-                options={company}
-                sx={{ width: 450 }}
-                renderInput={(params) => <TextField {...params} name="company" label="Company" />}
+                <Autocomplete options={company}
+                    disablePortal
+                    id="combo-box-demo"
+                    sx={{ width: 450 }}
+                    renderInput={(params) => <TextField {...params} name="company" label="Company" />}
                 />
-             </Grid>
-                <Grid item xs={12} >
+            </Grid>
+            <Grid item xs={12} >
+                <TextField
+                    sx={{width: 450}}
+                    required
+                    fullWidth
+                    name="role"
+                    label="Role"
+                    type="text"
+                    id="role"
+                />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+                <Stack component="form" noValidate spacing={3}>
                     <TextField
-                        sx={{width: 450}}
-                        required
-                        fullWidth
-                        name="role"
-                        label="Role"
-                        type="text"
-                        id="role"
+                        id="dob"
+                        label="From Date"
+                        type="date"
+                        onChange={e => this.setState({ sDate: e.target.value })}
+                        format="yyyy-MM-dd"
+                        sx={{ width: 220 }}
+                        InputLabelProps={{
+                        shrink: true,
+                        }}
                     />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                        <Stack component="form" noValidate spacing={3}>
-                            <TextField
-                                id="dob"
-                                label="From Date"
-                                type="date"
-                                onChange={e => this.setState({ sDate: e.target.value })}
-                                format="yyyy-MM-dd"
-                                sx={{ width: 220 }}
-                                InputLabelProps={{
-                                shrink: true,
-                                }}
-                            />
-    
-                        </Stack>
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                        <Stack component="form" noValidate spacing={3}>
-                            <TextField
-                                id="end"
-                                label="End Date"
-                                type="date"
-                                onChange={e => this.setState({ endD: e.target.value })}
-                                format="yyyy-MM-dd"
-                                sx={{ width: 220 }}
-                                InputLabelProps={{
-                                shrink: true,
-                                }}
-                            />
-                        </Stack>
-                        </Grid>
-                </Grid>
-            </Box> 
-        </>
-    )
+                </Stack>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+                <Stack component="form" noValidate spacing={3}>
+                    <TextField
+                        id="end"
+                        label="End Date"
+                        type="date"
+                        onChange={e => this.setState({ endD: e.target.value })}
+                        format="yyyy-MM-dd"
+                        sx={{ width: 220 }}
+                        InputLabelProps={{
+                        shrink: true,
+                        }}
+                    />
+                </Stack>
+            </Grid>
+        </Grid>
+    </Box> 
+</>)
 }
 
 export default Professional

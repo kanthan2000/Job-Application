@@ -48,7 +48,7 @@ const JobDescription = () => {
 									fullWidth
 									id="firstName"
 									label="From"
-									Focused
+									focused
 								/>
 							</Grid>
 							<Grid item xs={4}>

@@ -4,7 +4,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Professional from './professional/Professional'
@@ -20,7 +19,7 @@ import { Formik, Form } from 'formik';
 
 const theme = createTheme();
 
-export default function SignUp() {
+export default function Personal(props) {
 
 	let [error, setError] = React.useState(false)
 	let [msg, setMsg] = React.useState("")
@@ -131,7 +130,7 @@ export default function SignUp() {
 
 
 	return (
-	<ThemeProvider theme={theme}>
+	// <ThemeProvider theme={theme}>
 		<Container component="main" maxWidth="xs">
 			<CssBaseline />
 			<Formik
@@ -145,17 +144,17 @@ export default function SignUp() {
 				}}
 				>
 				{({ errors, touched, validateField, validateForm }) => (
-					<Form>
+                <>
 					<Box sx={{
 						marginTop: 8,
 						display: 'flex',
 						flexDirection: 'column',
 						alignItems: 'center',
 						}}>
-						<Typography sx={{color: "black"}} component="h1" variant="h5">
+						<p style={{color: "black", fontSize: "1.5rem"}}>
 							Personal Information
-						</Typography>
-						<Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+						</p>
+						<Box noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
                             <Grid container spacing={2}>
                                 <Grid item xs={12} sm={6}>
                                     <TextField
@@ -165,7 +164,7 @@ export default function SignUp() {
                                         fullWidth
                                         id="firstName"
                                         label="First Name"
-                                        Focused
+                                        focused
                                     />
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
@@ -179,19 +178,18 @@ export default function SignUp() {
                                     />
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
-                                <Stack component="form" noValidate spacing={3}>
-                                    <TextField
-                                        id="dob"
-                                        label="Date Of Birth"
-                                        type="date"
-                                        format="yyyy-MM-dd"
-                                        sx={{ width: 450 }}
-                                        InputLabelProps={{
-                                        shrink: true,
-                                        }}
-                                    />
-
-                                </Stack>
+                                    <Stack noValidate spacing={3}>
+                                        <TextField
+                                            id="dob"
+                                            label="Date Of Birth"
+                                            type="date"
+                                            format="yyyy-MM-dd"
+                                            sx={{ width: 450 }}
+                                            InputLabelProps={{
+                                            shrink: true,
+                                            }}
+                                        />
+                                    </Stack>
                                 </Grid>
                                 <Grid item xs={12}>
                                     <TextField
@@ -229,109 +227,109 @@ export default function SignUp() {
                                         type="text"
                                         id="Linked"
                                         autoComplete="Linked"
-                                    />
+                                        />
                                 </Grid>
-						    </Grid>
-                                <Box sx={{
+                            </Grid>
+                            <Box sx={{
                                 marginTop: 5,
                                 display: 'flex',
                                 flexDirection: 'column',
                                 alignItems: 'center',
                                     mt: 3 ,
                                 }} >
-                                    <Typography sx={{color: "black"}} component="h1" variant="h5">
-                                        Address Information
-                                    </Typography>
-                                        <Grid container spacing={2}>
-                                            <Grid item xs={12} sm={6}>
-                                                <TextField
-                                                    required
-                                                    fullWidth
-                                                    name="DoorNo"
-                                                    label="Door No"
-                                                    type="number"
-                                                    id="doorNo"
-                                                    autoComplete="doorno"
-                                                />
-                                            </Grid>
-                                            <Grid item xs={12} sm={6}>
-                                                <TextField
-                                                    required
-                                                    fullWidth
-                                                    name="street"
-                                                    label="Street"
-                                                    type="text"
-                                                    id="street"
-                                                    autoComplete="street"
-                                                />
-                                            </Grid>
-                                            <Grid item xs={12} >
-                                                <TextField
-                                                    fullWidth
-                                                    name="place"
-                                                    label="Place"
-                                                    type="text"
-                                                    id="place"
-                                                    autoComplete="place"
-                                                />
-                                            </Grid>
-                                            <Grid item xs={12} >
-                                                <TextField
-                                                    fullWidth
-                                                    name="pincode"
-                                                    label="Pincode"
-                                                    type="number"
-                                                    id="pincode"
-                                                    autoComplete="pincode"
-                                                />
-                                            </Grid>
-						            	</Grid>
-						        </Box>
+                                <p style={{color: "black", fontSize: "1.5rem"}}>
+                                    Address Information
+                                </p>
+                                <Grid container spacing={2}>
+                                    <Grid item xs={12} sm={6}>
+                                        <TextField required
+                                            fullWidth
+                                            name="DoorNo"
+                                            label="Door No"
+                                            type="number"
+                                            id="doorNo"
+                                            autoComplete="doorno" />
+                                    </Grid>
+                                    <Grid item xs={12} sm={6}>
+                                        <TextField
+                                            required
+                                            fullWidth
+                                            name="street"
+                                            label="Street"
+                                            type="text"
+                                            id="street"
+                                            autoComplete="street"
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} >
+                                        <TextField
+                                            fullWidth
+                                            name="place"
+                                            label="Place"
+                                            type="text"
+                                            id="place"
+                                            autoComplete="place"
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} >
+                                        <TextField
+                                            fullWidth
+                                            name="pincode"
+                                            label="Pincode"
+                                            type="number"
+                                            id="pincode"
+                                            autoComplete="pincode"
+                                        />
+                                    </Grid>
+                                </Grid>
+                            </Box>
                                 <Box sx={{
                                     marginTop: 5,
                                     display: 'flex',
                                     flexDirection: 'column',
                                     alignItems: 'center',
                                     }} >
-                                        {professionalComponents.map((value, idx) => <Professional id={idx}/>)}
-                                <Button
-                                    onClick={renderProfessionalForm}
-                                    fullWidth
-                                    variant="contained"
-                                    sx={{ mt: 3, mb: 2,userSelect:"none" }}
-                                    >Click to Add</Button>
-                                    <Box sx={{
-                                    marginTop: 5,
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'center',
-                                    mt: 3 ,
-                                    }} >
-                                    
-
-                                            {qualificationComponents.map(value => <Qualification />)}
-                                        <Button
-                                        onClick={renderQualificationForm}
+                                        {professionalComponents.map((value, idx) => <Professional id={idx} key={idx}/>)}
+                                    <Button
+                                        onClick={renderProfessionalForm}
                                         fullWidth
                                         variant="contained"
-                                        sx={{ mt: 3, mb: 2 }}
+                                        sx={{ mt: 3, mb: 2,userSelect:"none" }}
                                         >Click to Add</Button>
-						             </Box>
-					            </Box>
-					                <SkillsList />
-                                    <Position />
                                         <Box sx={{
-                                            marginTop: 5,
-                                            display: 'flex',
-                                            flexDirection: 'column',
-                                            alignItems: 'center',
-                                            mt: 3 ,
-                                            }} >
-                                            <Typography sx={{color: "black"}} component="h1" variant="h5">
-                                                Resume 
-                                            </Typography>
-                                            <Resume />
-                                        </Box>
+                                        marginTop: 5,
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        alignItems: 'center',
+                                        mt: 3 ,
+                                        }}>
+                                            {qualificationComponents.map((value, idx) => <Qualification key={idx} />)}
+                                        <Button onClick={renderQualificationForm}
+                                            fullWidth
+                                            variant="contained"
+                                            sx={{ mt: 3, mb: 2 }}
+                                            >Click to Add</Button>
+                                </Box>
+                        </Box>
+                        <SkillsList />
+                        <Position />
+                        <Box sx={{
+                            marginTop: 5,
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            mt: 3 ,
+                            }} >
+                            <p style={{color: "black", fontSize: "1.5rem"}} >
+                                Resume 
+                            </p>
+                            <Resume />
+                        </Box>
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            sx={{ mt: 3, mb: 2 }} > Save </Button>
                                         {/* <Box sx={{
                                             marginTop: 5,
                                             display: 'flex',
@@ -346,17 +344,12 @@ export default function SignUp() {
                                                 rows={2}
                                                 />
                                         </Box> */}
-                                            <Button
-                                                type="submit"
-                                                fullWidth
-                                                variant="contained"
-                                                sx={{ mt: 3, mb: 2 }} > Save </Button>
 						</Box>
 					</Box>
-					</Form>
+                </>
 		)}
 			</Formik>
 		</Container>
-	</ThemeProvider>
+	// </ThemeProvider>
 	);
 }

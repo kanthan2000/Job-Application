@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Checkbox from '@mui/material/Checkbox';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
@@ -11,6 +12,17 @@ const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 export default function CheckboxesTags() {
+  let [locations, setLocations] = useState([])
+
+  useEffect(() => {
+    let url = "http://192.168.5.40:8080/dropDown/location"
+    axios.get(url).then(({data}) => {
+      console.log(data)
+      setLocations(data.data)
+    }).catch(err => {
+      console.log(err)
+    })
+  }, [])
   return (
     <Box sx={{
       marginTop: 5,
@@ -24,9 +36,9 @@ export default function CheckboxesTags() {
     <Autocomplete
       multiple
       id="checkboxes-tags-demo"
-      options={Location}
+      options={locations}
       disableCloseOnSelect
-      getOptionLabel={(option) => option.title}
+      getOptionLabel={(option) => option}
       renderOption={(props, option, { selected }) => (
         <li {...props}>
           <Checkbox
@@ -35,7 +47,7 @@ export default function CheckboxesTags() {
             style={{ marginRight: 8 }}
             checked={selected}
           />
-          {option.title}
+          {option}
         </li>
       )}
       style={{ width: 450 }}

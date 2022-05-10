@@ -38,7 +38,7 @@ const JobDescription = () => {
                             <Eligiblity />
                             <JobLocation  />
                             <Typography sx={{color: "black"}} component="h1" variant="h5">
-                         Salary
+							Salary
 						</Typography>
 						<Grid item xs={4} >
 								<TextField

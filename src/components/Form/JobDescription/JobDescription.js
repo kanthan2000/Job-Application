@@ -17,24 +17,28 @@ const JobDescription = () => {
     return(
         <>
         <Navbar>
-			<div style={{width:"100",height:"90vh",overflowY:"scroll"}}>
-			<Container component="main" maxWidth='xs' >
+           <div style={{width:"100",height:"90vh",overflowY:"scroll"}}>
+           <Container component="main" maxWidth='xs' >
         <CssBaseline />
 					<Box sx={{
 						marginTop: 8,
 						display: 'flex',
 						flexDirection: 'column',
 						alignItems: 'center',
+                        
 						}}>
+						
 						<Box component="form" noValidate  sx={{ mt: 3 }}>
+                        
 						<Grid container spacing={2}>
+                        
                             <Position />
                             <Experience />
                             <SkillsList />
                             <Eligiblity />
                             <JobLocation  />
                             <Typography sx={{color: "black"}} component="h1" variant="h5">
-								Salary
+							Salary
 						</Typography>
 						<Grid item xs={4} >
 								<TextField
@@ -57,17 +61,18 @@ const JobDescription = () => {
 									autoComplete="family-name"
 								/>
 							</Grid>	
+                       
                         </Grid>
                         <Button
 						type="submit"
 						fullWidth
 						variant="contained"
 						sx={{ mt: 3, mb: 2 }} > Save </Button>    
-					</Box>
-					</Box>  
-			
+                      </Box>
+                     </Box>  
+             
         </Container>
-			</div>
+           </div>
         </Navbar>
         </>
     )

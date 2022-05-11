@@ -62,4 +62,16 @@ export default function CheckboxesTags() {
 }
 
 
+<<<<<<< HEAD
 
+=======
+const skill = [
+  { title: 'B.Sc. Mathematics'},
+  { title: 'B.Sc. Chemistry'},
+  { title: 'B.Sc.- Physics'},
+  { title: 'B.Sc.- Information Technology'},
+  { title: 'MSc'},
+  { title: 'MCA'},
+  { title: 'MBA'},
+];
+>>>>>>> 554b7a37701d6c4c3dc2d834c789985927fd8b14

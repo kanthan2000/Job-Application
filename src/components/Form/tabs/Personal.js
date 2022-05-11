@@ -50,46 +50,54 @@ export default function Personal(props) {
 	const history = useNavigate()
 	
 
+    const onclickSave = () => {
+    }
 	const handleSubmit = (event) => {
 	event.preventDefault();
 	const form = new FormData(event.currentTarget);
-
+    // console.log("form", form)
 	let formData = getFormData(form)
-	
 	console.log(formData)
-
-	axios.post("http://192.168.0.179:8080/Candidate", formData)
-		.then(({data},msg) => {
-			console.log(data)
-			history("/table")
-		}).catch(err => {
-			console.log(err)
-		})
-	};
-
+	// axios.post("http://localhost:8080/Candidate", formData)
+	// 	.then(({data}, msg) => {
+	// 		console.log(data)
+	// 		history("/table")
+	// 	}).catch(err => {
+	// 		console.log(err)
+	// 	})
+	}
 	const getFormData = (form) => {
 		let companyData = []
 		let qualificationData = []
-
 		let roles = form.getAll("role")
 		let names = form.getAll("currentCompany")
 		let from = form.getAll("fromDate")
 		let to = form.getAll("endDate")
-
 		let collegeNames = form.getAll("collegeName")
 		let degrees = form.getAll("degree")
+        let job = form.get("job")
+        let skill = form.getAll("skill")
+        let skills = []
+
+
+
+        skill.map((_,idx)=>{
+            let data = {
+                skills: skill[idx]
+            }
+            skills.push(data)
+        })
+
 
 		roles.map((_, idx) => {
 			let data = {
 				role: roles[idx],
 				name: names[idx],
 				from: from[idx],
-
                 to: to[idx]
 			}
 			companyData.push(data)
 		})
-		
 		collegeNames.map((_, idx) => {
 			let data = {
 				collegeName: collegeNames[idx],
@@ -98,6 +106,7 @@ export default function Personal(props) {
 			qualificationData.push(data)
 		})
 
+        console.log(companyData, qualificationData, roles, names, from, to, collegeNames, degrees, job. skills)
 		return {
 			firstName: form.get("firstName"),
 			lastName: form.get("lastName"),
@@ -113,7 +122,7 @@ export default function Personal(props) {
 			company: companyData,
 			qualification: qualificationData,
 			job: form.get("job"),
-			skill: form.getAll("skill") 
+			skill: form.getAll("hello") 
 		}
 	}
 
@@ -154,7 +163,7 @@ export default function Personal(props) {
 						<p style={{color: "black", fontSize: "1.5rem"}}>
 							Personal Information
 						</p>
-						<Box noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+						<Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
                             <Grid container spacing={2}>
                                 <Grid item xs={12} sm={6}>
                                     <TextField
@@ -164,7 +173,7 @@ export default function Personal(props) {
                                         fullWidth
                                         id="firstName"
                                         label="First Name"
-                                        focused
+                                    
                                     />
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
@@ -188,6 +197,7 @@ export default function Personal(props) {
                                             InputLabelProps={{
                                             shrink: true,
                                             }}
+                                            name='dob'
                                         />
                                     </Stack>
                                 </Grid>
@@ -196,7 +206,6 @@ export default function Personal(props) {
                                         required
                                         onChange={(e) => validate(e.target.value, emailPattern, 'Invalid email address')}
                                         fullWidth
-                                        
                                         type="email"
                                         id="email"
                                         label="Email Address"
@@ -244,7 +253,7 @@ export default function Personal(props) {
                                     <Grid item xs={12} sm={6}>
                                         <TextField required
                                             fullWidth
-                                            name="DoorNo"
+                                            name="doorNo"
                                             label="Door No"
                                             type="number"
                                             id="doorNo"
@@ -329,6 +338,7 @@ export default function Personal(props) {
                             type="submit"
                             fullWidth
                             variant="contained"
+                            onClick={onclickSave}
                             sx={{ mt: 3, mb: 2 }} > Save </Button>
                                         {/* <Box sx={{
                                             marginTop: 5,

@@ -8,8 +8,8 @@ import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 
 const Professional = (props) => {
 
-    const [sDate, setSDate] = useState()
-    const [endD, setEndD] = useState()
+    const [startDate, setStartDate] = useState()
+    const [endDate, setEndDate] = useState()
 
     const company = [
         { label :'Iconio Private Ltd'},
@@ -53,7 +53,7 @@ const Professional = (props) => {
                     disablePortal
                     id="combo-box-demo"
                     sx={{ width: 450 }}
-                    renderInput={(params) => <TextField {...params} name="company" label="Company" />}
+                    renderInput={(params) => <TextField {...params} name="currentCompany" label="Company" />}
                 />
             </Grid>
             <Grid item xs={12} >
@@ -68,32 +68,34 @@ const Professional = (props) => {
                 />
             </Grid>
             <Grid item xs={12} sm={6}>
-                <Stack component="form" noValidate spacing={3}>
+                <Stack noValidate spacing={3}>
                     <TextField
-                        id="dob"
+                        id="fromDate"
                         label="From Date"
                         type="date"
-                        onChange={e => this.setState({ sDate: e.target.value })}
+                        onChange={(e) => setStartDate(e.target.value)}
                         format="yyyy-MM-dd"
                         sx={{ width: 220 }}
                         InputLabelProps={{
                         shrink: true,
                         }}
+                        name="fromDate"
                     />
                 </Stack>
             </Grid>
             <Grid item xs={12} sm={6}>
-                <Stack component="form" noValidate spacing={3}>
+                <Stack  noValidate spacing={3}>
                     <TextField
-                        id="end"
+                        id="endDate"
                         label="End Date"
                         type="date"
-                        onChange={e => this.setState({ endD: e.target.value })}
+                        onChange={(e) => setEndDate(e.target.value)}
                         format="yyyy-MM-dd"
                         sx={{ width: 220 }}
                         InputLabelProps={{
                         shrink: true,
                         }}
+                        name= "endDate"
                     />
                 </Stack>
             </Grid>

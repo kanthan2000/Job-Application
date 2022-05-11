@@ -8,9 +8,9 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import Navbar from "../../admin/Navbar/navbar"
-import Position from '../tabs/position/Position'
+import Position from "./Position";
 import Experience from './Experience';
-import SkillsList from '../tabs/skill/SkillsList'
+import SkillsList from './SkillsList';
 import Eligiblity from './Eligiblity'
 import JobLocation from './JobLocation'
 const JobDescription = () => {

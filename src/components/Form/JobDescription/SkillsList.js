@@ -12,17 +12,19 @@ const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 export default function CheckboxesTags() {
-  let [locations, setLocations] = useState([])
+  let [skill, setSkill] = useState([])
 
   useEffect(() => {
-    let url = "http://192.168.5.40:8080/dropDown/location"
+    let url = "http://192.168.5.40:8080/dropDown/skill"
     axios.get(url).then(({data}) => {
       console.log(data)
-      setLocations(data.data)
+      setSkill(data.data)
     }).catch(err => {
       console.log(err)
     })
   }, [])
+
+
   return (
     <Box sx={{
       marginTop: 5,
@@ -31,12 +33,12 @@ export default function CheckboxesTags() {
       alignItems: 'center',
       }} >
         <Typography sx={{color: "black"}} component="h1" variant="h5">
-							Location
+							Skills
 							</Typography>
     <Autocomplete
       multiple
       id="checkboxes-tags-demo"
-      options={locations}
+      options={skill}
       disableCloseOnSelect
       getOptionLabel={(option) => option}
       renderOption={(props, option, { selected }) => (
@@ -52,7 +54,7 @@ export default function CheckboxesTags() {
       )}
       style={{ width: 450 }}
       renderInput={(params) => (
-        <TextField {...params} label="Location" placeholder="Location" />
+        <TextField {...params} label="Skills" placeholder="Skill" />
       )}
     />
     </Box>
@@ -60,10 +62,3 @@ export default function CheckboxesTags() {
 }
 
 
-const Location = [
-  { title: 'Chennai'},
-  { title: 'Madurai'},
-  { title: 'Nellai'},
-  { title: 'Mumbai'},
-  { title: 'kerala'},
-];

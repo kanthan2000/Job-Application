@@ -11,6 +11,9 @@ const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 export default function CheckboxesTags() {
+  const handleskill = (e) =>{
+    console.log(e.target.value)
+  }
   return (
     <Box sx={{
       marginTop: 5,
@@ -28,7 +31,7 @@ export default function CheckboxesTags() {
       disableCloseOnSelect
       getOptionLabel={(option) => option.title}
       renderOption={(props, option, { selected }) => (
-        <li {...props}>
+        <li {...props} >
           <Checkbox
             icon={icon}
             checkedIcon={checkedIcon}
@@ -38,9 +41,10 @@ export default function CheckboxesTags() {
           {option.title}
         </li>
       )}
+      onSelect={(e)=>handleskill(e)}
       style={{ width: 450 }}
       renderInput={(params) => (
-        <TextField {...params} label="Skills" placeholder="Skill" />
+          <TextField {...params} label="Skills" placeholder="Skill" name = "skill" />
       )}
     />
     </Box>

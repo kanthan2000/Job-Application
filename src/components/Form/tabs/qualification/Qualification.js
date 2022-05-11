@@ -24,7 +24,7 @@ export default function ComboBox() {
                     id="combo-box-demo"
                     options={colleges}
                     sx={{ width: 450 }}
-                    renderInput={(params) => <TextField {...params} name="college" label="Colleges" />}
+                    renderInput={(params) => <TextField {...params} name="collegeName" label="Colleges" />}
                     />
                     </Grid>
                     <Grid item xs={12}>

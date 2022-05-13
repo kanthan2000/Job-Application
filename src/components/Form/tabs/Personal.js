@@ -45,7 +45,6 @@ export default function Personal(props) {
 	const [professionalComponents, setProfessionalComponents] = React.useState([1])
 	const [qualificationComponents, setQualificationComponents] = React.useState([1])
 	const [qualification, setQualification] = React.useState([1])
-	const [skill, setSkill] = React.useState([1])
 	const location = useLocation()
 	const history = useNavigate()
 	
@@ -66,6 +65,14 @@ export default function Personal(props) {
 	// 		console.log(err)
 	// 	})
 	}
+
+    let skills = []
+
+    const setSkill = (skill) => {
+        skills = skill
+        console.log(skills, skill)
+    }
+
 	const getFormData = (form) => {
 		let companyData = []
 		let qualificationData = []
@@ -77,17 +84,6 @@ export default function Personal(props) {
 		let degrees = form.getAll("degree")
         let job = form.get("job")
         let skill = form.getAll("skill")
-        let skills = []
-
-
-
-        skill.map((_,idx)=>{
-            let data = {
-                skills: skill[idx]
-            }
-            skills.push(data)
-        })
-
 
 		roles.map((_, idx) => {
 			let data = {
@@ -122,7 +118,7 @@ export default function Personal(props) {
 			company: companyData,
 			qualification: qualificationData,
 			job: form.get("job"),
-			skill: form.getAll("hello") 
+			skill: skills 
 		}
 	}
 
@@ -320,7 +316,7 @@ export default function Personal(props) {
                                             >Click to Add</Button>
                                 </Box>
                         </Box>
-                        <SkillsList />
+                        <SkillsList setSkill={setSkill} />
                         <Position />
                         <Box sx={{
                             marginTop: 5,

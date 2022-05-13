@@ -4,12 +4,14 @@ import Autocomplete from '@mui/material/Autocomplete';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import { Typography } from '@mui/material'
+import axios from 'axios';
+import { useState,useEffect } from 'react';
 
 export default function ComboBox() {
   let [position, setPosition] = useState([])
 
   useEffect(() => {
-    let url = "http://192.168.5.40:8080/dropDown/position"
+    let url = "http://localhost:8080/dropDown/position"
     axios.get(url).then(({data}) => {
       console.log(data)
       setPosition(data.data)

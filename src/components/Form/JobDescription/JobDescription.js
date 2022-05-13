@@ -17,8 +17,8 @@ const JobDescription = () => {
     return(
         <>
         <Navbar>
-            <div style={{width:"100",height:"90vh",overflowY:"scroll"}}>
-            <Container component="main" maxWidth='xs' >
+           <div style={{width:"100",height:"90vh",overflowY:"scroll"}}>
+           <Container component="main" maxWidth='xs' >
         <CssBaseline />
 					<Box sx={{
 						marginTop: 8,
@@ -61,18 +61,18 @@ const JobDescription = () => {
 									autoComplete="family-name"
 								/>
 							</Grid>	
-                        
+                       
                         </Grid>
                         <Button
 						type="submit"
 						fullWidth
 						variant="contained"
 						sx={{ mt: 3, mb: 2 }} > Save </Button>    
-                        </Box>
-                        </Box>  
-                
+                      </Box>
+                     </Box>  
+             
         </Container>
-            </div>
+           </div>
         </Navbar>
         </>
     )

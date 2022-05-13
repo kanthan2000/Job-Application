@@ -78,18 +78,26 @@ import Spinner from '../../Spinner/Spinner.js';
 	const getUser = async (userId) => {
 		return await axios.get(`http://localhost:8080/candidate/${userId}`)
 	}
+	const DeteleUser = async (DeteleUserId) => {
+		return await axios.get(`http://localhost:8080/candidate/?id=${DeteleUserId}`)
+	}
 
 	const onhandleView = (userId)=>{
 		setLoad(true)
-	     getUser(userId).then(user => {
-			 setViewData(user.data)
-			 setLoad(false)
-			 history("/view")		 
-		 } )
-		
+			getUser(userId).then(user => {
+				setViewData(user.data)
+				setLoad(false)
+				history("/view")		 
+			} )
+			
 	}
-	const onhandleDelete = ()=>{
-		
+	const onhandleDelete = (DeteleUserId)=>{
+		setLoad(true)
+			DeteleUser(DeteleUserId).then(user => {
+				console.log(user)
+				setLoad(false)
+				// history("/view")		 
+			} )
 	}
 	const onhandleEdit = (userId)=>{
 		setLoad(true)

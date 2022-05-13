@@ -2,7 +2,6 @@ import Navbar  from "./admin/Navbar/navbar";
 import About  from './admin/Nav_item/About'
 import Contact  from './admin/Nav_item/Contact'
 import {Routes, Route }   
-
 from 'react-router-dom'
 import Login from "./login/login"
 import SignInSide from "./Form/pages/Signin"

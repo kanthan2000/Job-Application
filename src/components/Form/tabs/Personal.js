@@ -32,7 +32,6 @@ export default function Personal(props) {
 
     const [professionalComponents, setProfessionalComponents] = React.useState([professionalIdx])
 	const [qualificationComponents, setQualificationComponents] = React.useState([qualificationIdx])
-	const [skill, setSkill] = React.useState([1])
 	const location = useLocation()
 	const history = useNavigate()
 
@@ -55,17 +54,23 @@ export default function Personal(props) {
 	const handleSubmit = (event) => {
 	event.preventDefault();
 	const form = new FormData(event.currentTarget);
-    // console.log("form", form)
+    console.log("form", form)
 	let formData = getFormData(form)
 	console.log(formData)
-	// axios.post("http://localhost:8080/Candidate", formData)
-	// 	.then(({data}, msg) => {
-	// 		console.log(data)
-	// 		history("/table")
-	// 	}).catch(err => {
-	// 		console.log(err)
-	// 	})
+	axios.post("http://192.168.5.40:8080/Candidate", formData)
+		.then(({data}, msg) => {
+			console.log(data)
+			history("/table")
+		}).catch(err => {
+			console.log(err)
+		})
 	}
+    let skills = []
+
+    const setSkill = (skill) => {
+        skills = skill
+    }
+
 	const getFormData = (form) => {
 		let companyData = []
 		let qualificationData = []
@@ -77,17 +82,6 @@ export default function Personal(props) {
 		let degrees = form.getAll("degree")
         let job = form.get("job")
         let skill = form.getAll("skill")
-        let skills = []
-
-
-
-        skill.map((_,idx)=>{
-            let data = {
-                skills: skill[idx]
-            }
-            skills.push(data)
-        })
-
 
 		roles.map((_, idx) => {
 			let data = {
@@ -355,7 +349,7 @@ export default function Personal(props) {
                                 </Grid>
                             </Box>
                         </Box>
-                        <SkillsList />
+                        <SkillsList setSkill={setSkill} />
                         <Position />
                         <Box sx={{
                             marginTop: 5,

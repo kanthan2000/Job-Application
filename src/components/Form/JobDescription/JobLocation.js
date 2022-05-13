@@ -15,7 +15,8 @@ export default function CheckboxesTags() {
   let [locations, setLocations] = useState([])
 
   useEffect(() => {
-    let url = "http://192.168.5.40:8080/dropDown/location"
+    let host = process.env.REACT_HOST
+    let url = `${host}/dropDown/location`
     axios.get(url).then(({data}) => {
       console.log(data)
       setLocations(data.data)
@@ -59,11 +60,3 @@ export default function CheckboxesTags() {
   );
 }
 
-
-const Location = [
-  { title: 'Chennai'},
-  { title: 'Madurai'},
-  { title: 'Nellai'},
-  { title: 'Mumbai'},
-  { title: 'kerala'},
-];

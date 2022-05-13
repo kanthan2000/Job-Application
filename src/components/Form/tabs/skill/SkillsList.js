@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import { Box } from '@mui/system';
+import axios from 'axios';
 import { FormControl, InputLabel, MenuItem, OutlinedInput, Select, Typography } from '@mui/material';
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
@@ -22,11 +23,22 @@ export default function CheckboxesTags(props) {
 	},
 	};
 
+  useEffect(() => {
+    let host = process.env.REACT_HOST
+    let url = `${host}/dropDown/skill`
+    axios.get(url).then(({data}) => {
+      console.log(data)
+      setExperience(data.data)
+    }).catch(err => {
+      console.log(err)
+    })
+  }, [])
+
 	const names = [
-	'C',
-	'C++',
-	'Java',
-	'React Js'
+    'C',
+    'C++',
+    'Java',
+    'React Js'
 	];
 
 	function getStyles(name, skill, theme) {
@@ -87,31 +99,6 @@ export default function CheckboxesTags(props) {
 			))}
 			</Select>
 		</FormControl>
-		{/* <Autocomplete
-			multiple
-			id="checkboxes-tags-demo"
-			options={skill}
-			disableCloseOnSelect
-			getOptionLabel={(option) => option.title}
-			renderOption={(props, option, { selected }) => (
-			<li {...props}>
-				<Checkbox
-				icon={icon}
-				onClick={() => console.log("selected")}
-				checkedIcon={checkedIcon}
-				style={{ marginRight: 8 }}
-				checked={selected}
-				/>
-				{option.title}
-			</li>
-
-			)}
-			onSelect={(option)=> console.log("select")}
-			style={{ width: 450 }}
-			renderInput={(params) => (
-				<TextField {...params} label="Skills" placeholder="Skill" name = "skill" />
-			)}
-		/> */}
 	</Box>
 );
 }

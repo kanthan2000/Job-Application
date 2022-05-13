@@ -11,7 +11,8 @@ export default function Experience() {
   let [experience, setExperience] = useState([])
 
   useEffect(() => {
-    let url = "http://192.168.5.40:8080/dropDown/experience"
+    let host = process.env.REACT_HOST
+    let url = `${host}/dropDown/experience`
     axios.get(url).then(({data}) => {
       console.log(data)
       setExperience(data.data)

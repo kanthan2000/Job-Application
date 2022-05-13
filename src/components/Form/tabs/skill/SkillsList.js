@@ -28,7 +28,7 @@ export default function CheckboxesTags(props) {
     let url = `${host}/dropDown/skill`
     axios.get(url).then(({data}) => {
       console.log(data)
-      setExperience(data.data)
+      setSkill(data.data)
     }).catch(err => {
       console.log(err)
     })

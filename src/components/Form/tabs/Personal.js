@@ -57,7 +57,7 @@ export default function Personal(props) {
     console.log("form", form)
 	let formData = getFormData(form)
 	console.log(formData)
-	axios.post("http://192.168.5.40:8080/Candidate", formData)
+	axios.post("http://35.154.117.105:8080/Candidate", formData)
 		.then(({data}, msg) => {
 			console.log(data)
 			history("/table")

@@ -19,10 +19,7 @@ const Professional = (props) => {
         { label :'Tech Fetch'}
     ];
 
-    const onRemoveHandler = () => {
-        console.log("clicked", props.id)
-        
-    }
+    
 
     return (
         <>
@@ -33,20 +30,10 @@ const Professional = (props) => {
                     alignItems: 'center',
                     mt: 3 ,
                     }} >
-                <div style={{
-                    display: "flex",
-                    alignItems: "center"
-                }}>
-                    <p style={{color: "black"}}>
-                        Professional Details 
-                    </p>
-                    <Button onClick={onRemoveHandler}>
-                        <CancelOutlinedIcon sx={{
-                            position: "relative",
-                            left: "110px"
-                        }} />
-                    </Button>
-                </div>
+                
+                
+                
+                            {props.id !== 0 ? <button onClick={() => props.onClick(props.id)}>X</button> : null}
             <Grid container spacing={2}>
             <Grid item xs={12}>
                 <Autocomplete options={company}

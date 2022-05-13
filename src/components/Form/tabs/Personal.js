@@ -18,6 +18,9 @@ import Stack from '@mui/material/Stack';
 import { Formik, Form } from 'formik';
 
 const theme = createTheme();
+let professionalIdx = 0
+let qualificationIdx = 0
+
 
 export default function Personal(props) {
 
@@ -26,6 +29,12 @@ export default function Personal(props) {
 
 	let emailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
 	let numberPattern = /[0-9]/
+
+    const [professionalComponents, setProfessionalComponents] = React.useState([professionalIdx])
+	const [qualificationComponents, setQualificationComponents] = React.useState([qualificationIdx])
+	const [skill, setSkill] = React.useState([1])
+	const location = useLocation()
+	const history = useNavigate()
 
 
 	function validate(value, pattern, msg){  
@@ -41,15 +50,6 @@ export default function Personal(props) {
 		}
 	}
 	
-
-	const [professionalComponents, setProfessionalComponents] = React.useState([1])
-	const [qualificationComponents, setQualificationComponents] = React.useState([1])
-	const [qualification, setQualification] = React.useState([1])
-	const [skill, setSkill] = React.useState([1])
-	const location = useLocation()
-	const history = useNavigate()
-	
-
     const onclickSave = () => {
     }
 	const handleSubmit = (event) => {
@@ -127,19 +127,37 @@ export default function Personal(props) {
 	}
 
 	const renderProfessionalForm = () => {
-		setProfessionalComponents([...professionalComponents, 1])
+        console.log("clicked", professionalIdx)
+        professionalIdx =professionalIdx + 1
+        console.log(professionalComponents, professionalIdx)
+		setProfessionalComponents([...professionalComponents, ++professionalIdx])
 	}
 	const renderQualificationForm = () => {
-		setQualificationComponents([...qualificationComponents, 1])
+        console.log("clicked", qualificationIdx)
+        qualificationIdx = qualificationIdx + 1
+        console.log(qualificationComponents, qualificationIdx)
+		setQualificationComponents([...qualificationComponents, qualificationIdx])
 	}
 
-	const removeProfessionalComponent = () => {
-		
-	}
+    const onRemoveQualificationHandler = (id) => {
+        console.log("clicked", id)
+
+        let qualifications = qualificationComponents
+        qualifications[id] = undefined
+        console.log(qualifications)
+        setQualificationComponents([...qualifications])
+    }
+    const onRemoveProfessionalHandler = (id) => {
+        console.log("clicked", id)
+        let professional = professionalComponents
+        professional[id] = undefined
+        console.log(professional)
+        setProfessionalComponents([...professional])
+    }
+
 
 
 	return (
-	// <ThemeProvider theme={theme}>
 		<Container component="main" maxWidth="xs">
 			<CssBaseline />
 			<Formik
@@ -298,13 +316,20 @@ export default function Personal(props) {
                                     flexDirection: 'column',
                                     alignItems: 'center',
                                     }} >
-                                        {professionalComponents.map((value, idx) => <Professional id={idx} key={idx}/>)}
-                                    <Button
-                                        onClick={renderProfessionalForm}
-                                        fullWidth
-                                        variant="contained"
-                                        sx={{ mt: 3, mb: 2,userSelect:"none" }}
-                                        >Click to Add</Button>
+                                        <p style={{color: "black", fontSize: "1.5rem"}} >
+                                            Professional Details
+                                         </p>
+                                       {professionalComponents.map((value, idx) =>  value !== undefined ? <Professional onClick={onRemoveProfessionalHandler} id={idx} key={idx} /> : null)}
+                                    <Grid container spacing={2}>
+                                    <Grid item xs={12}>
+                                        <Button
+                                            onClick={renderProfessionalForm}
+                                            fullWidth
+                                            variant="contained"
+                                            sx={{ mt: 3, mb: 2,userSelect:"none" }}
+                                            >Click to Add</Button>
+                                    </Grid>
+                                        </Grid>
                                         <Box sx={{
                                         marginTop: 5,
                                         display: 'flex',
@@ -312,13 +337,23 @@ export default function Personal(props) {
                                         alignItems: 'center',
                                         mt: 3 ,
                                         }}>
-                                            {qualificationComponents.map((value, idx) => <Qualification key={idx} />)}
-                                        <Button onClick={renderQualificationForm}
+                                             
+                                        <p style={{color: "black", fontSize: "1.5rem"}} >
+                                            Education Details
+                                        </p>
+
+                                {qualificationComponents.map((value, idx) =>  value !== undefined ? <Qualification onClick={onRemoveQualificationHandler} id={idx} key={idx} /> : null)}
+                                <Grid container spacing={2}>
+                                    <Grid item xs={12} >
+                                        <Button
+                                            onClick={renderQualificationForm}
                                             fullWidth
                                             variant="contained"
-                                            sx={{ mt: 3, mb: 2 }}
+                                            sx={{ mt: 3, mb: 2,userSelect:"none" }}
                                             >Click to Add</Button>
-                                </Box>
+                                    </Grid>
+                                </Grid>
+                            </Box>
                         </Box>
                         <SkillsList />
                         <Position />
@@ -334,26 +369,27 @@ export default function Personal(props) {
                             </p>
                             <Resume />
                         </Box>
+                            <Box sx={{
+                                marginTop: 5,
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                mt: 3 ,
+                                }} >
+                                    <TextField
+                                    id="outlined-multiline-static"
+                                    sx={{ width: 450 }}
+                                    label="Description"
+                                    multiline
+                                    rows={2}
+                                    />
+                            </Box>
                         <Button
                             type="submit"
                             fullWidth
                             variant="contained"
                             onClick={onclickSave}
                             sx={{ mt: 3, mb: 2 }} > Save </Button>
-                                        {/* <Box sx={{
-                                            marginTop: 5,
-                                            display: 'flex',
-                                            flexDirection: 'column',
-                                            alignItems: 'center',
-                                            mt: 3 ,
-                                            }} >
-                                                <TextField
-                                                id="outlined-multiline-static"
-                                                label="Description"
-                                                multiline
-                                                rows={2}
-                                                />
-                                        </Box> */}
 						</Box>
 					</Box>
                 </>

@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Checkbox from '@mui/material/Checkbox';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
@@ -11,9 +12,19 @@ const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 export default function CheckboxesTags() {
-  const handleskill = (e) =>{
-    console.log(e.target.value)
-  }
+  let [skill, setSkill] = useState([])
+
+  useEffect(() => {
+    let url = "http://192.168.5.40:8080/dropDown/skill"
+    axios.get(url).then(({data}) => {
+      console.log(data)
+      setSkill(data.data)
+    }).catch(err => {
+      console.log(err)
+    })
+  }, [])
+
+
   return (
     <Box sx={{
       marginTop: 5,
@@ -29,22 +40,21 @@ export default function CheckboxesTags() {
       id="checkboxes-tags-demo"
       options={skill}
       disableCloseOnSelect
-      getOptionLabel={(option) => option.title}
+      getOptionLabel={(option) => option}
       renderOption={(props, option, { selected }) => (
-        <li {...props} >
+        <li {...props}>
           <Checkbox
             icon={icon}
             checkedIcon={checkedIcon}
             style={{ marginRight: 8 }}
             checked={selected}
           />
-          {option.title}
+          {option}
         </li>
       )}
-      onSelect={(e)=>handleskill(e)}
       style={{ width: 450 }}
       renderInput={(params) => (
-          <TextField {...params} label="Skills" placeholder="Skill" name = "skill" />
+        <TextField {...params} label="Skills" placeholder="Skill" />
       )}
     />
     </Box>
@@ -52,10 +62,3 @@ export default function CheckboxesTags() {
 }
 
 
-const skill = [
-  { title: 'C'},
-  { title: 'C++'},
-  { title: 'JAVA'},
-  { title: 'REACT JS'},
-  { title: 'REACT NATIVE'},
-];

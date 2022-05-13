@@ -5,6 +5,7 @@
 	import Typography from '@mui/material/Typography';
 	import Box from '@mui/material/Box';
 	import Personal from './Personal';
+	// import Personal1 from "./Personal1";
 	import Navbar from '../../admin/Navbar/navbar';
 	import "./Navtab.css"
 

@@ -44,7 +44,7 @@ import Spinner from '../../Spinner/Spinner.js';
 		
 	React.useEffect( ()=> {
 			handleChangePage(1)
-			axios.get("http://localhost:8080/candidate").then(response=>{
+			axios.get("http://192.168.5.40:8080/candidate").then(response=>{
 			console.log(response)
 			// response.data.map(user => console.log(user.id))
 			setData(response.data)
@@ -53,7 +53,7 @@ import Spinner from '../../Spinner/Spinner.js';
 			})
 		},[])
 		React.useEffect(() => {
-			axios.get("http://localhost:8080/candidateCount").then(({data}) => {
+			axios.get("http://192.168.5.40:8080/candidateCount").then(({data}) => {
 				let count = data.count
 				let pages = Math.ceil(count / rowsPerPage)
 				setPages(pages)
@@ -66,7 +66,7 @@ import Spinner from '../../Spinner/Spinner.js';
 		setLoad(true)
 		setPage(currentPage);
 		let paramPage = currentPage - 1
-		let url = `http://localhost:8080/candidate?size=${rowsPerPage}&page=${paramPage}`
+		let url = `http://192.168.5.40:8080/candidate?size=${rowsPerPage}&page=${paramPage}`
 		axios.get(url).then(({data}) => {
 			// console.log("data", data)
 			setCandidates(data)
@@ -76,7 +76,7 @@ import Spinner from '../../Spinner/Spinner.js';
 		})
 	};
 	const getUser = async (userId) => {
-		return await axios.get(`http://localhost:8080/candidate/${userId}`)
+		return await axios.get(`http://192.168.5.40:8080/candidate/${userId}`)
 	}
 
 	const onhandleView = (userId)=>{

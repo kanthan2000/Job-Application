@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Grid from '@mui/material/Grid';
@@ -6,6 +7,18 @@ import Box from '@mui/material/Box';
 import { Typography } from '@mui/material'
 
 export default function ComboBox() {
+  let [position, setPosition] = useState([])
+
+  useEffect(() => {
+    let url = "http://192.168.5.40:8080/dropDown/position"
+    axios.get(url).then(({data}) => {
+      console.log(data)
+      setPosition(data.data)
+    }).catch(err => {
+      console.log(err)
+    })
+  }, [])
+
   return (
     <Box sx={{
       marginTop: 5,
@@ -20,7 +33,7 @@ export default function ComboBox() {
     <Autocomplete
       disablePortal
       id="combo-box-demo"
-      options={job}
+      options={position}
       sx={{ width: 450 }}
       renderInput={(params) => <TextField {...params} name="job" label="JOB" />}
     />
@@ -28,9 +41,4 @@ export default function ComboBox() {
   </Box>
   );
 }
-const job = [
-    { label: 'API' },
-    { label: 'REACT' },
-    { label: 'AWS' },
-    { label: 'REACT NATIVE' },
-];
+

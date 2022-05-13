@@ -19,7 +19,7 @@ function App() {
 	const [viewData,setViewData] = React.useState([])
 	return (
 		<>
-			 <AppContext.Provider value={{viewData,setViewData}}>
+				<AppContext.Provider value={{viewData,setViewData}}>
 				<Routes>
 					<Route path='/home'  element={<Dashboard />} />
 					<Route path="/About" element={<About />} />
@@ -40,6 +40,3 @@ function App() {
 
 
 export default App;
-
-   
-    

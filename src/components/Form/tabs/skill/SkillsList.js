@@ -57,10 +57,15 @@ export default function CheckboxesTags(props) {
 		const {
 		target: { value },
 		} = event;
-		props.setSkill(
+		setSkill(
 		// On autofill we get a stringified value.
 		typeof value === 'string' ? value.split(',') : value,
 		);
+
+		props.setSkill(
+			// On autofill we get a stringified value.
+			typeof value === 'string' ? value.split(',') : value,
+			);
 	}
 
 
@@ -90,7 +95,7 @@ export default function CheckboxesTags(props) {
 				<MenuItem
 				key={name}
 				value={name}
-				onDragLeave={()=>console.log(name)}
+				// onDragLeave={()=>console.log(name)}
 				// onClick={()=>console.log(name)}
 				style={getStyles(name, skill, theme)}
 				>

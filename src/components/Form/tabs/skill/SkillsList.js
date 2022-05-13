@@ -24,11 +24,12 @@ export default function CheckboxesTags(props) {
 	};
 
   useEffect(() => {
-    let host = process.env.REACT_HOST
-    let url = `${host}/dropDown/skill`
+    // let host = process.env.REACT_HOST
+    // let url = `${host}/dropDown/skill`
+    let url = "http://35.154.117.105:8080/dropDown/skill"
     axios.get(url).then(({data}) => {
       console.log(data)
-      setExperience(data.data)
+      setSkill(data.data)
     }).catch(err => {
       console.log(err)
     })

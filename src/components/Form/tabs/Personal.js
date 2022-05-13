@@ -7,7 +7,6 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Professional from './professional/Professional'
-// import Professional from './professional/';
 import axios from 'axios';
 import Position from './position/Position';
 import Resume from './resume/Resume';
@@ -57,7 +56,7 @@ export default function Personal(props) {
     console.log("form", form)
 	let formData = getFormData(form)
 	console.log(formData)
-	axios.post("http://192.168.5.40:8080/Candidate", formData)
+	axios.post("http://35.154.117.105:8080/Candidate", formData)
 		.then(({data}, msg) => {
 			console.log(data)
 			history("/table")

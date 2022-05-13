@@ -16,8 +16,10 @@ export default function CheckboxesTags() {
   let [qualifications, setQualifications] = useState([])
 
   useEffect(() => {
-    let host = process.env.REACT_HOST
-    let url = `${host}/dropDown/qualification`
+    // let host = process.env.REACT_HOST
+    // let url = `${host}/dropDown/qualification`
+   
+    let url = "http://35.154.117.105:8080/dropDown/qualification"
     axios.get(url).then(({data}) => {
       console.log(data)
       setQualifications(data.data)

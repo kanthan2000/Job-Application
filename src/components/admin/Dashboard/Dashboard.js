@@ -11,7 +11,7 @@ const Dashboard =(props) =>{
    const [cards, setCards] = useState([])
 
    useEffect(() => {
-      axios.get("http://localhost:8080/dashBoard").then(({data}) => {
+      axios.get("http://35.154.117.105:8080/dashBoard").then(({data}) => {
          setCards(data)
       }).catch(err => {
          console.log(err)

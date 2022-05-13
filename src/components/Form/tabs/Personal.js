@@ -7,7 +7,6 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Professional from './professional/Professional'
-// import Professional from './professional/';
 import axios from 'axios';
 import Position from './position/Position';
 import Resume from './resume/Resume';

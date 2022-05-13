@@ -10,7 +10,9 @@ export default function ComboBox() {
   let [position, setPosition] = useState([])
 
   useEffect(() => {
-    let url = "http://192.168.5.40:8080/dropDown/position"
+    // let host = process.env.REACT_HOST
+    // let url = `${host}/dropDown/position`
+    let url = "http://35.154.117.105:8080/dropDown/position"
     axios.get(url).then(({data}) => {
       console.log(data)
       setPosition(data.data)

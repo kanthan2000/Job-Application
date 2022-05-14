@@ -3,6 +3,7 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 
 export default function Qualification(props) {
 	console.log(props.id)
@@ -13,8 +14,6 @@ export default function Qualification(props) {
 		flexDirection: 'column',
 		alignItems: 'center',
 		}} >
-       
-		{props.id !== 0 ? <button onClick={() => props.onClick(props.id)}>X</button> : null}
 			<Grid container spacing={2}>
 				<Grid item xs={12}>
 				<Autocomplete
@@ -35,6 +34,10 @@ export default function Qualification(props) {
 				/>
 				</Grid>
 			</Grid>
+			{props.id !== 0 ? <Button  onClick={() => props.onClick(props.id)} 
+           variant="contained"
+           sx={{ width : 300, mt: 3, mb: 2,userSelect:"none" }}>
+             Click To Romove</Button> : null}
 		</Box>
 	);
 }

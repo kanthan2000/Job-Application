@@ -1,9 +1,9 @@
-import { Button, Grid, TextField, Typography } from '@mui/material'
+import {  Grid, TextField, Typography } from '@mui/material'
 import React, { useState } from 'react';
 import { Autocomplete } from '@mui/material';
 import { Box } from '@mui/material';
 import Stack from '@mui/material/Stack';
-import { format } from "date-fns";
+import Button from '@mui/material/Button';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 
 const Professional = (props) => {
@@ -31,9 +31,6 @@ const Professional = (props) => {
                     mt: 3 ,
                     }} >
                 
-                
-                
-                            {props.id !== 0 ? <button onClick={() => props.onClick(props.id)}>X</button> : null}
             <Grid container spacing={2}>
             <Grid item xs={12}>
                 <Autocomplete options={company}
@@ -87,6 +84,10 @@ const Professional = (props) => {
                 </Stack>
             </Grid>
         </Grid>
+        {props.id !== 0 ? <Button  onClick={() => props.onClick(props.id)} 
+           variant="contained"
+           sx={{ width : 300, mt: 3, mb: 2,userSelect:"none" }}>
+             Click To Romove</Button> : null}
     </Box> 
 </>)
 }

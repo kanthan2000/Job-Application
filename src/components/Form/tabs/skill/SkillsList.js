@@ -91,7 +91,7 @@ export default function CheckboxesTags(props) {
 			multiple
 			value={skill}
 			onChange={handleChange}
-			
+	
 			input={<OutlinedInput label="Name" />}
 			MenuProps={MenuProps}
 			>

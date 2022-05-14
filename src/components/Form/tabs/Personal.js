@@ -69,7 +69,7 @@ export default function Personal(props) {
     const setSkill = (skill) => {
         let data = skill
         console.log(data)
-        skillData.push(data)
+        // skillData.push(data)
     }
     
 
@@ -102,7 +102,7 @@ export default function Personal(props) {
 			qualificationData.push(data)
 		})
 
-        console.log(companyData, qualificationData, roles, names, from, to, collegeNames, degrees, job. skillData)
+        console.log(companyData, qualificationData, roles, names, from, to, collegeNames, degrees, job, skillData)
 		return {
 			firstName: form.get("firstName"),
 			lastName: form.get("lastName"),

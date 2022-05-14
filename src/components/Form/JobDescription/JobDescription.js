@@ -14,9 +14,13 @@ import SkillsList from '../tabs/skill/SkillsList';
 import Eligiblity from './Eligiblity'
 import JobLocation from './JobLocation'
 import { AppContext } from '../../../context';
+import Spinner  from '../../Spinner/Spinner'
+import axios from 'axios'
 const JobDescription = () => {
 	const { positionData} = React.useContext(AppContext)
 	const {ExperienceData} = React.useContext(AppContext)
+	const [dropDown ,setdropDown] = React.useState([])
+	const [Load , setLoad] = React.useState(false)
 	let skillData = []
 
     const setSkill = (skill) => {
@@ -29,8 +33,19 @@ const JobDescription = () => {
 	// const position = (position) => {
 	// 	console.log(position)
 	// }
+	React.useEffect(()=>{
+		setLoad(true)
+		axios.get("http://35.154.117.105:8080/dropDown/skill").then(({data}) => {
+			// console.log("data", data)
+			console.log(data)
+			setLoad(false)
+		}).catch(err => {
+			console.log(err)
+		})
+	},[])
     return(
         <>
+		{Load && <Spinner />}
         <Navbar>
 		<div style={{width:"100",height:"90vh",overflowY:"scroll"}}>
 		<Container component="main" maxWidth='xs' >

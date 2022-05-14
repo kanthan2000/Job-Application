@@ -6,11 +6,13 @@ import { Box } from '@mui/system';
 import axios from 'axios';
 import { FormControl, InputLabel, MenuItem, OutlinedInput, Select, Typography } from '@mui/material';
 
+
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 
 export default function CheckboxesTags(props) {
+
 
 	const ITEM_HEIGHT = 48;
 	const ITEM_PADDING_TOP = 8;
@@ -24,14 +26,17 @@ export default function CheckboxesTags(props) {
 	};
 
   useEffect(() => {
+	
     // let host = process.env.REACT_HOST
     // let url = `${host}/dropDown/skill`
     let url = "http://35.154.117.105:8080/dropDown/skill"
     axios.get(url).then(({data}) => {
       console.log(data)
       setnames(data.data)
+	 
     }).catch(err => {
       console.log(err)
+	 
     })
   }, [])
 
@@ -66,12 +71,15 @@ export default function CheckboxesTags(props) {
 
 
 	return (
-	<Box sx={{
-		marginTop: 5,
-		display: 'flex',
-		flexDirection: 'column',
-		alignItems: 'center',
+	<>
+		
+		<Box sx={{
+			marginTop: 5,
+			display: 'flex',
+			flexDirection: 'column',
+			alignItems: 'center',
 		}} >
+			
 		<Typography sx={{color: "black"}} component="h1" variant="h5">
 			Skills
 		</Typography>
@@ -101,6 +109,7 @@ export default function CheckboxesTags(props) {
 			</Select>
 		</FormControl>
 	</Box>
+	</>
 );
 }
 

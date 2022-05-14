@@ -13,12 +13,27 @@ import Experience from './Experience';
 import SkillsList from '../tabs/skill/SkillsList';
 import Eligiblity from './Eligiblity'
 import JobLocation from './JobLocation'
+import { AppContext } from '../../../context';
 const JobDescription = () => {
+	const { positionData} = React.useContext(AppContext)
+	const {ExperienceData} = React.useContext(AppContext)
+	let skillData = []
+
+    const setSkill = (skill) => {
+        skillData = skill
+        console.log(skillData)
+		console.log(ExperienceData)
+		console.log(positionData)
+		
+    }
+	// const position = (position) => {
+	// 	console.log(position)
+	// }
     return(
         <>
         <Navbar>
-           <div style={{width:"100",height:"90vh",overflowY:"scroll"}}>
-           <Container component="main" maxWidth='xs' >
+		<div style={{width:"100",height:"90vh",overflowY:"scroll"}}>
+		<Container component="main" maxWidth='xs' >
         <CssBaseline />
 					<Box sx={{
 						marginTop: 8,
@@ -32,9 +47,9 @@ const JobDescription = () => {
                         
 						<Grid container spacing={2}>
                         
-                            <Position />
+                            <Position/>
                             <Experience />
-                            <SkillsList />
+                            <SkillsList setSkill={setSkill} />
                             <Eligiblity />
                             <JobLocation  />
                             <Typography sx={{color: "black"}} component="h1" variant="h5">
@@ -61,18 +76,18 @@ const JobDescription = () => {
 									autoComplete="family-name"
 								/>
 							</Grid>	
-                       
+							
                         </Grid>
                         <Button
 						type="submit"
 						fullWidth
 						variant="contained"
 						sx={{ mt: 3, mb: 2 }} > Save </Button>    
-                      </Box>
-                     </Box>  
-             
+						</Box>
+						</Box>  
+				
         </Container>
-           </div>
+			</div>
         </Navbar>
         </>
     )

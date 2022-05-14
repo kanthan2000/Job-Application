@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import { Typography } from '@mui/material'
 import axios from 'axios'
+import { AppContext } from '../../../context';
 
 export default function Experience() {
 
   let [experience, setExperience] = useState([])
+  const{ExperienceData,setExperienceData} = useContext(AppContext)
 
   useEffect(() => {
     // let host = process.env.REACT_HOST
@@ -21,6 +23,9 @@ export default function Experience() {
       console.log(err)
     })
   }, [])
+  const handleExperience = (e) =>{
+    setExperienceData(e.target.value)
+  }
 
   return (
     <Box sx={{
@@ -37,6 +42,7 @@ export default function Experience() {
       disablePortal
       id="combo-box-demo"
       options={experience}
+      onSelect={(e)=>handleExperience(e)}
       sx={{ width: 450 }}
       renderInput={(params) => <TextField {...params} name="experience" label="Years" />}
     />

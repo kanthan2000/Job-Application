@@ -17,9 +17,11 @@ import Panel from "./Form/AddPanel/AddPanel";
 
 function App() {
 	const [viewData,setViewData] = React.useState([])
+	const [positionData,setPositionData] = React.useState()
+	const [ExperienceData,setExperienceData] = React.useState()
 	return (
 		<>
-				<AppContext.Provider value={{viewData,setViewData}}>
+				<AppContext.Provider value={{viewData,setViewData,positionData,setPositionData,ExperienceData,setExperienceData}}>
 				<Routes>
 					<Route path='/home'  element={<Dashboard />} />
 					<Route path="/About" element={<About />} />

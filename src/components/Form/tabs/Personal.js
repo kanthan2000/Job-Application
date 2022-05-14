@@ -56,7 +56,7 @@ export default function Personal(props) {
     console.log("form", form)
 	let formData = getFormData(form)
 	console.log(formData)
-	axios.post("http://35.154.117.105:8080/Candidate", formData)
+	axios.post("http://35.154.117.105:8080/candidate", formData)
 		.then(({data}, msg) => {
 			console.log(data)
 			history("/table")
@@ -64,10 +64,11 @@ export default function Personal(props) {
 			console.log(err)
 		})
 	}
-    let skills = []
+    let skillData = []
 
     const setSkill = (skill) => {
-        skills = skill
+        skillData = skill
+        console.log(skillData)
     }
 
 	const getFormData = (form) => {
@@ -80,7 +81,7 @@ export default function Personal(props) {
 		let collegeNames = form.getAll("collegeName")
 		let degrees = form.getAll("degree")
         let job = form.get("job")
-        let skill = form.getAll("skill")
+        let skill = skillData
 
 		roles.map((_, idx) => {
 			let data = {
@@ -99,7 +100,7 @@ export default function Personal(props) {
 			qualificationData.push(data)
 		})
 
-        console.log(companyData, qualificationData, roles, names, from, to, collegeNames, degrees, job. skills)
+        console.log(companyData, qualificationData, roles, names, from, to, collegeNames, degrees, job,skillData )
 		return {
 			firstName: form.get("firstName"),
 			lastName: form.get("lastName"),
@@ -115,7 +116,7 @@ export default function Personal(props) {
 			company: companyData,
 			qualification: qualificationData,
 			job: form.get("job"),
-			skill: form.getAll("hello") 
+			skill: skillData
 		}
 	}
 
@@ -311,8 +312,8 @@ export default function Personal(props) {
                                     }} >
                                         <p style={{color: "black", fontSize: "1.5rem"}} >
                                             Professional Details
-                                         </p>
-                                       {professionalComponents.map((value, idx) =>  value !== undefined ? <Professional onClick={onRemoveProfessionalHandler} id={idx} key={idx} /> : null)}
+                                        </p>
+                                    {professionalComponents.map((value, idx) =>  value !== undefined ? <Professional onClick={onRemoveProfessionalHandler} id={idx} key={idx} /> : null)}
                                     <Grid container spacing={2}>
                                     <Grid item xs={12}>
                                         <Button
@@ -330,7 +331,7 @@ export default function Personal(props) {
                                         alignItems: 'center',
                                         mt: 3 ,
                                         }}>
-                                             
+                                        
                                         <p style={{color: "black", fontSize: "1.5rem"}} >
                                             Education Details
                                         </p>
@@ -362,7 +363,7 @@ export default function Personal(props) {
                             </p>
                             <Resume />
                         </Box>
-                            <Box sx={{
+                            {/* <Box sx={{
                                 marginTop: 5,
                                 display: 'flex',
                                 flexDirection: 'column',
@@ -376,7 +377,7 @@ export default function Personal(props) {
                                     multiline
                                     rows={2}
                                     />
-                            </Box>
+                            </Box> */}
                         <Button
                             type="submit"
                             fullWidth

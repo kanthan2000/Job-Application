@@ -44,7 +44,7 @@ export default function Personal(props) {
 			setMsg(msg)
 		}else{
 			setError(false)
-			setMsg('Valid field')
+			setMsg('Please Enter The Valid Email')
 		}
 	}
 	
@@ -80,7 +80,7 @@ export default function Personal(props) {
 		let collegeNames = form.getAll("collegeName")
 		let degrees = form.getAll("degree")
         let job = form.get("job")
-        let skill = form.getAll("skill")
+        let skills = form.getAll("skill")
 
 		roles.map((_, idx) => {
 			let data = {
@@ -129,7 +129,7 @@ export default function Personal(props) {
         console.log("clicked", qualificationIdx)
         qualificationIdx = qualificationIdx + 1
         console.log(qualificationComponents, qualificationIdx)
-		setQualificationComponents([...qualificationComponents, qualificationIdx])
+		setQualificationComponents([...qualificationComponents, ++qualificationIdx])
 	}
 
     const onRemoveQualificationHandler = (id) => {

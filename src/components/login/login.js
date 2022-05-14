@@ -47,7 +47,7 @@ const Login = (props) => {
 				"position" : Role
 			}
 			console.log(data)
-			axios.put("http://localhost:8080/login",data).then(response=>{
+			axios.put("http://35.154.117.105:8080/login",data).then(response=>{
 				
 				const { data, status } = response;
 				// console.log(data)

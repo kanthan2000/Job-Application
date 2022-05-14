@@ -23,24 +23,24 @@ export default function CheckboxesTags(props) {
 	},
 	};
 
-  // useEffect(() => {
-  //   // let host = process.env.REACT_HOST
-  //   // let url = `${host}/dropDown/skill`
-  //   let url = "http://35.154.117.105:8080/dropDown/qualification"
-  //   axios.get(url).then(({data}) => {
-  //     console.log(data)
-  //     setnames(data.data)
-  //   }).catch(err => {
-  //     console.log(err)
-  //   })
-  // }, [])
+  useEffect(() => {
+    // let host = process.env.REACT_HOST
+    // let url = `${host}/dropDown/skill`
+    let url = "http://35.154.117.105:8080/dropDown/qualification"
+    axios.get(url).then(({data}) => {
+      console.log(data)
+      setnames(data.data)
+    }).catch(err => {
+      console.log(err)
+    })
+  }, [])
 
-	const names = [
-    'C',
-    'C++',
-    'Java',
-    'React Js'
-	];
+	// const names = [
+    // 'C',
+    // 'C++',
+    // 'Java',
+    // 'React Js'
+	// ];
 
 	function getStyles(name, skill, theme) {
 	return {
@@ -53,7 +53,7 @@ export default function CheckboxesTags(props) {
 
 	const theme = useTheme();
 	const [skill, setSkill] = React.useState([]);
-	// const [names, setnames] = React.useState([]);
+	const [names, setnames] = React.useState([]);
 
 	const handleChange = (e) => {
 		const {
@@ -79,7 +79,7 @@ export default function CheckboxesTags(props) {
 		alignItems: 'center',
 		}} >
 		<Typography sx={{color: "black"}} component="h1" variant="h5">
-			Skills
+		Eligiblity
 		</Typography>
 		<FormControl sx={{ m: 1, width: 450 }}>
         <InputLabel id="demo-multiple-name-label">Skill</InputLabel>

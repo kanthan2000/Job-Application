@@ -79,7 +79,7 @@ export default function CheckboxesTags(props) {
 		alignItems: 'center',
 		}} >
 		<Typography sx={{color: "black"}} component="h1" variant="h5">
-			Skills
+		JobLocation 
 		</Typography>
 		<FormControl sx={{ m: 1, width: 450 }}>
         <InputLabel id="demo-multiple-name-label">Skill</InputLabel>

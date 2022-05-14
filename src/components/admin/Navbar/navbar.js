@@ -91,7 +91,7 @@ const  Navbar = (props) =>{
                     </Link>
                     <Link to="/table">
                         <ListItemButton>
-                            < TableChartIcon /> <ListItemText primary="Employee List" />
+                            < TableChartIcon /> <ListItemText primary="Profile" />
                         </ListItemButton>
                     </Link>
                     {/* <Link to="/navtab">

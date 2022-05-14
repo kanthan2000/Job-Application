@@ -64,27 +64,30 @@ export default function Personal(props) {
 			console.log(err)
 		})
 	}
-    let skills = []
+    let skillData = []
 
     const setSkill = (skill) => {
-        skills = skill
+        let data = skill
+        console.log(data)
+        // skillData.push(data)
     }
+    
 
 	const getFormData = (form) => {
 		let companyData = []
 		let qualificationData = []
-		let roles = form.getAll("role")
+		let roles = form.getAll("roll")
 		let names = form.getAll("currentCompany")
 		let from = form.getAll("fromDate")
 		let to = form.getAll("endDate")
 		let collegeNames = form.getAll("collegeName")
 		let degrees = form.getAll("degree")
         let job = form.get("job")
-        let skills = form.getAll("skill")
+        let skill = skillData
 
 		roles.map((_, idx) => {
 			let data = {
-				role: roles[idx],
+				roll: roles[idx],
 				name: names[idx],
 				from: from[idx],
                 to: to[idx]
@@ -99,7 +102,7 @@ export default function Personal(props) {
 			qualificationData.push(data)
 		})
 
-        console.log(companyData, qualificationData, roles, names, from, to, collegeNames, degrees, job. skills)
+        console.log(companyData, qualificationData, roles, names, from, to, collegeNames, degrees, job, skillData)
 		return {
 			firstName: form.get("firstName"),
 			lastName: form.get("lastName"),
@@ -115,7 +118,7 @@ export default function Personal(props) {
 			company: companyData,
 			qualification: qualificationData,
 			job: form.get("job"),
-			skill: form.getAll("hello") 
+			skill: skillData 
 		}
 	}
 

@@ -35,12 +35,6 @@ export default function CheckboxesTags(props) {
     })
   }, [])
 
-	// const names = [
-    // 'C',
-    // 'C++',
-    // 'Java',
-    // 'React Js'
-	// ];
 
 	function getStyles(name, skill, theme) {
 	return {

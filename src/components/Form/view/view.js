@@ -27,7 +27,7 @@ const View = (props)=>{
                 <p>Email ID :{viewData.email}</p>
                 {/* <p>Gender :{viewData.gender}</p> */}
                 <p>Date Of Brith :{viewData.dob}</p>
-                <p>Status:{viewData.status}</p>
+                {/* <p>Status:{viewData.status}</p> */}
                 <p className="inner-header">Address Details</p>
                 <p>Door No:{viewData.address.doorNo}</p>
                 <p>Pincode :{viewData.address.pincode}</p>

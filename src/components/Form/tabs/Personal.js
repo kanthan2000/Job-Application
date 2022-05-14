@@ -5,7 +5,7 @@ import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, } from '@mui/material/styles';
 import Professional from './professional/Professional'
 import axios from 'axios';
 import Position from './position/Position';
@@ -362,7 +362,7 @@ export default function Personal(props) {
                             </p>
                             <Resume />
                         </Box>
-                            <Box sx={{
+                            {/* <Box sx={{
                                 marginTop: 5,
                                 display: 'flex',
                                 flexDirection: 'column',
@@ -376,7 +376,7 @@ export default function Personal(props) {
                                     multiline
                                     rows={2}
                                     />
-                            </Box>
+                            </Box> */}
                         <Button
                             type="submit"
                             fullWidth

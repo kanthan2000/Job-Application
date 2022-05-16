@@ -27,7 +27,7 @@ export default function Personal(props) {
 	let [msg, setMsg] = React.useState("")
 
 	let emailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
-	let numberPattern = /[0-9]/
+	let numberPattern = /@"^[0-9]{10}$"/;
 
     const [professionalComponents, setProfessionalComponents] = React.useState([professionalIdx])
 	const [qualificationComponents, setQualificationComponents] = React.useState([qualificationIdx])
@@ -44,7 +44,7 @@ export default function Personal(props) {
 			setMsg(msg)
 		}else{
 			setError(false)
-			setMsg('Please Enter The Valid Email')
+			setMsg('Please Enter The Valid Field')
 		}
 	}
 	
@@ -64,14 +64,11 @@ export default function Personal(props) {
 			console.log(err)
 		})
 	}
-    let skillData = []
+    let skills = []
 
     const setSkill = (skill) => {
-        let data = skill
-        console.log(data)
-        // skillData.push(data)
+        skills = skill
     }
-    
 
 	const getFormData = (form) => {
 		let companyData = []
@@ -83,7 +80,7 @@ export default function Personal(props) {
 		let collegeNames = form.getAll("collegeName")
 		let degrees = form.getAll("degree")
         let job = form.get("job")
-        let skill = skillData
+        let skills = form.getAll("skill")
 
 		roles.map((_, idx) => {
 			let data = {
@@ -102,13 +99,14 @@ export default function Personal(props) {
 			qualificationData.push(data)
 		})
 
-        console.log(companyData, qualificationData, roles, names, from, to, collegeNames, degrees, job, skillData)
+        console.log(companyData, qualificationData, roles, names, from, to, collegeNames, degrees, job. skills)
 		return {
 			firstName: form.get("firstName"),
 			lastName: form.get("lastName"),
 			dob: form.get("dob"),
 			email: form.get("email"),
 			phone: form.get("phoneNumber"),
+            linkedIn: form.get("linkedIn"),
 			address: {
 					doorNo: form.get("doorNo"),
 					street: form.get("street"),
@@ -118,7 +116,7 @@ export default function Personal(props) {
 			company: companyData,
 			qualification: qualificationData,
 			job: form.get("job"),
-			skill: skillData 
+			skill: form.getAll("hello") 
 		}
 	}
 
@@ -248,7 +246,7 @@ export default function Personal(props) {
                                         name="LinkedIn"
                                         label="LinkedIn"
                                         type="text"
-                                        id="Linked"
+                                        id="LinkedIn"
                                         autoComplete="Linked"
                                         />
                                 </Grid>

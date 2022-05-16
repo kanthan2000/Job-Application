@@ -113,7 +113,7 @@ export default function Personal(props) {
 			company: companyData,
 			qualification: qualificationData,
 			job: form.get("job"),
-			skill: form.getAll("hello") 
+			skill: skillData
 		}
 	}
 

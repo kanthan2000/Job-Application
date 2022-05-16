@@ -26,7 +26,7 @@ export default function CheckboxesTags(props) {
   useEffect(() => {
     // let host = process.env.REACT_HOST
     // let url = `${host}/dropDown/skill`
-    let url = "http://35.154.117.105:8080/dropDown/qualification"
+    let url = "http://localhost:8080/dropDown/qualification"
     axios.get(url).then(({data}) => {
       console.log(data)
       setnames(data.data)
@@ -52,19 +52,19 @@ export default function CheckboxesTags(props) {
 	}
 
 	const theme = useTheme();
-	const [skill, setSkill] = React.useState([]);
+	const [Eligiblity, setEligiblity] = React.useState([]);
 	const [names, setnames] = React.useState([]);
 
 	const handleChange = (e) => {
 		const {
 		target: { value },
 		} = e;
-		setSkill(
+		setEligiblity(
 		// On autofill we get a stringified value.
 		typeof value === 'string' ? value.split(',') : value,
 		);
 
-		props.setSkill(
+		props.setEligiblity(
 			// On autofill we get a stringified value.
 			typeof value === 'string' ? value.split(',') : value,
 			);
@@ -82,13 +82,13 @@ export default function CheckboxesTags(props) {
 		Eligiblity
 		</Typography>
 		<FormControl sx={{ m: 1, width: 450 }}>
-        <InputLabel id="demo-multiple-name-label">Skill</InputLabel>
+        <InputLabel id="demo-multiple-name-label">Eligiblity</InputLabel>
 			<Select
 			labelId="demo-multiple-name-label"
 			id="demo-multiple-name"
 			multiple
-			value={skill}
-			onChange={(e)=>handleChange(e.target.value)}
+			value={Eligiblity}
+			onChange={(e)=>handleChange(e)}
 			
 			input={<OutlinedInput label="Name" />}
 			MenuProps={MenuProps}
@@ -99,7 +99,7 @@ export default function CheckboxesTags(props) {
 				value={name}
 				// onDragLeave={()=>console.log(name)}
 				// onClick={()=>console.log(name)}
-				style={getStyles(name, skill, theme)}
+				style={getStyles(name,Eligiblity,theme)}
 				>
 				{name}
 				</MenuItem>

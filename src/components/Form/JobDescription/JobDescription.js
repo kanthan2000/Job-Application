@@ -27,7 +27,9 @@ const JobDescription = () => {
 	const {ExperienceData} = React.useContext(AppContext)
 	const [dropDown ,setdropDown] = React.useState([])
 	const [Load , setLoad] = React.useState(false)
-	let skillData = []
+	const [EligiblityData , setEligiblityData] = React.useState()
+	const [skillData ,setskillData] = React.useState([])
+	const [JobLocationData ,setJobLocationData] = React.useState([])
 
 	const [responseComponents, setResponseComponents] = React.useState([responseIdx])
     
@@ -48,18 +50,26 @@ const JobDescription = () => {
     }
 
     const setSkill = (skill) => {
-        skillData = skill
+        setskillData(skill)
         console.log(skillData)
 		console.log(ExperienceData)
 		console.log(positionData)
-		
+		console.log(EligiblityData)
     }
+
+	const setEligiblity = (eligiblity) => {
+			setEligiblityData(eligiblity)
+	}
+	const setJobLoction = (JobLoction)=>{
+		console.log(JobLoction)
+	}
+
 	// const position = (position) => {
 	// 	console.log(position)
 	// }
 	React.useEffect(()=>{
-	
-		axios.get("http://35.154.117.105:8080/dropDown/skill").then(({data}) => {
+		setLoad(true)
+		axios.get("http://localhost:8080/dropDown/skill").then(({data}) => {
 			// console.log("data", data)
 			console.log(data)
 			setLoad(false)
@@ -89,8 +99,8 @@ const JobDescription = () => {
                             <Position/>
                             <Experience />
                             <SkillsList setSkill={setSkill} />
-                            <Eligiblity />
-                            <JobLocation  />
+                            <Eligiblity setEligiblity={setEligiblity} />
+                            <JobLocation  setJobLoction={setJobLoction}/>
                             <Typography sx={{color: "black"}} component="h1" variant="h5">
 							Salary
 						</Typography>
@@ -102,7 +112,7 @@ const JobDescription = () => {
 									fullWidth
 									id="firstName"
 									label="From"
-									focused
+							
 								/>
 							</Grid>
 							<Grid item xs={4}>

@@ -29,7 +29,7 @@ export default function CheckboxesTags(props) {
 	
     // let host = process.env.REACT_HOST
     // let url = `${host}/dropDown/skill`
-    let url = "http://35.154.117.105:8080/dropDown/skill"
+    let url = "http://localhost:8080/dropDown/skill"
     axios.get(url).then(({data}) => {
       console.log(data)
       setnames(data.data)
@@ -63,10 +63,7 @@ export default function CheckboxesTags(props) {
 		typeof value === 'string' ? value.split(',') : value,
 		);
 
-		props.setSkill(
-			// On autofill we get a stringified value.
-			typeof value === 'string' ? value.split(',') : value,
-			);
+		props.setSkill(typeof value === 'string' ? value.split(',') : value);
 	}
 
 

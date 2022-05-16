@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import Grid from '@mui/material/Grid';
-import LoginSpinner from '../Spinner/loginSpinner';
+import Spinner from '../Spinner/Spinner';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
@@ -65,7 +65,7 @@ const Login = (props) => {
 	}
     return(
         <>
-		{load && <LoginSpinner />}
+		{load && <Spinner/>}
         <Grid container spacing={2}>
 			<Grid item xs={6} md={7} sx={{
 				backgroundImage: 'url(https://images.unsplash.com/photo-1648137839668-f5b4c8a11c15?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY0OTkzMzQ1NA&ixlib=rb-1.2.1&q=80&w=1080)',

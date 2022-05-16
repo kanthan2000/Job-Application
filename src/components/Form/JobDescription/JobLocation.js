@@ -26,7 +26,7 @@ export default function CheckboxesTags(props) {
   useEffect(() => {
     // let host = process.env.REACT_HOST
     // let url = `${host}/dropDown/skill`
-    let url = "http://35.154.117.105:8080/dropDown/location"
+    let url = "http://localhost:8080/dropDown/location"
     axios.get(url).then(({data}) => {
       console.log(data)
       setnames(data.data)
@@ -52,19 +52,19 @@ export default function CheckboxesTags(props) {
 	}
 
 	const theme = useTheme();
-	const [skill, setSkill] = React.useState([]);
+	const [JobLocation, setJobLocation] = React.useState([]);
 	const [names, setnames] = React.useState([]);
 
-	const handleChange = (event) => {
+	const handleChange = (e) => {
 		const {
 		target: { value },
-		} = event;
-		setSkill(
+		} = e;
+		setJobLocation(
 		// On autofill we get a stringified value.
 		typeof value === 'string' ? value.split(',') : value,
 		);
 
-		props.setSkill(
+		props.setJobLoction(
 			// On autofill we get a stringified value.
 			typeof value === 'string' ? value.split(',') : value,
 			);
@@ -82,13 +82,13 @@ export default function CheckboxesTags(props) {
 		JobLocation 
 		</Typography>
 		<FormControl sx={{ m: 1, width: 450 }}>
-        <InputLabel id="demo-multiple-name-label">Skill</InputLabel>
+        <InputLabel id="demo-multiple-name-label">JobLocation</InputLabel>
 			<Select
 			labelId="demo-multiple-name-label"
 			id="demo-multiple-name"
 			multiple
-			value={skill}
-			onChange={handleChange}
+			value={JobLocation}
+			onChange={(e)=>handleChange(e)}
 			
 			input={<OutlinedInput label="Name" />}
 			MenuProps={MenuProps}
@@ -99,7 +99,7 @@ export default function CheckboxesTags(props) {
 				value={name}
 				// onDragLeave={()=>console.log(name)}
 				// onClick={()=>console.log(name)}
-				style={getStyles(name, skill, theme)}
+				style={getStyles(name, JobLocation, theme)}
 				>
 				{name}
 				</MenuItem>

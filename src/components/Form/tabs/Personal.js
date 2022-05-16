@@ -56,7 +56,7 @@ export default function Personal(props) {
     console.log("form", form)
 	let formData = getFormData(form)
 	console.log(formData)
-	axios.post("http://35.154.117.105:8080/candidate", formData)
+	axios.post("http://localhost:8080/candidate", formData)
 		.then(({data}, msg) => {
 			console.log(data)
 			history("/table")
@@ -64,12 +64,10 @@ export default function Personal(props) {
 			console.log(err)
 		})
 	}
-    let skillData = []
+    let [skillData, setSkillData] = React.useState([])
 
     const setSkill = (skill) => {
-        let data = skill
-        console.log(data)
-        // skillData.push(data)
+        setSkillData(skill)
     }
     
 
@@ -82,8 +80,6 @@ export default function Personal(props) {
 		let to = form.getAll("endDate")
 		let collegeNames = form.getAll("collegeName")
 		let degrees = form.getAll("degree")
-        let job = form.get("job")
-        let skill = skillData
 
 		roles.map((_, idx) => {
 			let data = {
@@ -101,8 +97,7 @@ export default function Personal(props) {
 			}
 			qualificationData.push(data)
 		})
-
-        console.log(companyData, qualificationData, roles, names, from, to, collegeNames, degrees, job, skillData)
+        
 		return {
 			firstName: form.get("firstName"),
 			lastName: form.get("lastName"),

@@ -13,7 +13,7 @@ const Dashboard =(props) =>{
 
    useEffect(() => {
       setLoad(true)
-      axios.get("http://35.154.117.105:8080/dashBoard").then(({data}) => {
+      axios.get("http://localhost:8080/dashBoard").then(({data}) => {
          setCards(data)
          setLoad(false)
       }).catch(err => {

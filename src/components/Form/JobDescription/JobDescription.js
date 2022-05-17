@@ -28,7 +28,7 @@ const JobDescription = () => {
 	const {ExperienceData} = React.useContext(AppContext)
 	const [dropDown ,setdropDown] = React.useState([])
 	const [Load , setLoad] = React.useState(false)
-	const [EligiblityData , setEligiblityData] = React.useState()
+	const [EligiblityData , setEligiblityData] = React.useState([])
 	const [skillData ,setskillData] = React.useState([])
 	const [JobLocationData ,setJobLocationData] = React.useState([])
 
@@ -68,6 +68,13 @@ const JobDescription = () => {
 	// const position = (position) => {
 	// 	console.log(position)
 	// }
+		const handleFirstName = (event) =>{
+			console.log(event.target.value)
+		}
+		const handleLastName = (event) =>{
+			console.log(event.target.value)
+		}
+
 	React.useEffect(()=>{
 		setLoad(true)
 		axios.get("http://localhost:8080/dropDown/skill").then(({data}) => {
@@ -113,7 +120,7 @@ const JobDescription = () => {
 									fullWidth
 									id="firstName"
 									label="From"
-							
+							        onChange={handleFirstName}
 								/>
 							</Grid>
 							<Grid item xs={4}>
@@ -124,6 +131,7 @@ const JobDescription = () => {
 									label="To"
 									name="lastName"
 									autoComplete="family-name"
+									onChange={handleLastName}
 								/>
 							</Grid>	
 							</Grid >

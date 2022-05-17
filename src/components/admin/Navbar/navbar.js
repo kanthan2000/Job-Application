@@ -22,6 +22,7 @@ import ReportIcon from '@mui/icons-material/Report';
 import LogoutIcon from '@mui/icons-material/Logout';
 import WorkIcon from '@mui/icons-material/Work';
 import AddBoxIcon from '@mui/icons-material/AddBox';
+import PanelTable from "../../Form/AddPanel/PanelTable";
 const  Navbar = (props) =>{
         const[profile , setprofile] = React.useState(false)
     
@@ -104,7 +105,7 @@ const  Navbar = (props) =>{
                             <WorkIcon/> <ListItemText primary="Job Description" />
                         </ListItemButton>
                     </Link>
-                    <Link to="/addpanel">
+                    <Link to="/paneltable">
                         <ListItemButton>
                             <AddBoxIcon /> <ListItemText primary="Add Panel" />
                         </ListItemButton>

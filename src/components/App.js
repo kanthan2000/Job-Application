@@ -14,7 +14,7 @@ import React from 'react'
 import Update from "./Form/Update/Update";
 import JobDescription from "./Form/JobDescription/JobDescription";
 import Panel from "./Form/AddPanel/AddPanel";
-
+import PanelTable from './Form/AddPanel/PanelTable';
 function App() {
 	const [viewData,setViewData] = React.useState([])
 	const [positionData,setPositionData] = React.useState()
@@ -34,6 +34,7 @@ function App() {
 					<Route path="/update" element={<Update/>} />
 					<Route path="/jobDescription" element={<JobDescription/>} />
 					<Route path="/addpanel" element={<Panel />} />
+					<Route path="/paneltable" element={<PanelTable />} />
 				</Routes>
 				</AppContext.Provider>
 		</>

@@ -19,6 +19,7 @@ export default function Experience() {
     axios.get(url).then(({data}) => {
       console.log(data)
       setExperience(data.data)
+      console.log(data.data)
     }).catch(err => {
       console.log(err)
     })

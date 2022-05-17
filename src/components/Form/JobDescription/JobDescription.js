@@ -12,6 +12,7 @@ import Position from "../tabs/position/Position";
 import Experience from './Experience';
 import SkillsList from '../tabs/skill/SkillsList';
 import Eligiblity from './Eligiblity'
+import UserName from './UserName'
 import JobLocation from './JobLocation'
 import { AppContext } from '../../../context';
 import Spinner  from '../../Spinner/Spinner'
@@ -51,10 +52,10 @@ const JobDescription = () => {
 
     const setSkill = (skill) => {
         setskillData(skill)
-        console.log(skillData)
-		console.log(ExperienceData)
-		console.log(positionData)
-		console.log(EligiblityData)
+        console.log(skillData,"skilldata")
+		console.log(ExperienceData,"Experience data")
+		console.log(positionData,"position data")
+		console.log(EligiblityData,"eligi data")
     }
 
 	const setEligiblity = (eligiblity) => {
@@ -95,7 +96,7 @@ const JobDescription = () => {
 						<Box component="form" noValidate  sx={{ mt: 3 }}>
                         
 						<Grid container spacing={2}>
-                        
+                            <UserName />
                             <Position/>
                             <Experience />
                             <SkillsList setSkill={setSkill} />

@@ -12,6 +12,7 @@ import Position from "../tabs/position/Position";
 import Experience from './Experience';
 import SkillsList from '../tabs/skill/SkillsList';
 import Eligiblity from './Eligiblity'
+import UserName from './UserName'
 import JobLocation from './JobLocation'
 import { AppContext } from '../../../context';
 import Spinner  from '../../Spinner/Spinner'
@@ -27,7 +28,7 @@ const JobDescription = () => {
 	const {ExperienceData} = React.useContext(AppContext)
 	const [dropDown ,setdropDown] = React.useState([])
 	const [Load , setLoad] = React.useState(false)
-	const [EligiblityData , setEligiblityData] = React.useState()
+	const [EligiblityData , setEligiblityData] = React.useState([])
 	const [skillData ,setskillData] = React.useState([])
 	const [JobLocationData ,setJobLocationData] = React.useState([])
 
@@ -51,10 +52,10 @@ const JobDescription = () => {
 
     const setSkill = (skill) => {
         setskillData(skill)
-        console.log(skillData)
-		console.log(ExperienceData)
-		console.log(positionData)
-		console.log(EligiblityData)
+        console.log(skillData,"skilldata")
+		console.log(ExperienceData,"Experience data")
+		console.log(positionData,"position data")
+		console.log(EligiblityData,"eligi data")
     }
 
 	const setEligiblity = (eligiblity) => {
@@ -67,6 +68,13 @@ const JobDescription = () => {
 	// const position = (position) => {
 	// 	console.log(position)
 	// }
+		const handleFirstName = (event) =>{
+			console.log(event.target.value)
+		}
+		const handleLastName = (event) =>{
+			console.log(event.target.value)
+		}
+
 	React.useEffect(()=>{
 		setLoad(true)
 		axios.get("http://192.168.5.40:8080/dropDown/skill").then(({data}) => {
@@ -95,7 +103,7 @@ const JobDescription = () => {
 						<Box component="form" noValidate  sx={{ mt: 3 }}>
                         
 						<Grid container spacing={2}>
-                        
+                            <UserName />
                             <Position/>
                             <Experience />
                             <SkillsList setSkill={setSkill} />
@@ -112,7 +120,7 @@ const JobDescription = () => {
 									fullWidth
 									id="firstName"
 									label="From"
-							
+							        onChange={handleFirstName}
 								/>
 							</Grid>
 							<Grid item xs={4}>
@@ -123,6 +131,7 @@ const JobDescription = () => {
 									label="To"
 									name="lastName"
 									autoComplete="family-name"
+									onChange={handleLastName}
 								/>
 							</Grid>	
 							</Grid >

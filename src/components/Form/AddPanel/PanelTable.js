@@ -45,7 +45,7 @@ import Spinner from '../../Spinner/Spinner.js';
 			})
 		},[])
 		React.useEffect(() => {
-			axios.get("http://localhost:8080/pnaelCount").then(({data}) => {
+			axios.get("http://192.168.5.40:8080/panelCount").then(({data}) => {
 				let count = data.count
 				let pages = Math.ceil(count / rowsPerPage)
 				setPages(pages)
@@ -69,11 +69,11 @@ import Spinner from '../../Spinner/Spinner.js';
 		setLoad(true)
 		setPage(currentPage);
 		let paramPage = currentPage - 1
-		let url = `http://localhost:8080/panel?size=${rowsPerPage}&page=${paramPage}`
+		let url = `http://192.168.5.40:8080/panel?size=${rowsPerPage}&page=${paramPage}`
 		loadUsers(url)
 	};
 	const getUser = async (userId) => {
-		return await axios.get(`http://localhost:8080/panel/${userId}`)
+		return await axios.get(`http://192.168.5.40:8080/panel/${userId}`)
 	}
 
 	const onhandleView = (userId)=>{
@@ -88,9 +88,9 @@ import Spinner from '../../Spinner/Spinner.js';
 	const onhandleDelete = async (userId)=>{
 		console.log(userId)
 		setLoad(true)
-		let user = await axios.delete(`http://localhost:8080/cae/?id=${userId}`)
+		let user = await axios.delete(`http://192.168.5.40:8080/paneldelete/?id=${userId}`)
 		console.log(user, candidates)
-		let url = `http://localhost:8080/candidate?size=${rowsPerPage}&page=${0}`
+		let url = `http://192.168.5.40:8080/panel?size=${rowsPerPage}&page=${0}`
 		loadUsers(url)
 	}
 	const onhandleEdit = (userId)=>{

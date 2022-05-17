@@ -69,7 +69,7 @@ const JobDescription = () => {
 	// }
 	React.useEffect(()=>{
 		setLoad(true)
-		axios.get("http://localhost:8080/dropDown/skill").then(({data}) => {
+		axios.get("http://192.168.5.40:8080/dropDown/skill").then(({data}) => {
 			// console.log("data", data)
 			console.log(data)
 			setLoad(false)

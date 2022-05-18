@@ -34,28 +34,28 @@ const JobDescription = () => {
 
 	const [responseComponents, setResponseComponents] = React.useState([responseIdx])
     
-    const renderResponseForm= () => {
-        console.log("clicked", responseIdx)
+    const renderResponseForm= (event) => {
+        // console.log("clicked", responseIdx)
         responseIdx = responseIdx + 1
-        console.log( responseComponents,  responseIdx)
+        // console.log( responseComponents,  responseIdx)
 		setResponseComponents([... responseComponents, ++ responseIdx])
 	}
 	
     const onRemoveResponseHandler = (id) => {
-        console.log("clicked", id)
+        // console.log("clicked", id)
 
         let responses = responseComponents
         responses[id] = undefined
-        console.log(responses)
+        // console.log(responses)
         setResponseComponents([...responses])
     }
 
     const setSkill = (skill) => {
         setskillData(skill)
-        console.log(skillData,"skilldata")
-		console.log(ExperienceData,"Experience data")
-		console.log(positionData,"position data")
-		console.log(EligiblityData,"eligi data")
+        // console.log(skillData,"skilldata")
+		// console.log(ExperienceData,"Experience data")
+		// console.log(positionData,"position data")
+		// console.log(EligiblityData,"eligi data")
     }
 
 	const setEligiblity = (eligiblity) => {
@@ -79,7 +79,7 @@ const JobDescription = () => {
 		setLoad(true)
 		axios.get("http://localhost:8080/dropDown/skill").then(({data}) => {
 			// console.log("data", data)
-			console.log(data)
+			// console.log(data)
 			setLoad(false)
 		}).catch(err => {
 			console.log(err)
@@ -120,7 +120,7 @@ const JobDescription = () => {
 									fullWidth
 									id="firstName"
 									label="From"
-							        onChange={handleFirstName}
+									onChange={handleFirstName}
 								/>
 							</Grid>
 							<Grid item xs={4}>

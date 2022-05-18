@@ -16,7 +16,7 @@ export default function ComboBox() {
     // let url = `${host}/dropDown/position`
     let url = "http://localhost:8080/dropDown/position"
     axios.get(url).then(({data}) => {
-      console.log(data)
+      // console.log(data)
       setPosition(data.data)
     }).catch(err => {
       console.log(err)

@@ -17,9 +17,9 @@ export default function Experience() {
     // let url = `${host}/dropDown/experience`
     let url = "http://localhost:8080/dropDown/experience"
     axios.get(url).then(({data}) => {
-      console.log(data)
+      // console.log(data)
       setExperience(data.data)
-      console.log(data.data)
+      // console.log(data.data)
     }).catch(err => {
       console.log(err)
     })

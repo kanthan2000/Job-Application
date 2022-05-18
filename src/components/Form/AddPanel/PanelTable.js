@@ -36,7 +36,7 @@ import Spinner from '../../Spinner/Spinner.js';
 		
 	React.useEffect( ()=> {
 			handleChangePage(1)
-			axios.get("http://192.168.5.40:8080/panel").then(response=>{
+			axios.get("http://localhost:8080/panel").then(response=>{
 			console.log(response)
 			// response.data.map(user => console.log(user.id))
 			setData(response.data)
@@ -45,7 +45,7 @@ import Spinner from '../../Spinner/Spinner.js';
 			})
 		},[])
 		React.useEffect(() => {
-			axios.get("http://localhost:8080/pnaelCount").then(({data}) => {
+			axios.get("http://localhost:8080/panelCount").then(({data}) => {
 				let count = data.count
 				let pages = Math.ceil(count / rowsPerPage)
 				setPages(pages)
@@ -58,6 +58,7 @@ import Spinner from '../../Spinner/Spinner.js';
 	const loadUsers = (url) => {
 		axios.get(url).then(({data}) => {
 			// console.log("data", data)
+			console.log(data)
 			setCandidates(data)
 			setLoad(false)
 		}).catch(err => {
@@ -107,8 +108,8 @@ import Spinner from '../../Spinner/Spinner.js';
 	}
 const columns = [
 	{ field: 'firstName', headerName: 'Name' },
-	{ field: 'job', headerName: 'Job' },
-	{ field: 'phoneNumber', headerName: 'Phone Number',width:200 },
+	{ field: 'email', headerName: 'Email' ,width:200},
+	{ field: 'department', headerName: 'Department',width:200 },
 	{
 		field: "edit",
 		headerName: "Edit",

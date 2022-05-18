@@ -8,9 +8,20 @@ import Button from '@mui/material/Button';
 
 
 export default function Responsiblities(props) {
-	console.log(props.id)
-
-   
+  const [responseData ,setResponseData] = React.useState([])
+	// console.log(props.id)
+  const handleResponsiblities = (event) =>{
+    console.log(responseData)
+    setResponseData(event.target.value)
+  }
+  // let ResponsiblitiesArry = []
+  // responseData.map((_,idx)=>{
+  //   let data = {
+  //     Respon : responseData[idx]
+  //   }
+  //   ResponsiblitiesArry.push(data)
+  // })
+  // console.log(ResponsiblitiesArry)
   return (
     <Box sx={{
         marginTop: 5,
@@ -22,7 +33,7 @@ export default function Responsiblities(props) {
         
 			<Grid item xs={12}>
                  <TextField
-                 
+                     onChange={handleResponsiblities}
                      sx={{ width: 450 }}
                     type="text"
                     id="responsiblities"

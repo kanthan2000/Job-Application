@@ -28,7 +28,7 @@ export default function CheckboxesTags(props) {
     // let url = `${host}/dropDown/skill`
     let url = "http://localhost:8080/dropDown/location"
     axios.get(url).then(({data}) => {
-      console.log(data)
+    //   console.log(data)
       setnames(data.data)
     }).catch(err => {
       console.log(err)

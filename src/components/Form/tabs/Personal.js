@@ -14,7 +14,6 @@ import SkillsList from './skill/SkillsList';
 import Qualification from './qualification/Qualification';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Stack from '@mui/material/Stack';
-import { Formik, Form } from 'formik';
 
 const theme = createTheme();
 let professionalIdx = 0
@@ -26,8 +25,12 @@ export default function Personal(props) {
 	let [error, setError] = React.useState(false)
 	let [msg, setMsg] = React.useState("")
 
+    
+	let [error1, setError1] = React.useState(false)
+	let [msg1, setMsg1] = React.useState("")
+
 	let emailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
-	let numberPattern = /@"^[0-9]{10}$"/;
+	let numberPattern = /^[0-9\b]+$/;
 
     const [professionalComponents, setProfessionalComponents] = React.useState([professionalIdx])
 	const [qualificationComponents, setQualificationComponents] = React.useState([qualificationIdx])
@@ -35,7 +38,7 @@ export default function Personal(props) {
 	const history = useNavigate()
 
 
-	function validate(value, pattern, msg){  
+	function validateEmail(value, pattern, msg){  
 		if (!value) {
 			setError(true)
 			setMsg('Required')
@@ -48,6 +51,23 @@ export default function Personal(props) {
 		}
 	}
 	
+    function validatePhone(value, pattern, msg){
+        if(!value){
+            setError1(true)
+            setMsg1('Required')
+        }
+        else if(pattern.test(value)){
+            setError1(false)
+            if(value.length != 10){
+                setError1(false)
+                setMsg1('Please Enter The Valid Number')
+            }else{
+                
+                setMsg1('Valid')
+            }
+        }
+
+    }
     const onclickSave = () => {
     }
 	const handleSubmit = (event) => {
@@ -151,17 +171,7 @@ export default function Personal(props) {
 	return (
 		<Container component="main" maxWidth="xs">
 			<CssBaseline />
-			<Formik
-				initialValues={{
-					username: '',
-					email: '',
-				}}
-				onSubmit={values => {
-					// same shape as initial values
-					console.log(values);
-				}}
-				>
-				{({ errors, touched, validateField, validateForm }) => (
+		
                 <>
 					<Box sx={{
 						marginTop: 8,
@@ -213,7 +223,7 @@ export default function Personal(props) {
                                 <Grid item xs={12}>
                                     <TextField
                                         required
-                                        onChange={(e) => validate(e.target.value, emailPattern, 'Invalid email address')}
+                                        onChange={(e) => validateEmail(e.target.value, emailPattern, 'Invalid email address')}
                                         fullWidth
                                         type="email"
                                         id="email"
@@ -226,15 +236,17 @@ export default function Personal(props) {
 							
                                 <Grid item xs={12}>
                                     <TextField
-                                    onChange={(e) => validate(e.target.value, numberPattern, 'Invalid Number')}
+                                    onChange={(e) => validatePhone(e.target.value, numberPattern, 'Enter Number Only')}
                                     required
                                     fullWidth
                                     name="phoneNumber"
                                     label="Phone Number"
-                                    type="number"
+                                    type="text"
                                     id="phonenumber"
                                     autoComplete="phone"
                                     />
+                                    
+                                    {!error1 && <div>{msg1}</div>}
                                 </Grid>
                                 <Grid item xs={21}>
                                     <TextField
@@ -384,9 +396,6 @@ export default function Personal(props) {
 						</Box>
 					</Box>
                 </>
-		)}
-			</Formik>
 		</Container>
-	// </ThemeProvider>
 	);
 }

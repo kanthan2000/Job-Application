@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { useContext } from 'react';
 import Grid from '@mui/material/Grid';
 import Spinner from '../Spinner/Spinner';
 import Box from '@mui/material/Box';
@@ -11,15 +12,18 @@ import Link from '@mui/material/Link';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import { Autocomplete } from '@mui/material';
+import { AppContext } from '../../context';
 
 const role = [
 	{ label :'admin'},
 	{ label :'hr'},
 	{ label :'employee'},
 	{ label :'panel'},
+	{label : 'client'}
 ];
 
 const Login = (props) => {
+	const{loginpositionData,setloginPositionData} = useContext(AppContext)
     const [Role , setRole] = useState([])
 	const [load, setLoad] = useState(false)
 	const [username ,setusername] = useState("")
@@ -47,16 +51,21 @@ const Login = (props) => {
 				"position" : Role
 			}
 			console.log(data)
-			axios.put("http://35.154.117.105:8080/login",data).then(response=>{
+			axios.put("http://localhost:8080/login",data).then(response=>{
 				
 				const { data, status } = response;
-				// console.log(data)
+				setloginPositionData(data.msg)
+				console.log(loginpositionData)
 				if(data.msg === "admin"){
 					history("/home")
 				}
 				if(data.msg === "employee"){
 					// history("/home")
-					alert("employee")
+					alert(data.msg)
+				}
+				if(data.msg === "client"){
+					history("/home")
+					// alert(data.msg)
 				}
 			}).catch(({response}) => {
 				alert(response.data.msg)

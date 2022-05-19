@@ -15,13 +15,21 @@ import Update from "./Form/Update/Update";
 import JobDescription from "./Form/JobDescription/JobDescription";
 import Panel from "./Form/AddPanel/AddPanel";
 import PanelTable from './Form/AddPanel/PanelTable';
+import Status from '../components/admin/Dashboard/Statustable'
 function App() {
 	const [viewData,setViewData] = React.useState([])
 	const [positionData,setPositionData] = React.useState()
 	const [ExperienceData,setExperienceData] = React.useState()
+	const [loginpositionData,setloginPositionData] = React.useState("")
+	const [statusData , setStatusData] = React.useState([])
 	return (
 		<>
-				<AppContext.Provider value={{viewData,setViewData,positionData,setPositionData,ExperienceData,setExperienceData}}>
+				<AppContext.Provider value={{viewData,setViewData,
+											positionData,setPositionData,
+											ExperienceData,setExperienceData,
+											loginpositionData,setloginPositionData,
+											statusData , setStatusData
+											}}>
 				<Routes>
 					<Route path='/home'  element={<Dashboard />} />
 					<Route path="/About" element={<About />} />
@@ -35,6 +43,7 @@ function App() {
 					<Route path="/jobDescription" element={<JobDescription/>} />
 					<Route path="/addpanel" element={<Panel />} />
 					<Route path="/paneltable" element={<PanelTable />} />
+					<Route path="/status" element={<Status />} />
 				</Routes>
 				</AppContext.Provider>
 		</>

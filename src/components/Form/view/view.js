@@ -26,7 +26,7 @@ const onhandleRoll = (e) =>{
     setStatus(e.target.value)
     setId(viewData.id)   
 }
-axios.post(` http://35.154.117.105:8080/candidate/${status}/${Id}`).then((response)=>{
+axios.post(` http://localhost:8080/candidate/${Id}/${status}`).then((response)=>{
     console.log(response.data.msg)
     alert(response.data.msg)
 }).catch((response)=>{

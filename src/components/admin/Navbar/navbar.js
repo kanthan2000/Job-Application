@@ -23,8 +23,12 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import WorkIcon from '@mui/icons-material/Work';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import PanelTable from "../../Form/AddPanel/PanelTable";
+import { useContext } from "react";
+import { AppContext } from "../../../context";
 const  Navbar = (props) =>{
         const[profile , setprofile] = React.useState(false)
+        const { loginpositionData} = useContext(AppContext)
+        console.log(loginpositionData)
     
     let name = props.name
     let imgStyle =  {
@@ -42,6 +46,59 @@ const  Navbar = (props) =>{
     const onclickprofile = (event) =>{
         console.log("clicked")
         setprofile(true)
+    }
+    const isAdmim = () =>{
+        return(
+                <>
+                        <Link to="/home">
+                        <ListItemButton>
+                            <DashboardCustomizeIcon /> <ListItemText primary="Dashboard" />
+                        </ListItemButton>
+                    </Link>
+                    <Link to="/table">
+                        <ListItemButton>
+                            < TableChartIcon /> <ListItemText primary="Profile" />
+                        </ListItemButton>
+                    </Link>
+                    {/* <Link to="/navtab">
+                        <ListItemButton>
+                        < AddCardIcon /> <ListItemText primary="Form" />
+                        </ListItemButton>
+                    </Link> */}
+                    <Link to="/jobDescription">
+                        <ListItemButton>
+                            <WorkIcon/> <ListItemText primary="Job Description" />
+                        </ListItemButton>
+                    </Link>
+                    <Link to="/paneltable">
+                        <ListItemButton>
+                            <AddBoxIcon /> <ListItemText primary="Add Panel" />
+                        </ListItemButton>
+                    </Link>
+                    <Link to="#">
+                        <ListItemButton>
+                            <ReportIcon /> <ListItemText primary="Reports" />
+                        </ListItemButton>
+                    </Link>  
+                    
+                    <Link to="/login">
+                        <ListItemButton>
+                            <LogoutIcon /> <ListItemText primary="logout" />
+                        </ListItemButton>
+                    </Link>
+                </>
+        )
+    }
+    const isClient = ()=>{
+        return(
+                <>
+                <Link to="/home">
+                        <ListItemButton>
+                            <DashboardCustomizeIcon /> <ListItemText primary="Dashboard" />
+                        </ListItemButton>
+                    </Link>
+                </>
+        )
     }
 
 
@@ -84,8 +141,10 @@ const  Navbar = (props) =>{
         
         <>
             <Grid container spacing={1} >
+            {/* {isAdmim} */}
                 <Grid item xs={2} sx={{backgroundColor:"#0f70d5f7", boxShadow:"-1px 20px 11px 0px", height:"100vh"}}>
-                    <Link to="/home">
+                {/* {loginpositionData !== null ? isClient : isAdmim} */}
+                <Link to="/home">
                         <ListItemButton>
                             <DashboardCustomizeIcon /> <ListItemText primary="Dashboard" />
                         </ListItemButton>
@@ -121,7 +180,6 @@ const  Navbar = (props) =>{
                             <LogoutIcon /> <ListItemText primary="logout" />
                         </ListItemButton>
                     </Link>
-                    
                 </Grid>
                 <Grid item xs={10} >
                     {profile && <Profile />}

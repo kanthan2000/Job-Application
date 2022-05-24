@@ -4,7 +4,7 @@ import Navbar from "../../admin/Navbar/navbar"
 import {AppContext} from '../../../context'
 const Update = () =>{
     const { viewData,setViewData} = useContext(AppContext)
-    console.log(viewData)
+    // console.log(viewData)
     return(
         <>
         <Navbar>
@@ -14,7 +14,7 @@ const Update = () =>{
                 height:'90vh',
                 overflowY:'scroll'
             }}>
-            <Personal />
+            <Personal viewData={viewData}/>
             </div>
         </Navbar>
         </>

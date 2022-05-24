@@ -8,10 +8,11 @@
 	// import Personal1 from "./Personal1";
 	import Navbar from '../../admin/Navbar/navbar';
 	import "./Navtab.css"
+	import {AppContext} from '../../../context'
 
 	function TabPanel(props) {
 	const { children, value, index, ...other } = props;
-
+	
 	return (
 	<div
 		role="tabpanel"
@@ -48,6 +49,8 @@
 	setValue(newValue);
 	};
 
+	const { viewData,setViewData} = React.useContext(AppContext)
+
 	return (
 	<>
 	<Navbar>
@@ -62,7 +65,7 @@
 
 				<TabPanel value={value} index={0}>
 					<Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-						<Personal /> 
+						<Personal viewData={viewData}/> 
 					</Tabs>
 				</TabPanel>
 				<TabPanel value={value} index={1}>

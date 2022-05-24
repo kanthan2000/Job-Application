@@ -103,7 +103,7 @@ import Spinner from '../../Spinner/Spinner.js';
 	}
 
 	const onhandleAdd = ()=>{
-		history("/Navtab")
+		history("/navtab")
 	}
 const columns = [
 	{ field: 'firstName', headerName: 'Name' },

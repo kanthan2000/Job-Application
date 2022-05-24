@@ -35,12 +35,12 @@ const Login = (props) => {
 			
 		}
 		const onChangeUser =(event) =>{
-			console.log(event.target.value)
+			// console.log(event.target.value)
 			setusername(event.target.value)
 			
 		}
 		const onChangepassword =(event) =>{
-			console.log(event.target.value)
+			// console.log(event.target.value)
 			setpassword(event.target.value)
 		}
 		const onChangeUsername =(event) =>{	
@@ -50,12 +50,12 @@ const Login = (props) => {
 				"password" : password,
 				"position" : Role
 			}
-			console.log(data)
+			// console.log(data)
 			axios.put("http://localhost:8080/login",data).then(response=>{
 				
 				const { data, status } = response;
 				setloginPositionData(data.msg)
-				console.log(loginpositionData)
+				// console.log(loginpositionData)
 				if(data.msg === "admin"){
 					history("/home")
 				}

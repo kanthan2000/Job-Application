@@ -31,13 +31,19 @@ export default function Personal(props) {
 
 	let emailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
 	let numberPattern = /^[0-9\b]+$/;
-
     const [professionalComponents, setProfessionalComponents] = React.useState([professionalIdx])
 	const [qualificationComponents, setQualificationComponents] = React.useState([qualificationIdx])
 	const location = useLocation()
 	const history = useNavigate()
-
-
+    const [FirstName , setFirstName] = React.useState(props.viewData.firstName)
+    const [LastName , setLastName] = React.useState(props.viewData.lastName)
+    const [Dob ,setDob]= React.useState(props.viewData.dob)
+    const [Email ,setEmail] = React.useState(props.viewData.email)
+    const [ Phon , setPhon] = React.useState(props.viewData.phone)
+    const [linkedIn ,setlinkedIn] = React.useState(props.viewData.linkedIn)
+    const [Job ,setJob] = React.useState(props.viewData.job)
+     
+ console.log(props.viewData)
 	function validateEmail(value, pattern, msg){  
 		if (!value) {
 			setError(true)
@@ -77,6 +83,7 @@ export default function Personal(props) {
 	let formData = getFormData(form)
 	console.log(formData)
 	axios.post("http://localhost:8080/candidate", formData)
+        // console.log(FirstName)
 		.then(({data}, msg) => {
 			console.log(data)
 			history("/table")
@@ -165,6 +172,9 @@ export default function Personal(props) {
         console.log(professional)
         setProfessionalComponents([...professional])
     }
+     const handleFirstName = (event) =>{
+         console.log(event.target.value)
+     }
 
 
 
@@ -192,7 +202,8 @@ export default function Personal(props) {
                                         fullWidth
                                         id="firstName"
                                         label="First Name"
-                                    
+                                        value={FirstName}
+                                        onChange={(e)=>{setFirstName(e.target.FirstName)}}
                                     />
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
@@ -203,6 +214,8 @@ export default function Personal(props) {
                                         label="Last Name"
                                         name="lastName"
                                         autoComplete="family-name"
+                                        value={LastName}
+                                        onChange={(e)=>{setLastName(e.target.LastName)}}
                                     />
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
@@ -217,26 +230,35 @@ export default function Personal(props) {
                                             shrink: true,
                                             }}
                                             name='dob'
+                                            value={Dob}
+                                            onChange={(e)=>{setDob(e.target.Dob)}}
                                         />
                                     </Stack>
                                 </Grid>
                                 <Grid item xs={12}>
                                     <TextField
                                         required
-                                        onChange={(e) => validateEmail(e.target.value, emailPattern, 'Invalid email address')}
+                                        onChange={(e) => {
+                                            setEmail(e.target.value)
+                                            validateEmail(e.target.value, emailPattern, 'Invalid email address')
+                                        }}
                                         fullWidth
                                         type="email"
                                         id="email"
                                         label="Email Address"
                                         name="email"
                                         autoComplete="email"
+                                        value={Email}
                                     />
                                     {!error && <div>{msg}</div>}
                                 </Grid>
 							
                                 <Grid item xs={12}>
                                     <TextField
-                                    onChange={(e) => validatePhone(e.target.value, numberPattern, 'Enter Number Only')}
+                                    onChange={(e) => {
+                                        setPhon(e.target.value)
+                                        validatePhone(e.target.value, numberPattern, 'Enter Number Only')
+                                    }}
                                     required
                                     fullWidth
                                     name="phoneNumber"
@@ -244,6 +266,7 @@ export default function Personal(props) {
                                     type="text"
                                     id="phonenumber"
                                     autoComplete="phone"
+                                    value={Phon}
                                     />
                                     
                                     {!error1 && <div>{msg1}</div>}
@@ -257,6 +280,8 @@ export default function Personal(props) {
                                         type="text"
                                         id="LinkedIn"
                                         autoComplete="Linked"
+                                        value={linkedIn}
+                                        onChange={(e)=>{setlinkedIn(e.target.linkedIn)}}
                                         />
                                 </Grid>
                             </Grid>
@@ -359,7 +384,7 @@ export default function Personal(props) {
                             </Box>
                         </Box>
                         <SkillsList setSkill={setSkill} />
-                        <Position />
+                        <Position Job={Job}/>
                         <Box sx={{
                             marginTop: 5,
                             display: 'flex',

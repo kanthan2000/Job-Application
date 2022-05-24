@@ -28,7 +28,7 @@ import { AppContext } from "../../../context";
 const  Navbar = (props) =>{
         const[profile , setprofile] = React.useState(false)
         const { loginpositionData} = useContext(AppContext)
-        console.log(loginpositionData)
+        // console.log(loginpositionData)
     
     let name = props.name
     let imgStyle =  {
@@ -81,7 +81,7 @@ const  Navbar = (props) =>{
                         </ListItemButton>
                     </Link>  
                     
-                    <Link to="/login">
+                    <Link to="/">
                         <ListItemButton>
                             <LogoutIcon /> <ListItemText primary="logout" />
                         </ListItemButton>
@@ -95,6 +95,11 @@ const  Navbar = (props) =>{
                 <Link to="/home">
                         <ListItemButton>
                             <DashboardCustomizeIcon /> <ListItemText primary="Dashboard" />
+                        </ListItemButton>
+                    </Link>
+                    <Link to="/">
+                        <ListItemButton>
+                            <LogoutIcon /> <ListItemText primary="logout" />
                         </ListItemButton>
                     </Link>
                 </>
@@ -143,43 +148,7 @@ const  Navbar = (props) =>{
             <Grid container spacing={1} >
             {/* {isAdmim} */}
                 <Grid item xs={2} sx={{backgroundColor:"#0f70d5f7", boxShadow:"-1px 20px 11px 0px", height:"100vh"}}>
-                {/* {loginpositionData !== null ? isClient : isAdmim} */}
-                <Link to="/home">
-                        <ListItemButton>
-                            <DashboardCustomizeIcon /> <ListItemText primary="Dashboard" />
-                        </ListItemButton>
-                    </Link>
-                    <Link to="/table">
-                        <ListItemButton>
-                            < TableChartIcon /> <ListItemText primary="Profile" />
-                        </ListItemButton>
-                    </Link>
-                    {/* <Link to="/navtab">
-                        <ListItemButton>
-                        < AddCardIcon /> <ListItemText primary="Form" />
-                        </ListItemButton>
-                    </Link> */}
-                    <Link to="/jobDescription">
-                        <ListItemButton>
-                            <WorkIcon/> <ListItemText primary="Job Description" />
-                        </ListItemButton>
-                    </Link>
-                    <Link to="/paneltable">
-                        <ListItemButton>
-                            <AddBoxIcon /> <ListItemText primary="Add Panel" />
-                        </ListItemButton>
-                    </Link>
-                    <Link to="#">
-                        <ListItemButton>
-                            <ReportIcon /> <ListItemText primary="Reports" />
-                        </ListItemButton>
-                    </Link>  
-                    
-                    <Link to="/login">
-                        <ListItemButton>
-                            <LogoutIcon /> <ListItemText primary="logout" />
-                        </ListItemButton>
-                    </Link>
+                {loginpositionData == "client" ? isClient() : isAdmim()}
                 </Grid>
                 <Grid item xs={10} >
                     {profile && <Profile />}

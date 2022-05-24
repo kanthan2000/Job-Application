@@ -48,9 +48,9 @@ export default function DataGridDemo() {
  const {statusData} = useContext(AppContext)
  const history = useNavigate()
 //  console.log(statusData)
-const handleExcel = () =>{
- history("http://localhost:8080/excel/candidate")
-}
+// const handleExcel = () =>{
+//   window.location.reload("")
+// }
   return (
     <>
     <Navbar>
@@ -73,9 +73,12 @@ const handleExcel = () =>{
     })}
      Status
 	</IconButton>
-	
-	<Button sx={{background:'red'}} onClick={handleExcel}>Excel</Button>
-	
+	{/* <Button onClick={() => {window.location.href="http://localhost:8080/excel/candidate"}}
+   sx={{ position:'relative' ,mr: 'margin-right'}} 
+   variant="contained"
+    color="success"  >
+      Excel
+  </Button> */}
 	</Toolbar>
 </AppBar>
 </Box>

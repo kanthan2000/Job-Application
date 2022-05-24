@@ -15,10 +15,10 @@ const Dashboard =(props) =>{
    const { loginpositionData} = useContext(AppContext)
    const history = useNavigate()
    useEffect(() => {
-      console.log(loginpositionData)
+      // console.log(loginpositionData)
       setLoad(true)
       axios.get("http://localhost:8080/dashBoard").then(({data}) => {
-         console.log(data)
+         // console.log(data)
          setCards(data)
          setLoad(false)
       }).catch(err => {
@@ -38,18 +38,37 @@ const Dashboard =(props) =>{
          console.log(err)
       })
    }
+      const isClient = () =>{
+         return(
+            <>
+            <Card>
+               <div className='inner-card1'>
+                  <h1>progress</h1>
+                  <h1>5</h1>
+               </div>
+            </Card>
+            </>
+         )
+      }
+      const isAdmim = () => {
+         return(
+            <>
+               {cards.map((card, idx) =>  (<Card  key={idx}>      
+               <div className='inner-card1'>
+                  <h1>{card.title}</h1>
+                  <h1>{card.count}</h1>
+               <Button  onClick={(e)=>handleClick(card)}>View</Button>
+               </div>
+            </Card>))}
+            </>
+         )
+      }
       
       return(
          <> 
          {load && <Spinner />}
          <Navbar>
-         {cards.map((card, idx) =>  (<Card  key={idx}>      
-            <div className='inner-card1'>
-               <h1>{card.title}</h1>
-               <h1>{card.count}</h1>
-            <Button  onClick={(e)=>handleClick(card)}>View</Button>
-            </div>
-         </Card>))}
+         {loginpositionData == "client" ? isClient() : isAdmim()}
          
          </Navbar>
          

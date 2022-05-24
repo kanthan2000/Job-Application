@@ -22,21 +22,22 @@ function App() {
 	const [ExperienceData,setExperienceData] = React.useState()
 	const [loginpositionData,setloginPositionData] = React.useState("")
 	const [statusData , setStatusData] = React.useState([])
+	let value = {viewData,setViewData,
+		positionData,setPositionData,
+		ExperienceData,setExperienceData,
+		loginpositionData,setloginPositionData,
+		statusData , setStatusData
+		}
 	return (
 		<>
-				<AppContext.Provider value={{viewData,setViewData,
-											positionData,setPositionData,
-											ExperienceData,setExperienceData,
-											loginpositionData,setloginPositionData,
-											statusData , setStatusData
-											}}>
+				<AppContext.Provider value={value}>
 				<Routes>
+					<Route path="/" element={<Login />} />
 					<Route path='/home'  element={<Dashboard />} />
 					<Route path="/About" element={<About />} />
 					<Route path="/contact" element={<Contact />} />
 					<Route path="/table" element={<BasicTabstable />} />
 					<Route path='/navtab' element={<Navtab />}/>
-					<Route path="/login" element={<Login />} />
 					<Route path="/signin" element={<SignInSide />} />
 					<Route path="/view" element={<View />} />
 					<Route path="/update" element={<Update/>} />

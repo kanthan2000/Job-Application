@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 const Dashboard =(props) =>{
    const [load, setLoad] = useState(false)
    const [cards, setCards] = useState([])
+   const [clientCard , setClientCard] = React.useState([])
    const {statusData , setStatusData} = useContext(AppContext)
    const { loginpositionData} = useContext(AppContext)
    const history = useNavigate()
@@ -26,6 +27,19 @@ const Dashboard =(props) =>{
          setLoad(false)
       })
    }, [])
+   useEffect(() => {
+      // console.log(loginpositionData)
+      setLoad(true)
+      axios.get("http://localhost:8080/client/6288702fd68cbe00852dd3c4/dashBoard").then(({data}) => {
+         // console.log(data)
+         setClientCard(data)
+         setLoad(false)
+      }).catch(err => {
+         console.log(err)
+         setLoad(false)
+      })
+   }, [])
+
    const handleClick = (card) => {
       // console.log(card.title)
       let title = new String(card.title)
@@ -41,12 +55,13 @@ const Dashboard =(props) =>{
       const isClient = () =>{
          return(
             <>
-            <Card>
+            {clientCard.map((card, idx) =>  (<Card  key={idx}>      
                <div className='inner-card1'>
-                  <h1>progress</h1>
-                  <h1>5</h1>
+                  <h1>{card.title}</h1>
+                  <h1>{card.count}</h1>
+               {/* <Button  onClick={(e)=>handleClick(card)}>View</Button> */}
                </div>
-            </Card>
+            </Card>))}
             </>
          )
       }

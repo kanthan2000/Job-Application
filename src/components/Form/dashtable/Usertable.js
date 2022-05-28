@@ -88,7 +88,7 @@ import Spinner from '../../Spinner/Spinner.js';
 	const onhandleDelete = async (userId)=>{
 		console.log(userId)
 		setLoad(true)
-		let user = await axios.delete(`http://localhost:8080/candidate/?id=${userId}`)
+		let user = await axios.delete(`http://localhost:8080/candidate/${userId}`)
 		console.log(user, candidates)
 		let url = `http://localhost:8080/candidate?size=${rowsPerPage}&page=${0}`
 		loadUsers(url)
@@ -108,7 +108,7 @@ import Spinner from '../../Spinner/Spinner.js';
 const columns = [
 	{ field: 'firstName', headerName: 'Name' },
 	{ field: 'job', headerName: 'Job' },
-	{ field: 'phoneNumber', headerName: 'Phone Number',width:200 },
+	{ field: 'phone', headerName: 'Phone Number',width:200 },
 	{
 		field: "edit",
 		headerName: "Edit",

@@ -75,7 +75,7 @@ const  Navbar = (props) =>{
                             <AddBoxIcon /> <ListItemText primary="Add Panel" />
                         </ListItemButton>
                     </Link>
-                    <Link to="#">
+                    <Link to="/report">
                         <ListItemButton>
                             <ReportIcon /> <ListItemText primary="Reports" />
                         </ListItemButton>

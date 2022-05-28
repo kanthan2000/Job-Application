@@ -5,14 +5,14 @@
 	import Box from '@mui/material/Box';
 	import { Typography } from '@mui/material'
 	import axios from 'axios'
-	// import { AppContext } from '../../../context';
+	import { AppContext } from '../../../context';
+    
 
 
 
-
-
-	export default function Experience() {
+	export default function Experience(props) {
 	const [Data ,setData] = React.useState([])
+	const {Username ,setUsername} = React.useContext(AppContext)
 	useEffect(() => {
 	// let host = process.env.REACT_HOST
 	// let url = `${host}/dropDown/experience`
@@ -24,7 +24,7 @@
 	})
 	}, [])
 	const handleChangeName = (e)=>{
-		console.log(e.target.value)
+		setUsername(e.target.value)
 	}
 
 	const handleExperience = (e) =>{

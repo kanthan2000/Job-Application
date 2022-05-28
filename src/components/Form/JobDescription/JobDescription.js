@@ -18,6 +18,7 @@ import { AppContext } from '../../../context';
 import Spinner  from '../../Spinner/Spinner'
 import axios from 'axios';
 import Responsiblities from './Responsiblities';
+import { useNavigate } from 'react-router-dom';
 
 
 let responseIdx = 0
@@ -26,6 +27,7 @@ let responseIdx = 0
 const JobDescription = () => {
 	const { positionData} = React.useContext(AppContext)
 	const {ExperienceData} = React.useContext(AppContext)
+	const {Username} = React.useContext(AppContext)
 	const [dropDown ,setdropDown] = React.useState([])
 	const [Load , setLoad] = React.useState(false)
 	const [EligiblityData , setEligiblityData] = React.useState([])
@@ -34,6 +36,7 @@ const JobDescription = () => {
 	const [start,setStart] = React.useState()
 	const [end ,setEnd] = React.useState()
 	const [responseComponents, setResponseComponents] = React.useState([responseIdx])
+	const history = useNavigate()
     
     const renderResponseForm= (event) => {
         // console.log("clicked", responseIdx)
@@ -66,9 +69,7 @@ const JobDescription = () => {
 		setJobLocationData(JobLoction)
 	}
 
-	// const position = (position) => {
-	// 	console.log(position)
-	// }
+	
 		const handlestart = (event) =>{
 			setStart(event.target.value)
 		}
@@ -77,9 +78,25 @@ const JobDescription = () => {
 		}
 		const handleSave = () =>{
 			let data = {
-				name : skillData
-			}
-			console.log(data)
+				"position" : positionData,
+				"experience" : ExperienceData,
+				"skill" : skillData,
+				"salary" : {
+					"from" : start,
+					"to" : end 
+				}, 
+					"qualification" : EligiblityData,
+					"location" :  JobLocationData,
+					"employeeId" : Username
+					// "responsiblities" : [ "start" , "van" ,"car"],
+				}
+				console.log(data)
+				axios.post("http://localhost:8080/job",data).then((data)=>{
+					console.log(data)
+					history("/paneltable")
+				}).catch((err)=>{
+					console.log(err)
+				})
 		}
 
 	React.useEffect(()=>{
@@ -149,29 +166,29 @@ const JobDescription = () => {
 						alignItems: 'center',
                         
 						}}>
-							<Typography sx={{color: "black"}} component="h1" variant="h5">
+							{/* <Typography sx={{color: "black"}} component="h1" variant="h5">
 							Responsiblities
 							</Typography>
-                            {responseComponents.map((value, idx) =>  value !== undefined ?  <Responsiblities onClick={ onRemoveResponseHandler } id={idx} key={idx} /> : null)}
+                            {responseComponents.map((value, idx) =>  value !== undefined ?  <Responsiblities onClick={ onRemoveResponseHandler } id={idx} key={idx} /> : null)} */}
 							</Box>
 							<Grid container spacing={2}>
 									<Grid item xs={12}>
-											<Button
+											{/* <Button
 												onClick={renderResponseForm}
 												fullWidth
 												variant="contained"
 												sx={{ mt: 3, mb: 2,userSelect:"none" }}
-												>Click to Add</Button>
+												>Click to Add</Button> */}
 									</Grid>
 							</Grid>
-                        <Button
+						</Box>
+						</Box>  
+						<Button
 						type="submit"
 						fullWidth
 						variant="contained"
 						onClick={handleSave}
 						sx={{ mt: 3, mb: 2 }} > Save </Button>    
-						</Box>
-						</Box>  
 				
         </Container>
 			</div>

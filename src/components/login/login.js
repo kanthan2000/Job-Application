@@ -57,7 +57,7 @@ const Login = (props) => {
 				setloginPositionData(data.msg)
 				// console.log(loginpositionData)
 				if(data.msg === "admin"){
-					history("/home")
+					history("/dashboard")
 				}
 				if(data.msg === "employee"){
 					// history("/home")

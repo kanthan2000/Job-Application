@@ -1,6 +1,4 @@
 import Navbar  from "./admin/Navbar/navbar";
-import About  from './admin/Nav_item/About'
-import Contact  from './admin/Nav_item/Contact'
 import {Routes, Route }   
 from 'react-router-dom'
 import Login from "./login/login"
@@ -17,6 +15,9 @@ import Panel from "./Form/AddPanel/AddPanel";
 import PanelTable from './Form/AddPanel/PanelTable';
 import Status from '../components/admin/Dashboard/Statustable'
 import Report from "./Form/Report/Report";
+import HeaderComponent from './admin/Nav_item/headersComponents/HeadersComponent'
+import AboutUs from './admin/Nav_item/BodyComponents/About'
+import Contact  from './admin/Nav_item/BodyComponents/Contact'
 function App() {
 	const [viewData,setViewData] = React.useState([])
 	const [positionData,setPositionData] = React.useState()
@@ -36,8 +37,9 @@ function App() {
 				<AppContext.Provider value={value}>
 				<Routes>
 					<Route path="/" element={<Login />} />
-					<Route path='/home'  element={<Dashboard />} />
-					<Route path="/About" element={<About />} />
+					<Route path='/dashboard'  element={<Dashboard />} />
+					<Route path='/home'  element={<HeaderComponent/>} />
+					<Route path="/about" element={<AboutUs />} />
 					<Route path="/contact" element={<Contact />} />
 					<Route path="/table" element={<BasicTabstable />} />
 					<Route path='/navtab' element={<Navtab />}/>

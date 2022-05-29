@@ -124,7 +124,7 @@ const  Navbar = (props) =>{
                         <Home/> <Link to="/home">Home</Link>
                     </p>
                     <p style={{ marginLeft: "1.5rem", cursor:'pointer'}}>
-                        <InfoIcon/> About
+                        <InfoIcon/> <Link to="/about">About</Link>
                     </p>
                     <p style={{marginLeft: "1.5rem", cursor:'pointer'}}>
                         <ManageAccountsIcon /> Service
@@ -133,7 +133,7 @@ const  Navbar = (props) =>{
                         <MapsHomeWorkIcon /> Careers
                     </p>
                     <p style={{ marginLeft: "1.5rem", cursor:'pointer'}}>
-                        <PermContactCalendarIcon /> Contact 
+                        <PermContactCalendarIcon /> <Link to="/contact">Contact </Link>
                     </p>
                 </>
                 {/* <Button onClick={onclickprofile}  color="inherit" sx={{marginLeft: "50rem"}}>
